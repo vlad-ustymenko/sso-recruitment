@@ -1,0 +1,51 @@
+.carouselContainer {
+  padding: 0 34px;
+  background-color: #f3f3e9;
+  border-top: 1px solid #c5c5c5;
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.carouselWrapper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc(100% / 3);
+  overflow: hidden;
+  padding: 0 1px;
+}
+
+.navButtonLeft,
+.navButtonRight {
+  width: 56px;
+  height: 56px;
+  background-color: white;
+  color: black;
+  border-radius: unset;
+}
+
+.navButtonLeft {
+}
+
+.navButtonRight {
+}
+
+.navButtonLeft:hover,
+.navButtonRight:hover {
+}
+
+@media (max-width: 1979px) {
+  .carouselWrapper {
+    grid-auto-columns: calc(100% / 3);
+  }
+}
+
+@media (max-width: 1027px) {
+  .carouselWrapper {
+    grid-auto-columns: calc(100% / 2);
+  }
+}
+
+@media (max-width: 767px) {
+  .carouselWrapper {
+    grid-auto-columns: calc(100% / 1);
+  }
+}

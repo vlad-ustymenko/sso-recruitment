@@ -1,0 +1,84 @@
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+}
+
+.afterImage,
+.beforeImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.beforeImage {
+  clip-path: inset(0 50% 0 0);
+}
+
+.beforeImage::before {
+  content: 'Можливо\AССО це ти';
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 72px;
+  font-weight: bold;
+  letter-spacing: -3px;
+  line-height: 4rem;
+	white-space: pre;
+}
+
+.divider {
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 90%;
+  width: 1px;
+  background-color: #fff;
+  z-index: 10;
+
+}
+
+.arrowLeft,
+.arrowRight {
+	position: absolute;
+	top: 60%;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  margin: 0 5px;
+  border-radius: 4px;
+	user-select: none;
+}
+
+.arrowLeft {
+	left: -40px;
+}
+.divider::after {
+  content: 'Час настав';
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-size: 72px;
+  font-weight: bold;
+  letter-spacing: -3px;
+  line-height: 4rem;
+  opacity: var(--opacity); /* Прозорість тексту */
+  transition: opacity 0.3s ease; /* Плавна зміна прозорості */
+}

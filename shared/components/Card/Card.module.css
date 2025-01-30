@@ -1,0 +1,52 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 40px;
+  color: #000;
+  align-items: center;
+  border-left: 1px solid #c5c5c5;
+  border-right: 1px solid #c5c5c5;
+  transition: all 0.3s ease-in-out;
+}
+
+.card:hover {
+  background-color: #1d946e;
+  color: white;
+}
+
+.image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -3px;
+  margin-top: 28px;
+  flex: 1;
+}
+
+.unit {
+  margin-top: 40px;
+  font-size: 18px;
+  line-height: 23px;
+  letter-spacing: -1%;
+}
+
+.detailsButton {
+  margin-top: 16px;
+  width: 100%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.detailsButton:hover {
+  background-color: #0056b3;
+}
