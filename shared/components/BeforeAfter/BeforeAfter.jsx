@@ -1,6 +1,7 @@
-'use client';
-import { useState, useEffect } from 'react';
-import styles from './BeforeAfter.module.css'; // Імпортуємо стилі
+"use client";
+import { useState, useEffect } from "react";
+import { ChevronRight, ChevronLeft } from "lucide-react";
+import styles from "./BeforeAfter.module.css"; // Імпортуємо стилі
 
 const BeforeAfter = ({ beforeImage, afterImage }) => {
   const [sliderPosition, setSliderPosition] = useState(100); // Початково 100%
@@ -49,7 +50,7 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
     <div
       className={styles.container}
       style={{
-        '--opacity': sliderPosition > 0 ? 1 - (sliderPosition - 5) / 50 : 1,
+        "--opacity": sliderPosition > 0 ? 1 - (sliderPosition - 5) / 50 : 1,
       }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseUp}
@@ -79,8 +80,8 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
           }}
           onMouseDown={handleMouseDown}
         >
-          <div className={styles.arrowLeft}>&#8592;</div>
-          <div className={styles.arrowRight}>&#8594;</div>
+          <ChevronLeft className={styles.arrowLeft} width={32} height={32} />
+          <ChevronRight className={styles.arrowRight} width={32} height={32} />
         </div>
       </div>
     </div>
@@ -88,5 +89,3 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
 };
 
 export default BeforeAfter;
-
-

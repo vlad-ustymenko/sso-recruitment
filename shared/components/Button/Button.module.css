@@ -1,14 +1,39 @@
 .button {
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  min-width: 1%;
+  background: transparent;
+  color: black;
+  border: 1px solid #c5c5c5;
+  padding: 20px 24px;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  transition: all 0.3s ease-in-out;
+  align-self: flex-start;
 }
 
 .button:hover {
-  background-color: #0056b3;
+  min-width: 100%;
+}
+
+.arrowButton {
+  width: 56px;
+  height: 56px;
+  border: none;
+  background-color: white;
+  color: black;
+}
+
+.buttonWithLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #1d946e;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  padding: 32px 62px;
+  border: none;
 }

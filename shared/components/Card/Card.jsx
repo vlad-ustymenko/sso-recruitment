@@ -5,7 +5,7 @@ import React from "react";
 
 const Card = React.forwardRef(({ vacancy }, ref) => {
   return (
-    <li ref={ref} className={styles.card}>
+    <li ref={ref} className={`${styles.card} 'card`}>
       <Image
         src={vacancy.image}
         alt={vacancy.title}
@@ -15,7 +15,9 @@ const Card = React.forwardRef(({ vacancy }, ref) => {
       />
       <h3 className={styles.title}>{vacancy.title}</h3>
       <p className={styles.unit}>{vacancy.unit}</p>
-      <Button className={styles.detailsButton}>ДЕТАЛЬНІШЕ</Button>
+      <Button className={styles.detailsButton} title="Детальніше">
+        ДЕТАЛЬНІШЕ
+      </Button>
     </li>
   );
 });

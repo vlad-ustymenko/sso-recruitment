@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, use } from "react";
 import { Card } from "../Card/Card"; // імпортуємо Card
 import { Button } from "../Button/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -11,19 +11,19 @@ const vacancies = [
   {
     id: 1,
     title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
-    image: "/images/scout1.jpg",
+    image: "/images/solder1.png",
     unit: "66 ОМБр ім. князя Мстислава Хороброго",
   },
   {
     id: 2,
     title: "Діловод відділення персоналу",
-    image: "/images/clerk.webp",
+    image: "/images/solder2.png",
     unit: "66 ОМБр ім. князя Мстислава Хороброго",
   },
   {
     id: 3,
     title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
-    image: "/images/scout2.jpg",
+    image: "/images/solder3.png",
     unit: "66 ОМБр ім. князя Мстислава Хороброго",
   },
   {
@@ -38,30 +38,78 @@ const vacancies = [
     image: "/images/clerk.webp",
     unit: "66 ОМБр ім. князя Мстислава Хороброго",
   },
+  {
+    id: 6,
+    title: "Діловод відділення персоналу",
+    image: "/images/scout2.jpg",
+    unit: "66 ОМБр ім. князя Мстислава Хороброго",
+  },
 ];
 
 export default function VacancyCarousel() {
   const carouselRef = useRef(null);
   const cardRefs = useRef([]);
-  const [scrollAmount, setScrollAmount] = useState(0);
-  const [isScrolling, setIsScrolling] = useState(false); // Додаємо стейт для контролю прокрутки
+  const [isScrolling, setIsScrolling] = useState(false);
 
   useEffect(() => {
-    if (cardRefs.current[0]) {
-      setScrollAmount(cardRefs.current[0].getBoundingClientRect().width); // Визначаємо ширину першої картки
+    if (carouselRef.current) {
+      carouselRef.current.scrollBy({
+        left: cardRefs.current[0]?.getBoundingClientRect().width * 3,
+      });
     }
   }, []);
 
-  const scroll = (offset) => {
+  const scroll = (direction) => {
     if (isScrolling) return; // Якщо прокрутка вже йде, не дозволяємо натискати знову
-
+    const cardWidth = cardRefs.current[0]?.getBoundingClientRect().width;
     setIsScrolling(true);
 
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({
-        left: offset,
-        behavior: "smooth",
-      });
+      if (direction === "left") {
+        if (carouselRef.current.scrollLeft < cardWidth) {
+          carouselRef.current.scrollBy({
+            left: -cardWidth,
+            behavior: "smooth",
+          });
+
+          setTimeout(
+            () =>
+              (carouselRef.current.scrollLeft =
+                carouselRef.current.scrollWidth -
+                2 * carouselRef.current.offsetWidth),
+            600
+          );
+        } else {
+          carouselRef.current.scrollBy({
+            left: -cardWidth,
+            behavior: "smooth",
+          });
+        }
+      } else {
+        if (
+          Math.ceil(carouselRef.current.scrollLeft) <
+          carouselRef.current.scrollWidth -
+            carouselRef.current.offsetWidth -
+            500
+        ) {
+          carouselRef.current.scrollBy({
+            left: cardWidth,
+            behavior: "smooth",
+          });
+
+          setTimeout(
+            () =>
+              (carouselRef.current.scrollLeft =
+                carouselRef.current.offsetWidth),
+            600
+          );
+        } else {
+          carouselRef.current.scrollBy({
+            left: cardWidth,
+            behavior: "smooth",
+          });
+        }
+      }
     }
 
     // Задаємо таймер для зняття блокування прокрутки через деякий час
@@ -72,31 +120,49 @@ export default function VacancyCarousel() {
     <>
       <div className={styles.carouselContainer}>
         <ul className={styles.carouselWrapper} ref={carouselRef}>
-          {vacancies.map((vacancy, index) => (
-            <Card
-              key={vacancy.id}
-              vacancy={vacancy}
-              ref={(el) => (cardRefs.current[index] = el)} // Збереження рефів для кожної картки
-            />
-          ))}
+          {[...vacancies.slice(-3), ...vacancies, ...vacancies.slice(0, 3)].map(
+            (vacancy, index) => (
+              <Card
+                key={`${vacancy.image} + ${index}`}
+                vacancy={vacancy}
+                ref={(el) => (cardRefs.current[index] = el)} // Збереження рефів для кожної картки
+              />
+            )
+          )}
         </ul>
       </div>
       <Container>
-        <div
-          style={{ display: "flex", alignItems: "center", paddingTop: "32px" }}
-        >
+        <div className={styles.scrollContainer}>
           <Button
-            onClick={() => scroll(-scrollAmount)} // Прокрутка вліво
-            className={styles.navButtonLeft}
+            onClick={() => scroll("left")} // Прокрутка вліво
+            arrow
+            arrowDirection={"left"}
           >
             <ChevronLeft />
           </Button>
-          <div
-            style={{ flex: 1, margin: "0 20px", borderTop: "4px dotted black" }}
-          />
+          <div className={styles.scrollWrapper}>
+            <span
+              style={{
+                position: "absolute",
+                top: "50%",
+                borderTop: "4px solid black",
+              }}
+            />
+
+            <span
+              style={{
+                position: "absolute",
+                top: "50%",
+
+                width: "100%",
+                borderTop: "4px dotted black",
+              }}
+            />
+          </div>
           <Button
-            onClick={() => scroll(scrollAmount)} // Прокрутка вправо
-            className={styles.navButtonRight}
+            onClick={() => scroll("right")} // Прокрутка вправо
+            arrow
+            arrowDirection={"right"}
           >
             <ChevronRight />
           </Button>
