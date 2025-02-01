@@ -8,8 +8,9 @@
 .carouselWrapper {
   display: grid;
   grid-auto-flow: column;
-  grid-auto-columns: calc(100% / 3);
+  grid-auto-columns: calc((100% / 3));
   overflow: hidden;
+  padding: 0 10px;
 }
 
 .navButtonLeft,
@@ -52,13 +53,7 @@
   list-style: none;
 }
 
-@media (max-width: 1979px) {
-  .carouselWrapper {
-    grid-auto-columns: calc(100% / 3);
-  }
-}
-
-@media (max-width: 1280px) {
+@media (min-width: 768px) and (max-width: 1279px) {
   .carouselWrapper {
     grid-auto-columns: calc(100% / 2);
   }
@@ -66,6 +61,6 @@
 
 @media (max-width: 767px) {
   .carouselWrapper {
-    grid-auto-columns: calc(100% / 1);
+    grid-auto-columns: 100%;
   }
 }

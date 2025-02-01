@@ -1,11 +1,12 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import styles from "./BeforeAfter.module.css"; // Імпортуємо стилі
 
 const BeforeAfter = ({ beforeImage, afterImage }) => {
-  const [sliderPosition, setSliderPosition] = useState(100); // Початково 100%
-  const [isDragging, setIsDragging] = useState(false);
+  const [sliderPosition, setSliderPosition] = useState(100); // Стартова позиція
+  const isDraggingRef = useRef(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     // Анімація з правого боку до середини
@@ -22,48 +23,60 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
     return () => clearInterval(animation); // Очистка інтервалу після завершення
   }, []);
 
-  const handleMouseDown = () => {
-    setIsDragging(true);
-  };
+  useEffect(() => {
+    // Функція оновлення позиції слайдера
+    const updateSliderPosition = (clientX) => {
+      if (!containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const newPosition = ((clientX - rect.left) / rect.width) * 100;
+      setSliderPosition(Math.min(Math.max(newPosition, 0), 100));
+    };
 
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
+    // Обробник руху миші по всьому екрану
+    const handleMouseMove = (e) => {
+      if (isDraggingRef.current) updateSliderPosition(e.clientX);
+    };
 
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    const container = e.currentTarget;
-    const rect = container.getBoundingClientRect();
-    const newPosition = ((e.clientX - rect.left) / rect.width) * 100;
-    setSliderPosition(Math.min(Math.max(newPosition, 0), 100));
-  };
+    // Обробник руху пальцем по всьому екрану
+    const handleTouchMove = (e) => {
+      if (isDraggingRef.current) updateSliderPosition(e.touches[0].clientX);
+    };
 
-  const handleTouchMove = (e) => {
-    const container = e.currentTarget;
-    const rect = container.getBoundingClientRect();
-    const touch = e.touches[0];
-    const newPosition = ((touch.clientX - rect.left) / rect.width) * 100;
-    setSliderPosition(Math.min(Math.max(newPosition, 0), 100));
-  };
+    // Почати перетягування
+    const startDragging = () => (isDraggingRef.current = true);
+
+    // Завершити перетягування
+    const stopDragging = () => (isDraggingRef.current = false);
+
+    // Додаємо глобальні слухачі подій
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener("mouseup", stopDragging);
+    window.addEventListener("touchend", stopDragging);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("mouseup", stopDragging);
+      window.removeEventListener("touchend", stopDragging);
+    };
+  }, []);
 
   return (
     <div
+      ref={containerRef}
       className={styles.container}
       style={{
         "--opacity": sliderPosition > 0 ? 1 - (sliderPosition - 5) / 50 : 1,
       }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseUp}
-      onMouseUp={handleMouseUp}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleMouseUp}
     >
-      <div className={styles.imageWrapper} onMouseDown={handleMouseDown}>
+      <div className={styles.imageWrapper}>
         {/* After Image */}
         <div
           className={styles.afterImage}
           style={{ backgroundImage: `url(${afterImage})` }}
         ></div>
+
         {/* Before Image */}
         <div
           className={styles.beforeImage}
@@ -72,13 +85,13 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
             clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
           }}
         ></div>
-        {/* Divider */}
+
+        {/* Дівайдер */}
         <div
           className={styles.divider}
-          style={{
-            left: `${sliderPosition}%`,
-          }}
-          onMouseDown={handleMouseDown}
+          style={{ left: `${sliderPosition}%` }}
+          onMouseDown={() => (isDraggingRef.current = true)}
+          onTouchStart={() => (isDraggingRef.current = true)}
         >
           <ChevronLeft className={styles.arrowLeft} width={32} height={32} />
           <ChevronRight className={styles.arrowRight} width={32} height={32} />

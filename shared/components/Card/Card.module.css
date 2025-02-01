@@ -26,9 +26,9 @@
 }
 
 .title {
+  font-family: "UAFSemiBold", sans-serif;
   font-size: 28px;
-  font-weight: 600;
-  letter-spacing: -3px;
+  letter-spacing: -1px;
   margin-top: 28px;
   flex: 1;
 }
@@ -37,7 +37,7 @@
   margin-top: 40px;
   font-size: 18px;
   line-height: 23px;
-  letter-spacing: -1%;
+  letter-spacing: -1px;
   margin-bottom: 28px;
 }
 
@@ -55,4 +55,24 @@
 
 .detailsButton:hover {
   background-color: #0056b3;
+}
+
+@media (min-width: 1024px) {
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+}
+
+@media (max-width: 767px) {
+  .card {
+    padding: 24px;
+  }
+  .title {
+    font-size: 23px;
+    margin-top: 28px;
+  }
+  .unit {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    font-size: 18px;
+  }
 }

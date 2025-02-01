@@ -32,8 +32,8 @@
   left: 20px;
   color: white;
   font-size: 72px;
-  font-weight: bold;
-  letter-spacing: -3px;
+  font-family: "UAFBold", sans-serif;
+  letter-spacing: -1px;
   line-height: 4rem;
   white-space: pre;
 }
@@ -75,9 +75,29 @@
   left: 20px;
   color: white;
   font-size: 72px;
-  font-weight: bold;
-  letter-spacing: -3px;
+  font-family: "UAFBold", sans-serif;
+  letter-spacing: -1px;
   line-height: 4rem;
   opacity: var(--opacity); /* Прозорість тексту */
   transition: opacity 0.3s ease; /* Плавна зміна прозорості */
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+}
+
+@media (max-width: 767px) {
+  .beforeImage::before {
+    font-size: 48px;
+  }
+  .divider::after {
+    font-size: 48px;
+  }
+  .arrowLeft,
+  .arrowRight {
+    width: 40px;
+    height: 40px;
+  }
+  .arrowLeft {
+    left: -48px;
+  }
 }

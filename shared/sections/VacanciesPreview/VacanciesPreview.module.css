@@ -1,7 +1,50 @@
-.title{
-	padding-top: 120px;
-	font-size: 56px;
-	color: black;
-	letter-spacing: -3px;
-	font-weight: 700;
+.title {
+  font-family: "UAFBold", sans-serif;
+  font-size: 56px;
+  color: black;
+  letter-spacing: -1px;
+  margin-top: 120px;
+  margin-bottom: 80px;
+}
+
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 56px;
+}
+
+.button {
+  cursor: pointer;
+  padding: 17px 20px;
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 18px;
+  border-bottom: 6px solid #0e7151;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button:hover {
+  color: #0e7151;
+}
+
+@media (min-width: 1024px) {
+}
+@media (min-width: 768px) and (max-width: 1279px) {
+}
+
+@media (max-width: 767px) {
+  .title {
+    font-size: 38px;
+    margin-top: 64px;
+    margin-bottom: 40px;
+  }
+  .buttonWrapper {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .button:hover {
+    color: black;
+  }
 }
