@@ -1,0 +1,26 @@
+.cardWrapper {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #c5c5c5;
+  padding: 40px;
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 50%;
+}
+
+.title {
+  font-family: UAFSemiBold, sans-serif;
+  font-size: 42px;
+  letter-spacing: -1px;
+  margin: 24px 0;
+}
+
+.description {
+  font-size: 18px;
+  letter-spacing: -1px;
+}
