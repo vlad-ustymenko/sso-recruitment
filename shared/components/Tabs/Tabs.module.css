@@ -1,77 +1,82 @@
+.title {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 18px;
+  margin-top: 160px;
+  margin-bottom: 64px;
+}
+
 .tabContainer {
   background-color: white;
+  padding: 28px 32px 0 32px;
   border-bottom: 1px solid #c5c5c5;
-  padding: 32px;
 }
 
 .tabTitleWrapper {
-  display: flex;
-  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+  display: grid;
+  grid-template-columns: 72px 1fr 20px;
+  align-items: flex-start;
   gap: 40px;
-  justify-content: space-between;
+  cursor: pointer;
+}
+
+.tabTitleWrapper:hover .tabTitle {
+  color: #1d946e;
 }
 
 .tabContentWrapper {
   display: grid;
-  grid-template-rows: 1fr;
-  transition: 0.5s ease-in-out;
+  grid-template-rows: 0fr;
+  transition: 0.3s ease;
 }
 
 .tabTitle {
   font-family: "UAFSemiBold", sans-serif;
   font-size: 28px;
+  flex: 1;
+  margin-bottom: 28px;
 }
 
 .tabNumber {
   background-color: black;
   color: white;
+  width: 72px;
   padding: 0 25px;
+  transform: translateY(7px);
 }
 
 .tabContent {
   overflow: hidden;
-  font-style: 14px;
-}
-
-/* .container {
-  max-width: 600px;
-  margin: 0 auto;
-  background-color: #f9f9f9;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.tabItem {
-  border-bottom: 1px solid #ddd;
-}
-
-.tabButton {
-  width: 100%;
-  text-align: left;
-  padding: 12px;
-  font-size: 16px;
-  font-weight: 600;
-  background: white;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.tabButton:hover {
-  background: #eaeaea;
-}
-
-.active {
-  background: #d1d5db;
-}
-
-.tabContent {
-  padding: 12px;
   font-size: 14px;
-  color: #333;
-  background: #f0f0f0;
-} */
+  transition: all 0.3s ease;
+}
+
+.tabArrow {
+  justify-self: end;
+}
+
+.activeTab {
+  grid-template-rows: 1fr;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+}
+
+@media (max-width: 767px) {
+  .tabContainer {
+    padding: 24px 16px 0 16px;
+  }
+  .tabTitleWrapper {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 16px;
+  }
+  .tabTitle {
+    order: 3;
+    font-size: 22px;
+    grid-column: span 2;
+    margin-bottom: 24px;
+  }
+  .tabTitleWrapper:hover .tabTitle {
+    color: unset;
+  }
+}
