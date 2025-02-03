@@ -6,10 +6,10 @@ import AdvantagesCard from "@/shared/components/AdvantagesCard/AdvantagesCard";
 
 const Advantages = () => {
   const cards = [1, 2, 3, 4, 5, 6];
-  const [count, setCount] = useState(0);
+  const [scrollCount, setScrollCount] = useState(0);
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
-  const [isHorizontal, setIsHorizontal] = useState(false);
+  const touchStartX = useRef(0);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -18,8 +18,6 @@ const Advantages = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.intersectionRatio === 1) {
-          setIsHorizontal(true);
-
           // **Зупиняємо інерцію прокрутки**
           document.documentElement.style.overflow = "hidden";
           document.body.style.overflow = "hidden";
@@ -34,28 +32,27 @@ const Advantages = () => {
             e.preventDefault();
             const delta = e.deltaY;
 
-            setCount((prevCount) => {
-              let newCount = prevCount + delta;
+            setScrollCount((prevscrollCount) => {
+              let newscrollCount = prevscrollCount + delta;
 
               // Якщо прокручено більше ніж ширина контейнера, зупиняємо прокрутку
               if (containerRef.current) {
                 if (
-                  newCount >=
+                  newscrollCount >=
                   containerRef.current.scrollWidth -
-                    containerRef.current.offsetWidth +
-                    90
+                    containerRef.current.offsetWidth
                 ) {
-                  newCount =
+                  newscrollCount =
                     containerRef.current.scrollWidth -
-                    containerRef.current.offsetWidth +
-                    92;
+                    containerRef.current.offsetWidth;
+
                   document.documentElement.style.overflow = "";
                   document.body.style.overflow = "";
                   window.removeEventListener("wheel", handleScroll);
                 }
 
-                // Якщо count менше нуля, зупиняємо прокрутку
-                if (newCount < 0) {
+                // Якщо scrollCount менше нуля, зупиняємо прокрутку
+                if (newscrollCount < 0) {
                   document.documentElement.style.overflow = "";
                   document.body.style.overflow = "";
                   window.removeEventListener("wheel", handleScroll);
@@ -63,16 +60,90 @@ const Advantages = () => {
                 }
               }
 
-              return newCount;
+              return newscrollCount;
             });
+          };
+
+          const handleTouchStart = (e) => {
+            touchStartX.current = e.touches[0].clientY;
+          };
+
+          const handleTouchMove = (e) => {
+            const touchMoveX = touchStartX.current - e.touches[0].clientY;
+            if (touchMoveX < 0) {
+              const delta = -30;
+              setScrollCount((prevscrollCount) => {
+                let newscrollCount = prevscrollCount + delta;
+                if (newscrollCount <= 0) {
+                  document.documentElement.style.overflow = "";
+                  document.body.style.overflow = "";
+                  window.removeEventListener("touchmove", handleTouchMove);
+                  return 0;
+                }
+                return newscrollCount;
+              });
+            }
+            if (touchMoveX > 0) {
+              const delta = 30;
+              setScrollCount((prevscrollCount) => {
+                let newscrollCount = prevscrollCount + delta;
+                if (
+                  newscrollCount >=
+                  containerRef.current.scrollWidth -
+                    containerRef.current.offsetWidth
+                ) {
+                  newscrollCount =
+                    containerRef.current.scrollWidth -
+                    containerRef.current.offsetWidth;
+
+                  document.documentElement.style.overflow = "";
+                  document.body.style.overflow = "";
+                  window.removeEventListener("touchmove", handleTouchMove);
+                }
+                return newscrollCount;
+              });
+            }
+            // const scrollTop = window.scrollY; // Поточна позиція прокрутки (від верху)
+            // const totalHeight = document.documentElement.scrollHeight; // Загальна висота сторінки
+            // const viewportHeight = window.innerHeight; // Висота видимої області
+            // const scrollPercentage =
+            //   (scrollTop / (totalHeight - viewportHeight)) * 100;
+
+            // if (scrollPercentage > 80) {
+            //   const delta = -30;
+            //   setScrollCount((prevscrollCount) => {
+            //     let newscrollCount = prevscrollCount + delta;
+            //     if (newscrollCount < 0) {
+            //       document.documentElement.style.overflow = "";
+            //       document.body.style.overflow = "";
+            //       window.removeEventListener("wheel", handleScroll);
+            //       return 0;
+            //     }
+
+            //     return newscrollCount;
+            //   });
+            // }
+            // const delta = 30;
+            // setScrollCount((prevscrollCount) => {
+            //   let newscrollCount = prevscrollCount + delta;
+            //   return newscrollCount;
+            // });
           };
 
           // Додаємо слухач подій на wheel
           window.addEventListener("wheel", handleScroll, { passive: false });
 
+          window.addEventListener("touchmove", handleTouchMove, {
+            passive: false,
+          });
+          window.addEventListener("touchstart", handleTouchStart, {
+            passive: true,
+          });
+
           // Очищаємо слухач події при розмонтуванні
           return () => {
             window.removeEventListener("wheel", handleScroll);
+            window.removeEventListener("touchmove", handleTouchMove);
           };
         }
       },
@@ -96,7 +167,7 @@ const Advantages = () => {
         <div
           className={styles.wrapper}
           ref={containerRef} // Прикріплюємо реф до контейнера
-          style={{ transform: `translateX(-${count}px)` }}
+          style={{ transform: `translateX(-${scrollCount}px)` }}
         >
           {cards.map((card) => (
             <AdvantagesCard key={card} />
