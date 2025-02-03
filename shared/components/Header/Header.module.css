@@ -1,0 +1,38 @@
+.container {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 24px;
+  color: white;
+  width: 100%;
+  z-index: 1;
+  border-bottom: 1px solid white;
+  backdrop-filter: blur(10px);
+  padding: 0 34px;
+}
+
+.logo {
+  margin: 20px 0;
+}
+
+.hotVacancies {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.hotVacancies:hover {
+  color: #0e7151;
+}
+
+.telephoneWrapper {
+  display: flex;
+  font-size: 20px;
+  gap: 72px;
+}
+
+.telephone {
+  cursor: pointer;
+  color: white;
+  border-bottom: 1px solid white;
+}

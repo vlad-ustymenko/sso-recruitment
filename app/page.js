@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import BeforeAfter from "@/shared/components/BeforeAfter/BeforeAfter";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
 import Advantages from "@/shared/sections/Advantages/Advantages";
+import Tabs from "@/shared/components/Tabs/Tabs";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <BeforeAfter beforeImage="/before.png" afterImage="/after.png" />
       <VacanciesPrewiev />
       <Advantages />
+      <Tabs />
     </div>
   );
 }

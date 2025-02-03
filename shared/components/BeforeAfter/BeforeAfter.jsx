@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import styles from "./BeforeAfter.module.css"; // Імпортуємо стилі
+import { Button } from "../Button/Button";
 
 const BeforeAfter = ({ beforeImage, afterImage }) => {
   const [sliderPosition, setSliderPosition] = useState(100); // Стартова позиція
@@ -70,6 +71,10 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
         "--opacity": sliderPosition > 0 ? 1 - (sliderPosition - 5) / 50 : 1,
       }}
     >
+      <h1 className={styles.title}>
+        ССО
+        <br /> Рекрутинг
+      </h1>
       <div className={styles.imageWrapper}>
         {/* After Image */}
         <div
@@ -96,6 +101,7 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
           <ChevronLeft className={styles.arrowLeft} width={32} height={32} />
           <ChevronRight className={styles.arrowRight} width={32} height={32} />
         </div>
+        <Button className={styles.button} title="Знайди свою зграю" logo />
       </div>
     </div>
   );

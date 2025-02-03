@@ -10,6 +10,17 @@
   height: 100dvh;
 }
 
+.title {
+  position: absolute;
+  top: 110px;
+  left: 36px;
+  font-family: "UAFBold", sans-serif;
+  font-size: 24px;
+  letter-spacing: -1px;
+  color: white;
+  z-index: 3;
+}
+
 .afterImage,
 .beforeImage {
   position: absolute;
@@ -29,7 +40,7 @@
   content: "Можливо\AССО це ти";
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 36px;
   color: white;
   font-size: 72px;
   font-family: "UAFBold", sans-serif;
@@ -42,7 +53,7 @@
   position: absolute;
   bottom: 0;
   transform: translateX(-50%);
-  height: 90%;
+  height: calc(100% - 104px);
   width: 1px;
   background-color: #fff;
   z-index: 10;
@@ -72,7 +83,7 @@
   content: "Час настав";
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 34px;
   color: white;
   font-size: 72px;
   font-family: "UAFBold", sans-serif;
@@ -82,13 +93,34 @@
   transition: opacity 0.3s ease; /* Плавна зміна прозорості */
 }
 
+.button {
+  position: absolute;
+  bottom: 44px;
+  right: 44px;
+  z-index: 100;
+}
+
 @media (min-width: 768px) and (max-width: 1279px) {
 }
 
 @media (max-width: 767px) {
-  .beforeImage::before {
-    font-size: 48px;
+  .title {
+    font-size: 20px;
+    left: 16px;
   }
+  .beforeImage::before {
+    left: 16px;
+    font-size: 48px;
+    bottom: 152px;
+    line-height: 3rem;
+  }
+  .divider::after {
+    left: 16px;
+    font-size: 48px;
+    bottom: 152px;
+    line-height: 3rem;
+  }
+
   .divider::after {
     font-size: 48px;
   }
@@ -96,8 +128,15 @@
   .arrowRight {
     width: 40px;
     height: 40px;
+    top: 50%;
   }
   .arrowLeft {
     left: -48px;
+  }
+  .button {
+    width: calc(100% - 32px);
+    right: 50%;
+    transform: translateX(50%);
+    bottom: 44px;
   }
 }
