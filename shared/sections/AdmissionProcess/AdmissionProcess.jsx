@@ -8,37 +8,55 @@ const AdmissionProcess = () => {
     0: {
       width: `1%`,
       stepTitle: `Подача заявки`,
-      stepDescription: `Наприклад сьогодні29 грудня 2024`,
+      stepDescription: `29 грудня 2024`,
     },
     1: {
-      width: `20%`,
+      width: `15%`,
       stepTitle: `Крок 2`,
-      stepDescription: `Кілька слів про цей крок, дуже лаконічно`,
+      stepDescription: `Первинна співбесіда з центром рекрутингу (3 дні)`,
     },
     2: {
-      width: `35%`,
+      width: `25%`,
       stepTitle: `Крок 3`,
-      stepDescription: `Кілька слів про цей крок, дуже лаконічно`,
+      stepDescription: `Відбір та співбесіда з командиром підрозділу (7 днів)`,
     },
     3: {
-      width: `57%`,
+      width: `45%`,
       stepTitle: `Крок 4`,
-      stepDescription: `Кілька слів про цей крок, дуже лаконічно`,
+      stepDescription: `Підготовка документів, перевірка внутрішньої безпеки, проходження ВЛК (30 днів)`,
     },
     4: {
       width: `68%`,
       stepTitle: `Крок 5`,
-      stepDescription: `Кілька слів про цей крок, дуже лаконічно`,
+      stepDescription: `Зарахування до списків частини та відправка на БЗВП н 7 тижнів`,
     },
     5: {
-      width: `99%`,
+      width: `97%`,
       stepTitle: `Фініш`,
-      stepDescription: `Фініш 29 лютого 2024`,
+      stepDescription: `Повернення в частину для проходження служби`,
     },
   };
 
   const [activeStep, setActiveStep] = useState(1);
-  console.log(activeStep);
+  const [viewWidth, setViewWidth] = useState(0);
+  const [isDesctop, setIsDesctop] = useState(false);
+  const [today, setToday] = useState("");
+
+  useEffect(() => {
+    setViewWidth(window.innerWidth);
+    if (viewWidth > 1279) {
+      setIsDesctop(true);
+    }
+    const today = new Date();
+    const formatter = new Intl.DateTimeFormat("uk-UA", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+
+    const formattedDate = formatter.format(today).replace(" р.", "");
+    setToday(formattedDate);
+  }, [viewWidth]);
 
   const handleActiveStep = (id) => {
     setActiveStep((prev) => (prev = id));
@@ -54,16 +72,28 @@ const AdmissionProcess = () => {
       <div className={styles.progressContainer}>
         <div
           className={styles.progressBar}
-          style={{
-            width: activeStep > 4 ? "100%" : `${properties[activeStep].width}`,
-          }}
+          style={
+            isDesctop
+              ? {
+                  width:
+                    activeStep > 4 ? "100%" : `${properties[activeStep].width}`,
+                }
+              : {
+                  height:
+                    activeStep > 4 ? "100%" : `${properties[activeStep].width}`,
+                }
+          }
         ></div>
         <div className={styles.progressBarBackground}></div>
         {Array.from({ length: 6 }, (dot, i) => i + 1).map((dot, index) => (
           <div
             key={dot}
             className={styles.dotWrapper}
-            style={{ left: `${properties[index].width}` }}
+            style={
+              isDesctop
+                ? { left: `${properties[index].width}` }
+                : { top: `${properties[index].width}` }
+            }
             onClick={() => handleActiveStep(index)}
           >
             <div className={styles.dot} />
@@ -75,10 +105,18 @@ const AdmissionProcess = () => {
               <li
                 key={lines}
                 className={styles.line}
-                style={{
-                  left: `${properties[index].width}`,
-                  height: activeStep >= index ? "79px" : "0",
-                }}
+                style={
+                  isDesctop
+                    ? {
+                        left: `${properties[index].width}`,
+                        height: activeStep >= index ? "79px" : "0",
+                      }
+                    : {
+                        top: `${properties[index].width}`,
+                        width:
+                          activeStep >= index ? `${viewWidth * 0.07}px` : "0",
+                      }
+                }
               />
             )
           )}
@@ -88,10 +126,23 @@ const AdmissionProcess = () => {
             <li
               key={steps}
               className={styles.stepTitle}
-              style={{
-                left: `${properties[index].width}`,
-                opacity: activeStep >= index ? "1" : "0",
-              }}
+              style={
+                isDesctop
+                  ? {
+                      left: `${properties[index].width}`,
+                      opacity: activeStep >= index ? "1" : "0",
+                    }
+                  : {
+                      top: `${properties[index].width}`,
+                      opacity: activeStep >= index ? "1" : "0",
+                      transform:
+                        index % 2 === 0
+                          ? `translate(${viewWidth * 0.07}px, -50%)`
+                          : `translate(calc(-100% - ${
+                              viewWidth * 0.07
+                            }px), -50%)`,
+                    }
+              }
             >
               {properties[index].stepTitle}
             </li>
@@ -103,12 +154,30 @@ const AdmissionProcess = () => {
               <li
                 key={description}
                 className={styles.stepDescription}
-                style={{
-                  left: `${properties[index].width}`,
-                  opacity: activeStep >= index ? 1 : 0,
-                }}
+                style={
+                  isDesctop
+                    ? {
+                        left: `${properties[index].width}`,
+                        opacity: activeStep >= index ? 1 : 0,
+                      }
+                    : {
+                        top:
+                          index === 5 ? "unset" : `${properties[index].width}`,
+                        opacity: activeStep >= index ? 1 : 0,
+                        width: `${viewWidth / 2 - 40}px`,
+                        bottom: index === 5 ? "85px" : "unset",
+                        transform:
+                          index % 2 === 0
+                            ? `translate(${viewWidth * 0.07}px, 40px)`
+                            : `translate(calc(-100% - ${
+                                viewWidth * 0.07
+                              }px), 40px)`,
+                      }
+                }
               >
-                {properties[index].stepDescription}
+                {index === 0
+                  ? `${today}`
+                  : `${properties[index].stepDescription}`}
               </li>
             )
           )}

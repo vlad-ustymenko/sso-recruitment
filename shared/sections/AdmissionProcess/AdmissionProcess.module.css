@@ -19,7 +19,7 @@
 
 .progressContainer {
   position: relative;
-  height: 286px;
+  height: 400px;
 }
 
 .progressBar {
@@ -55,6 +55,7 @@
   height: 40px;
   cursor: pointer;
   z-index: 2;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .dotWrapper:hover .dot {
@@ -84,6 +85,7 @@
   width: 2px;
   background-color: black;
   transition: all 0.3s ease;
+  z-index: 3;
 }
 
 .stepsList {
@@ -92,9 +94,9 @@
 
 .stepTitle {
   transform: translate(-50%);
-  transition: all 0.5s ease-out;
+  transition: all 0s ease;
   position: absolute;
-  top: 70%;
+  top: 69%;
   width: fit-content;
   padding: 4px 8px;
   font-size: 18px;
@@ -102,10 +104,11 @@
   background-color: black;
   color: white;
   white-space: nowrap;
+  z-index: 4;
 }
 
 .stepsList li:nth-child(odd) {
-  top: 20%;
+  top: 25%;
 }
 
 .stepsList li:first-child {
@@ -121,27 +124,94 @@
 }
 
 .stepDescription {
-  transform: translate(-15%);
-  transition: all 0.5s ease-out;
+  transform: translate(-13%);
+  transition: all 0.3s ease;
   position: absolute;
   top: 80%;
-  max-width: 300px;
-  width: fit-content;
-  padding: 4px 8px;
+  width: 300px;
   font-size: 18px;
   font-family: "UAFRegular", sans-serif;
   color: black;
 }
 
 .stepsDescriptionsWrapper li:nth-child(odd) {
-  top: 0;
+  top: 10%;
 }
 
 .stepsDescriptionsWrapper li:first-child {
-  transform: translate(-3%);
+  transform: translate(-5%);
 }
 
 .stepsDescriptionsWrapper li:last-child {
-  white-space: nowrap;
-  transform: translate(-93%) !important;
+  transform: translate(-80%);
+}
+
+@media (max-width: 1279px) {
+  .title {
+    font-size: 38px;
+  }
+  .description {
+    font-size: 16px;
+  }
+  .titleWrapper {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+  .progressContainer {
+    width: 100%;
+    height: 800px;
+  }
+  .progressBar {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20%;
+  }
+
+  .progressBarBackground {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-image: url("../../../public/images/progressBarMobile.png");
+    width: 20px;
+    height: 100%;
+  }
+  .dotWrapper {
+    left: 50%;
+  }
+  .dotWrapper:hover .dot {
+    width: 8px;
+    height: 8px;
+  }
+  .line {
+    left: 50%;
+    transform: translateX(-100%);
+    height: 2px;
+  }
+  .linesWrapper li:nth-child(odd) {
+    transform: translate(0, -50%);
+  }
+  .stepTitle {
+    transform: translateY(-50%);
+    left: 50%;
+  }
+
+  .stepsList li:nth-child(odd) {
+    right: 50%;
+  }
+
+  .stepDescription {
+    left: 50%;
+    text-align: right;
+    font-size: 14px;
+  }
+
+  .stepsDescriptionsWrapper li:nth-child(odd) {
+    right: 50%;
+    text-align: left;
+  }
+  .stepsDescriptionsWrapper li:last-child {
+    /* transform: translate(-118%, -161%) !important; */
+  }
 }
