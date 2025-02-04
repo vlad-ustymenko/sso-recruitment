@@ -1,0 +1,148 @@
+.titleWrapper {
+  display: grid;
+  grid-template-columns: 1fr 290px;
+  margin-top: 120px;
+  margin-bottom: 90px;
+}
+
+.title {
+  font-size: 56px;
+  font-family: "UAFBold", sans-serif;
+  letter-spacing: -1px;
+}
+
+.description {
+  font-size: 18px;
+  font-family: "UAFRegular", sans-serif;
+  font-weight: 400;
+}
+
+.progressContainer {
+  position: relative;
+  height: 286px;
+}
+
+.progressBar {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-color: green;
+  width: 20%;
+  height: 24px;
+  transition: all 0.3s ease;
+}
+.progressBarBackground {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background-image: url("../../../public/images/progressBar.svg");
+  width: 100%;
+  height: 24px;
+}
+
+.dotWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.dotWrapper:hover .dot {
+  width: 12px;
+  height: 12px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: black;
+}
+
+.linesWrapper {
+  list-style: none;
+}
+
+.linesWrapper li:nth-child(odd) {
+  transform: translate(-50%, -100%);
+}
+
+.line {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%);
+  width: 2px;
+  background-color: black;
+  transition: all 0.3s ease;
+}
+
+.stepsList {
+  list-style: none;
+}
+
+.stepTitleWrapper {
+  transform: translate(-50%);
+  transition: all 0.5s ease-out;
+  position: absolute;
+  top: 70%;
+}
+
+.stepTitle {
+  width: fit-content;
+  padding: 4px 8px;
+  font-size: 18px;
+  font-family: "UAFRegular", sans-serif;
+  background-color: black;
+  color: white;
+  white-space: nowrap;
+  display: inline-block;
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.stepsList li:nth-child(odd) {
+  top: 20%;
+}
+
+.stepsList li:first-child {
+  transform: scaleX(1) translate(-5%) !important;
+}
+
+.stepsList li:last-child {
+  transform: scaleX(1) translate(-95%) !important;
+}
+
+.stepsDescriptionsWrapper {
+  list-style: none;
+}
+
+.stepDescription {
+  transform: translate(-15%);
+  transition: all 0.5s ease-out;
+  position: absolute;
+  top: 80%;
+  max-width: 300px;
+  width: fit-content;
+  padding: 4px 8px;
+  font-size: 18px;
+  font-family: "UAFRegular", sans-serif;
+  color: black;
+}
+
+.stepsDescriptionsWrapper li:nth-child(odd) {
+  top: 0;
+}
+
+.stepsDescriptionsWrapper li:first-child {
+  transform: translate(-3%);
+}
+
+.stepsDescriptionsWrapper li:last-child {
+  white-space: nowrap;
+  transform: translate(-93%) !important;
+}

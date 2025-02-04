@@ -4,6 +4,7 @@ import BeforeAfter from "@/shared/components/BeforeAfter/BeforeAfter";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
 import Advantages from "@/shared/sections/Advantages/Advantages";
 import Tabs from "@/shared/components/Tabs/Tabs";
+import AdmissionProcess from "@/shared/sections/AdmissionProcess/AdmissionProcess";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <VacanciesPrewiev />
       <Advantages />
       <Tabs />
+      <AdmissionProcess />
     </div>
   );
 }
