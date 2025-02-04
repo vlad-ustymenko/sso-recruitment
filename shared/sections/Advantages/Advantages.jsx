@@ -5,7 +5,49 @@ import Container from "@/shared/components/Container/Container";
 import AdvantagesCard from "@/shared/components/AdvantagesCard/AdvantagesCard";
 
 const Advantages = () => {
-  const cards = [1, 2, 3, 4, 5, 6];
+  const cards = [
+    {
+      title: "Людяний підхід",
+      description:
+        "Людиноцентричний підхід, кваліфіковані та досвічені командири",
+      imgSrc: "/images/icons/hands.png",
+    },
+    ,
+    {
+      title: "Грошове забезпечення",
+      description:
+        "Людиноцентричний підхід, кваліфіковані та досвічені командири",
+      imgSrc: "/images/icons/helmet.png",
+    },
+    ,
+    {
+      title: "Військова підготовка",
+      description:
+        "Людиноцентричний підхід, кваліфіковані та досвічені командири",
+      imgSrc: "/images/icons/money.png",
+    },
+    ,
+    {
+      title: "Людяний підхід",
+      description:
+        "Людиноцентричний підхід, кваліфіковані та досвічені командири",
+      imgSrc: "/images/icons/hands.png",
+    },
+    {
+      title: "Грошове забезпечення",
+      description:
+        "Людиноцентричний підхід, кваліфіковані та досвічені командири",
+      imgSrc: "/images/icons/helmet.png",
+    },
+
+    {
+      title: "Військова підготовка",
+      description:
+        "Людиноцентричний підхід, кваліфіковані та досвічені командири",
+      imgSrc: "/images/icons/money.png",
+    },
+  ];
+
   const [scrollCount, setScrollCount] = useState(0);
   const sectionRef = useRef(null);
   const containerRef = useRef(null);
@@ -169,8 +211,8 @@ const Advantages = () => {
           ref={containerRef} // Прикріплюємо реф до контейнера
           style={{ transform: `translateX(-${scrollCount}px)` }}
         >
-          {cards.map((card) => (
-            <AdvantagesCard key={card} />
+          {cards.map((card, index) => (
+            <AdvantagesCard key={index} card={cards[index]} />
           ))}
         </div>
       </div>

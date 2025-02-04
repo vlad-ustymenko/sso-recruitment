@@ -63,6 +63,30 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
     };
   }, []);
 
+  const handleMouseDown = (event) => {
+    // Перевірка, чи натискання відбулося на елементі .divider, а не на псевдоелементі ::after
+    const target = event.target;
+    const after = window.getComputedStyle(target, "::after").content;
+
+    // Якщо контент псевдоелемента ::after існує, ігноруємо подію
+    if (after !== "none" && after !== "") return;
+
+    // Якщо натискання відбулося на сам елемент, дозволяємо перетягування
+    isDraggingRef.current = true;
+  };
+
+  const handleTouchStart = (event) => {
+    // Перевірка для touch-події
+    const target = event.target;
+    const after = window.getComputedStyle(target, "::after").content;
+
+    // Якщо контент псевдоелемента ::after існує, ігноруємо подію
+    if (after !== "none" && after !== "") return;
+
+    // Якщо натискання відбулося на сам елемент, дозволяємо перетягування
+    isDraggingRef.current = true;
+  };
+
   return (
     <div
       ref={containerRef}
@@ -95,8 +119,8 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
         <div
           className={styles.divider}
           style={{ left: `${sliderPosition}%` }}
-          onMouseDown={() => (isDraggingRef.current = true)}
-          onTouchStart={() => (isDraggingRef.current = true)}
+          onMouseDown={handleMouseDown}
+          onTouchStart={handleTouchStart}
         >
           <ChevronLeft className={styles.arrowLeft} width={32} height={32} />
           <ChevronRight className={styles.arrowRight} width={32} height={32} />
