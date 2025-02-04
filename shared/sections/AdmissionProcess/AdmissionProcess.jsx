@@ -41,10 +41,6 @@ const AdmissionProcess = () => {
   console.log(activeStep);
 
   const handleActiveStep = (id) => {
-    if (id === 0) {
-      setActiveStep((prev) => (prev = 1));
-      return;
-    }
     setActiveStep((prev) => (prev = id));
   };
   return (
@@ -91,20 +87,13 @@ const AdmissionProcess = () => {
           {Array.from({ length: 6 }, (step, i) => i + 1).map((steps, index) => (
             <li
               key={steps}
-              className={styles.stepTitleWrapper}
+              className={styles.stepTitle}
               style={{
                 left: `${properties[index].width}`,
+                opacity: activeStep >= index ? "1" : "0",
               }}
             >
-              <div
-                className={styles.stepTitle}
-                style={{
-                  left: `${properties[index].width}`,
-                  transform: activeStep >= index ? "scaleX(1)" : "scaleX(0)",
-                }}
-              >
-                {properties[index].stepTitle}
-              </div>
+              {properties[index].stepTitle}
             </li>
           ))}
         </ul>
