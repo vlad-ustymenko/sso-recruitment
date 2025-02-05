@@ -5,6 +5,7 @@ import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPrevie
 import Advantages from "@/shared/sections/Advantages/Advantages";
 import Tabs from "@/shared/components/Tabs/Tabs";
 import AdmissionProcess from "@/shared/sections/AdmissionProcess/AdmissionProcess";
+import Menu from "@/shared/components/Menu/Menu";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
         <Tabs />
         <AdmissionProcess />
       </main>
+      <Menu />
     </>
   );
 }

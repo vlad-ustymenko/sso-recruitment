@@ -211,7 +211,4 @@
     right: 50%;
     text-align: left;
   }
-  .stepsDescriptionsWrapper li:last-child {
-    /* transform: translate(-118%, -161%) !important; */
-  }
 }

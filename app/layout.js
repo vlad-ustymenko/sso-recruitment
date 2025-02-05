@@ -3,6 +3,7 @@ import Footer from "@/shared/components/Footer/Footer";
 import "./globals.css";
 import Header from "@/shared/components/Header/Header";
 import localFont from "next/font/local";
+import { MenuProvider } from "../context/MenuContext";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -43,14 +44,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ua">
-      <body
-        className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
-        style={{ position: "relative" }}
-      >
-        <Header />
-        {children}
-        <Footer />
-      </body>
+      <MenuProvider>
+        <body
+          className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
+          style={{ position: "relative" }}
+        >
+          <Header />
+          {children}
+          <Footer />
+        </body>
+      </MenuProvider>
     </html>
   );
 }

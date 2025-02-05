@@ -97,7 +97,7 @@
   position: absolute;
   bottom: 44px;
   right: 44px;
-  z-index: 100;
+  z-index: 3;
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {

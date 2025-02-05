@@ -1,0 +1,83 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  padding: 24px 24px 72px 72px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 80%;
+  transform: translateX(-100%);
+  height: 100svh;
+  background-color: black;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.active {
+  transform: translateX(0);
+}
+
+.menuWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title {
+  font-size: 18px;
+}
+
+.closeButton {
+  width: 56px;
+  height: 56px;
+  padding: 16px;
+}
+
+.hotVacancies {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 28px;
+}
+
+.contactWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.telephone {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 28px;
+}
+
+@media (max-width: 767px) {
+  .menu {
+    right: 0;
+    padding: 16px;
+    left: unset;
+    width: 90%;
+    transform: translateX(100%);
+  }
+  .active {
+    transform: translateX(0);
+  }
+  .closeButton {
+    width: 56px;
+    height: 56px;
+    padding: 16px;
+  }
+  .hotVacancies {
+    font-size: 22px;
+  }
+
+  .contactWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .telephone {
+    font-size: 22px;
+  }
+}
