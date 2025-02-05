@@ -1,4 +1,5 @@
 // import { Geist, Geist_Mono } from "next/font/google";
+import Footer from "@/shared/components/Footer/Footer";
 import "./globals.css";
 import Header from "@/shared/components/Header/Header";
 import localFont from "next/font/local";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }) {
       >
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,0 +1,58 @@
+.footer {
+  padding: 64px 0;
+  background-color: white;
+}
+
+.footerWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+}
+
+.logo {
+  color: black;
+}
+
+.logoTitle {
+  margin-top: 21px;
+  margin-bottom: 64px;
+  font-family: "UAFBold", sans-serif;
+  font-size: 16px;
+}
+
+.hotVacancies {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 18px;
+}
+
+.hotVacancies:hover {
+  color: #0e7151;
+}
+
+.socialWrapper {
+  justify-self: right;
+  display: flex;
+}
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid #c5c5c5;
+}
+
+.socialIcon:hover .icon {
+  transform: scale(1.2);
+}
+
+.copyrightWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright {
+  font-size: 12px;
+}

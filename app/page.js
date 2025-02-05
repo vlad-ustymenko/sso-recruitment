@@ -8,12 +8,14 @@ import AdmissionProcess from "@/shared/sections/AdmissionProcess/AdmissionProces
 
 export default function Home() {
   return (
-    <div>
-      <BeforeAfter beforeImage="/before.png" afterImage="/after.png" />
-      <VacanciesPrewiev />
-      <Advantages />
-      <Tabs />
-      <AdmissionProcess />
-    </div>
+    <>
+      <main>
+        <BeforeAfter beforeImage="/before.png" afterImage="/after.png" />
+        <VacanciesPrewiev />
+        <Advantages />
+        <Tabs />
+        <AdmissionProcess />
+      </main>
+    </>
   );
 }
