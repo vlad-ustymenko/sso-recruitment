@@ -62,7 +62,6 @@ const Advantages = () => {
         if (entry.intersectionRatio === 1) {
           // **Зупиняємо інерцію прокрутки**
           document.documentElement.style.overflow = "hidden";
-          document.body.style.overflow = "hidden";
 
           // Примусово зафіксуємо `scrollY`
           window.scrollTo({
@@ -89,14 +88,12 @@ const Advantages = () => {
                     containerRef.current.offsetWidth;
 
                   document.documentElement.style.overflow = "";
-                  document.body.style.overflow = "";
                   window.removeEventListener("wheel", handleScroll);
                 }
 
                 // Якщо scrollCount менше нуля, зупиняємо прокрутку
                 if (newscrollCount < 0) {
                   document.documentElement.style.overflow = "";
-                  document.body.style.overflow = "";
                   window.removeEventListener("wheel", handleScroll);
                   return 0;
                 }
@@ -118,7 +115,6 @@ const Advantages = () => {
                 let newscrollCount = prevscrollCount + delta;
                 if (newscrollCount <= 0) {
                   document.documentElement.style.overflow = "";
-                  document.body.style.overflow = "";
                   window.removeEventListener("touchmove", handleTouchMove);
                   return 0;
                 }
@@ -139,7 +135,6 @@ const Advantages = () => {
                     containerRef.current.offsetWidth;
 
                   document.documentElement.style.overflow = "";
-                  document.body.style.overflow = "";
                   window.removeEventListener("touchmove", handleTouchMove);
                 }
                 return newscrollCount;

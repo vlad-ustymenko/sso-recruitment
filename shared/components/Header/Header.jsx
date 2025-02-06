@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../../src/assets/logo.svg";
 import MenuBurger from "../../../src/assets/menuBurger.svg";
 import { useMenuContext } from "../../../context/MenuContext";
+import Link from "next/link";
 import styles from "./Header.module.css";
 
 const Header = () => {
@@ -13,9 +14,12 @@ const Header = () => {
   useEffect(() => {
     setScrollWidth((prev) => (prev = window.innerWidth));
   }, []);
+
   return (
     <header className={styles.container}>
-      <Logo width={60} height={64} fill="white" className={styles.logo} />
+      <Link href="/">
+        <Logo width={60} height={64} fill="white" className={styles.logo} />
+      </Link>
       {scrollWidth >= 768 && scrollWidth < 1280 && (
         <div className={styles.menuButton}>
           <div

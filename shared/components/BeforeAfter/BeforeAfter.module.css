@@ -53,10 +53,10 @@
   position: absolute;
   bottom: 0;
   transform: translateX(-50%);
-  height: calc(100% - 104px);
+  height: calc(100% - 111px);
   width: 1px;
   background-color: #fff;
-  z-index: 10;
+  z-index: 1;
 }
 
 .arrowLeft,
@@ -113,6 +113,9 @@
     font-size: 48px;
     bottom: 152px;
     line-height: 3rem;
+  }
+  .divider {
+    height: calc(100% - 91px);
   }
   .divider::after {
     left: 16px;

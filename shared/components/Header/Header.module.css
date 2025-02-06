@@ -32,6 +32,7 @@
 }
 
 .menuBurgerMobile {
+  display: none;
 }
 
 .hotVacancies {
@@ -66,6 +67,10 @@
   .menuButtonWrapper {
     display: flex;
   }
+
+  .menuBurgerMobile {
+    display: none;
+  }
   .hotVacancies {
     display: none;
   }
@@ -86,6 +91,9 @@
   }
   .menuButtonWrapper {
     display: none;
+  }
+  .menuBurgerMobile {
+    display: block;
   }
   .hotVacancies {
     display: none;

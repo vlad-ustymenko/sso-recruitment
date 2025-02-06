@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import styles from "./Menu.module.css";
 import { useMenuContext } from "../../../context/MenuContext";
+import Link from "next/link";
 import CloseMenu from "../../../src/assets/closeMenu.svg";
 
 const Menu = () => {
@@ -22,7 +23,11 @@ const Menu = () => {
           className={styles.closeButton}
         />
       </div>
-      <div className={styles.hotVacancies}>🔥 Гарячі вакансії (258)</div>
+      <div className={styles.navigation}>
+        <Link href="/vacancies" onClick={() => setActiveMenu(false)}>
+          <div>🔥 Гарячі вакансії (258)</div>
+        </Link>
+      </div>
       <div className={styles.contactWrapper}>
         <a href="tel:0800 357 174" type="tel" className={styles.telephone}>
           0800 357 174

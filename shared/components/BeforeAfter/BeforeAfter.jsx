@@ -3,11 +3,22 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import styles from "./BeforeAfter.module.css"; // Імпортуємо стилі
 import { Button } from "../Button/Button";
+import { useMenuContext } from "../../../context/MenuContext";
+import Menu from "@/shared/components/Menu/Menu";
 
 const BeforeAfter = ({ beforeImage, afterImage }) => {
+  const { activeMenu, setActiveMenu } = useMenuContext();
   const [sliderPosition, setSliderPosition] = useState(100); // Стартова позиція
   const isDraggingRef = useRef(false);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (activeMenu) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
+  }, [activeMenu]);
 
   useEffect(() => {
     // Анімація з правого боку до середини
@@ -88,46 +99,53 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
   };
 
   return (
-    <div
-      ref={containerRef}
-      className={styles.container}
-      style={{
-        "--opacity": sliderPosition > 0 ? 1 - (sliderPosition - 5) / 50 : 1,
-      }}
-    >
-      <h1 className={styles.title}>
-        ССО
-        <br /> Рекрутинг
-      </h1>
-      <div className={styles.imageWrapper}>
-        {/* After Image */}
-        <div
-          className={styles.afterImage}
-          style={{ backgroundImage: `url(${afterImage})` }}
-        ></div>
+    <>
+      <div
+        ref={containerRef}
+        className={styles.container}
+        style={{
+          "--opacity": sliderPosition > 0 ? 1 - (sliderPosition - 5) / 50 : 1,
+        }}
+      >
+        <h1 className={styles.title}>
+          ССО
+          <br /> Рекрутинг
+        </h1>
+        <div className={styles.imageWrapper}>
+          {/* After Image */}
+          <div
+            className={styles.afterImage}
+            style={{ backgroundImage: `url(${afterImage})` }}
+          ></div>
 
-        {/* Before Image */}
-        <div
-          className={styles.beforeImage}
-          style={{
-            backgroundImage: `url(${beforeImage})`,
-            clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
-          }}
-        ></div>
+          {/* Before Image */}
+          <div
+            className={styles.beforeImage}
+            style={{
+              backgroundImage: `url(${beforeImage})`,
+              clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+            }}
+          ></div>
 
-        {/* Дівайдер */}
-        <div
-          className={styles.divider}
-          style={{ left: `${sliderPosition}%` }}
-          onMouseDown={handleMouseDown}
-          onTouchStart={handleTouchStart}
-        >
-          <ChevronLeft className={styles.arrowLeft} width={32} height={32} />
-          <ChevronRight className={styles.arrowRight} width={32} height={32} />
+          {/* Дівайдер */}
+          <div
+            className={styles.divider}
+            style={{ left: `${sliderPosition}%` }}
+            onMouseDown={handleMouseDown}
+            onTouchStart={handleTouchStart}
+          >
+            <ChevronLeft className={styles.arrowLeft} width={32} height={32} />
+            <ChevronRight
+              className={styles.arrowRight}
+              width={32}
+              height={32}
+            />
+          </div>
+          <Button className={styles.button} title="Знайди свою зграю" logo />
         </div>
-        <Button className={styles.button} title="Знайди свою зграю" logo />
       </div>
-    </div>
+      <Menu />
+    </>
   );
 };
 

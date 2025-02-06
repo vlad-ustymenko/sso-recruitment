@@ -32,8 +32,7 @@
   height: 56px;
   padding: 16px;
 }
-
-.hotVacancies {
+.navigation {
   display: flex;
   align-items: center;
   flex: 1;
