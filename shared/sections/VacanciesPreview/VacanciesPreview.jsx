@@ -9,38 +9,32 @@ const VacanciesPrewiev = () => {
   const front = [
     {
       id: 1,
-      title: "1",
+      title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
       image: "/images/solder1.png",
       unit: "66 ОМБр ім. князя Мстислава Хороброго",
     },
     {
       id: 2,
-      title: "2",
+      title: "Діловод відділення персоналу",
       image: "/images/solder2.png",
       unit: "66 ОМБр ім. князя Мстислава Хороброго",
     },
     {
       id: 3,
-      title: "3",
+      title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
       image: "/images/solder3.png",
       unit: "66 ОМБр ім. князя Мстислава Хороброго",
     },
     {
       id: 4,
-      title: "4",
+      title: "Діловод відділення персоналу",
       image: "/images/scout1.jpg",
       unit: "66 ОМБр ім. князя Мстислава Хороброго",
     },
     {
       id: 5,
-      title: "5",
+      title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
       image: "/images/clerk.webp",
-      unit: "66 ОМБр ім. князя Мстислава Хороброго",
-    },
-    {
-      id: 6,
-      title: "6",
-      image: "/images/scout2.jpg",
       unit: "66 ОМБр ім. князя Мстислава Хороброго",
     },
   ];
@@ -48,37 +42,38 @@ const VacanciesPrewiev = () => {
   const back = [
     {
       id: 1,
-      title: "6",
-      image: "/images/solder1.png",
-      unit: "66 ОМБр ім. князя Мстислава Хороброго",
-    },
-    {
-      id: 2,
-      title: "Діловод відділення персоналу",
-      image: "/images/solder2.png",
-      unit: "66 ОМБр ім. князя Мстислава Хороброго",
-    },
-    {
-      id: 3,
-      title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
-      image: "/images/solder3.png",
-      unit: "66 ОМБр ім. князя Мстислава Хороброго",
-    },
-    {
-      id: 4,
       title: "Діловод відділення персоналу",
       image: "/images/scout1.jpg",
       unit: "66 ОМБр ім. князя Мстислава Хороброго",
     },
     {
-      id: 5,
+      id: 2,
       title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
       image: "/images/clerk.webp",
+      unit: "66 ОМБр ім. князя Мстислава Хороброго",
+    },
+    {
+      id: 3,
+      title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
+      image: "/images/solder1.png",
+      unit: "66 ОМБр ім. князя Мстислава Хороброго",
+    },
+    {
+      id: 4,
+      title: "Діловод відділення персоналу",
+      image: "/images/solder2.png",
+      unit: "66 ОМБр ім. князя Мстислава Хороброго",
+    },
+    {
+      id: 5,
+      title: "Розвідник-далекомірник, військовослужбовець у ЗСУ",
+      image: "/images/solder3.png",
       unit: "66 ОМБр ім. князя Мстислава Хороброго",
     },
   ];
 
   const [vacanciesList, setVacanciesList] = useState(front);
+  const [vacanciesType, setVacanciesType] = useState("front");
 
   return (
     <>
@@ -86,13 +81,26 @@ const VacanciesPrewiev = () => {
         <h2 className={styles.title}>Кого ми шукаємо</h2>
         <div className={styles.buttonWrapper}>
           <div
-            className={styles.button}
-            onClick={() => setVacanciesList(front)}
+            className={`${styles.button} ${
+              vacanciesType === "front" && styles.active
+            }`}
+            onClick={() => {
+              setVacanciesList(front);
+              setVacanciesType("front");
+            }}
           >
-            Front
+            Бойові
           </div>
-          <div className={styles.button} onClick={() => setVacanciesList(back)}>
-            back
+          <div
+            className={`${styles.button} ${
+              vacanciesType === "back" && styles.active
+            }`}
+            onClick={() => {
+              setVacanciesList(back);
+              setVacanciesType("back");
+            }}
+          >
+            Тилові
           </div>
         </div>
       </Container>

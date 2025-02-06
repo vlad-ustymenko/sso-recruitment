@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   color: white;
-  padding: 24px 24px 72px 72px;
+  padding: 72px;
   position: absolute;
   left: 0;
   top: 0;
@@ -22,6 +22,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transform: translateY(-40px);
 }
 .title {
   font-size: 18px;
@@ -38,6 +39,11 @@
   flex: 1;
   font-family: "UAFSemiBold", sans-serif;
   font-size: 28px;
+}
+
+.hotVacancies {
+  font-size: 28px;
+  letter-spacing: -1px;
 }
 
 .contactWrapper {

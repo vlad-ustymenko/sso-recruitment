@@ -37,6 +37,7 @@
   font-size: 28px;
   line-height: 1;
   letter-spacing: -1px;
+  flex: 1;
 }
 
 .telephoneWrapper {

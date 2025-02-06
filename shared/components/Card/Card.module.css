@@ -3,7 +3,6 @@
   flex-direction: column;
   padding: 40px;
   color: #000;
-  align-items: center;
   border-left: 1px solid #c5c5c5;
   border-right: 1px solid #c5c5c5;
   transition: all 0.3s ease-in-out;

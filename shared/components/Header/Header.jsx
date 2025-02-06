@@ -36,7 +36,7 @@ const Header = () => {
         <a href="tel:0800 357 174" type="tel" className={styles.telephone}>
           0800 357 174
         </a>
-        <div>Заповнити анкету</div>
+        <div className={styles.button}>Заповнити анкету</div>
       </div>
       {scrollWidth < 768 && (
         <MenuBurger

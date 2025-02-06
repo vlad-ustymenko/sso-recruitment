@@ -53,7 +53,7 @@
 .telephone {
   cursor: pointer;
   color: white;
-  border-bottom: 1px solid white;
+  text-decoration: underline;
 }
 
 .telephone:hover {
@@ -74,9 +74,8 @@
   .hotVacancies {
     display: none;
   }
-  .telephone {
+  .telephoneWrapper {
     font-size: 12px;
-    line-height: 12px;
   }
   .telephone:hover {
     color: white;
@@ -84,6 +83,9 @@
 }
 
 @media (max-width: 767px) {
+  .container {
+    padding: 0 16px;
+  }
   .logo {
     margin: 16px 0;
     width: 48px;
@@ -94,9 +96,16 @@
   }
   .menuBurgerMobile {
     display: block;
+    width: 48px;
+    height: 48px;
+    padding: 15px;
+    border: 1px solid #808080;
   }
   .hotVacancies {
     display: none;
+  }
+  .telephoneWrapper {
+    font-size: 12px;
   }
 
   .telephone {

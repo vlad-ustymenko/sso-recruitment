@@ -16,7 +16,16 @@ const Footer = () => {
     <footer className={styles.footer}>
       <Container>
         <div className={styles.footerWrapper}>
-          <Logo width={45} height={48} fill="black" className={styles.logo} />
+          <div className={styles.logoWrapper}>
+            <Logo width={45} height={48} fill="black" className={styles.logo} />
+            <p className={styles.logoTitle}>
+              Сили спеціальних
+              <br /> операцій Збройних сил
+              <br />
+              України
+            </p>
+          </div>
+
           <Link href="/">
             <p className={styles.hotVacancies}>🔥 Гарячі вакансії </p>
           </Link>
@@ -65,15 +74,10 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-        <p className={styles.logoTitle}>
-          Сили спеціальних
-          <br /> операцій Збройних сил
-          <br />
-          України
-        </p>
+
         <div className={styles.copyrightWrapper}>
           <p className={styles.copyright}>
-            Copyright 2024 . All Rights Reserved
+            Copyright 2024. All Rights Reserved
           </p>
           <DesignetBy />
         </div>

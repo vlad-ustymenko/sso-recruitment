@@ -6,16 +6,19 @@
 .footerWrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  align-items: center;
+  align-items: self-start;
 }
 
+.logoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 21px;
+}
 .logo {
   color: black;
 }
 
 .logoTitle {
-  margin-top: 21px;
-  margin-bottom: 64px;
   font-family: "UAFBold", sans-serif;
   font-size: 16px;
 }
@@ -23,6 +26,7 @@
 .hotVacancies {
   font-family: "UAFSemiBold", sans-serif;
   font-size: 18px;
+  padding-top: 15px;
 }
 
 .hotVacancies:hover {
@@ -51,6 +55,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-top: 64px;
 }
 
 .copyright {
@@ -66,10 +71,22 @@
     grid-template-columns: 1fr;
     place-items: center;
   }
+  .logoWrapper {
+    justify-self: start;
+  }
   .logo {
     justify-self: left;
   }
+  .hotVacancies {
+    padding-top: 0;
+  }
   .socialWrapper {
     justify-self: center;
+  }
+  .copyrightWrapper {
+    margin-top: 56px;
+  }
+  .copyright {
+    font-size: 12px;
   }
 }
