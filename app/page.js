@@ -6,6 +6,7 @@ import Advantages from "@/shared/sections/Advantages/Advantages";
 import Tabs from "@/shared/components/Tabs/Tabs";
 import AdmissionProcess from "@/shared/sections/AdmissionProcess/AdmissionProcess";
 import ParallaxSection from "@/shared/sections/ParallaxSection/ParallaxSection";
+import Contacts from "@/shared/sections/Contacts/Contacts";
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
         <Tabs />
         <ParallaxSection />
         <AdmissionProcess />
+        <Contacts />
       </main>
     </>
   );

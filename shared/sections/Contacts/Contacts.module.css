@@ -1,0 +1,110 @@
+.container {
+  background-color: #ffcc00;
+  padding: 0 36px 36px 36px;
+}
+
+.mainWrapper {
+  background-color: #f3f3ea;
+  padding: 80px 48px;
+}
+
+.title {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 18px;
+  padding: 2px 12px;
+  background-color: black;
+  color: white;
+  width: fit-content;
+}
+
+.adressesWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  border-bottom: 1px solid #c5c5c5;
+  padding: 48px 0 64px 0;
+  margin-bottom: 64px;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.addressTitle {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 28px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.telephoneWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-top: 40px;
+}
+
+.telephone {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 42px;
+  letter-spacing: -1px;
+}
+
+.time {
+  font-size: 18px;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .adressesWrapper {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .address {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .adressesWrapper li:last-child {
+    margin-bottom: 0;
+  }
+  .telephoneWrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media (max-width: 767px) {
+  .mainWrapper {
+    background-color: #f3f3ea;
+    padding: 32px 16px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+  .addressTitle {
+    font-size: 22px;
+  }
+
+  .adressesWrapper {
+    grid-template-columns: 1fr;
+    padding: 32px 0 40px 0;
+    margin-bottom: 40px;
+  }
+  .address {
+    gap: 16px;
+  }
+  .telephoneWrapper {
+    gap: 16px;
+  }
+  .telephone {
+    font-size: 34px;
+  }
+  .time {
+    font-size: 16px;
+  }
+}
