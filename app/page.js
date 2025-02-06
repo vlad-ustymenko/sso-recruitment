@@ -7,6 +7,7 @@ import Tabs from "@/shared/components/Tabs/Tabs";
 import AdmissionProcess from "@/shared/sections/AdmissionProcess/AdmissionProcess";
 import ParallaxSection from "@/shared/sections/ParallaxSection/ParallaxSection";
 import Contacts from "@/shared/sections/Contacts/Contacts";
+import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <Tabs />
         <ParallaxSection />
         <AdmissionProcess />
+        <VerticalCarousel></VerticalCarousel>
         <Contacts />
       </main>
     </>

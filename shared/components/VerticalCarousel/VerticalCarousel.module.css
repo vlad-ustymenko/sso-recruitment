@@ -1,0 +1,23 @@
+.carousel {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.image {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease-in-out;
+  border-radius: 15px;
+}
