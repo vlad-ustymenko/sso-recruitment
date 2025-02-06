@@ -88,34 +88,36 @@ export default function TabsComponent() {
   return (
     <Container>
       <h2 className={styles.title}>В нас є відповіді на твої питання</h2>
-      {tabs.map((tab) => (
-        <div
-          key={tab.id}
-          className={styles.tabContainer}
-          onClick={() => setActiveTab(tab.id)}
-        >
-          <div className={styles.tabTitleWrapper} ref={tabContentWrapperRef}>
-            <div className={styles.tabNumber}>0{tab.id}</div>
-            <div className={styles.tabTitle} ref={contentContainerRef}>
-              {tab.title}
-            </div>
-            <TabArrow open={activeTab === tab.id} />
-          </div>
-          <div
-            className={
-              activeTab === tab.id
-                ? `${styles.tabContentWrapper} ${styles.activeTab}`
-                : styles.tabContentWrapper
-            }
+      <ul className={styles.tabsList}>
+        {tabs.map((tab) => (
+          <li
+            key={tab.id}
+            className={styles.tabContainer}
+            onClick={() => setActiveTab(tab.id)}
           >
-            <ContentComponent
-              content={tab.content}
-              active={activeTab === tab.id}
-              padding={paddingContent}
-            />
-          </div>
-        </div>
-      ))}
+            <div className={styles.tabTitleWrapper} ref={tabContentWrapperRef}>
+              <div className={styles.tabNumber}>0{tab.id}</div>
+              <div className={styles.tabTitle} ref={contentContainerRef}>
+                {tab.title}
+              </div>
+              <TabArrow open={activeTab === tab.id} />
+            </div>
+            <div
+              className={
+                activeTab === tab.id
+                  ? `${styles.tabContentWrapper} ${styles.activeTab}`
+                  : styles.tabContentWrapper
+              }
+            >
+              <ContentComponent
+                content={tab.content}
+                active={activeTab === tab.id}
+                padding={paddingContent}
+              />
+            </div>
+          </li>
+        ))}
+      </ul>
     </Container>
   );
 }

@@ -5,6 +5,11 @@
   margin-bottom: 64px;
 }
 
+.tabsList {
+  list-style: none;
+  margin-bottom: 160px;
+}
+
 .tabContainer {
   background-color: white;
   padding: 28px 32px 0 32px;
@@ -63,6 +68,9 @@
 }
 
 @media (max-width: 767px) {
+  .tabsList {
+    margin-bottom: 64px;
+  }
   .tabContainer {
     padding: 24px 16px 0 16px;
   }

@@ -5,6 +5,7 @@ import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPrevie
 import Advantages from "@/shared/sections/Advantages/Advantages";
 import Tabs from "@/shared/components/Tabs/Tabs";
 import AdmissionProcess from "@/shared/sections/AdmissionProcess/AdmissionProcess";
+import ParallaxSection from "@/shared/sections/ParallaxSection/ParallaxSection";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <VacanciesPrewiev />
         <Advantages />
         <Tabs />
+        <ParallaxSection />
         <AdmissionProcess />
       </main>
     </>
