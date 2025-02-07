@@ -1,6 +1,6 @@
-import styles from "./TabArrow.module.css";
+import styles from "./Arrow.module.css";
 
-const TabArrow = ({ open }) => {
+const Arrow = ({ open }) => {
   return (
     <div className={styles.icon}>
       <span
@@ -17,4 +17,4 @@ const TabArrow = ({ open }) => {
   );
 };
 
-export default TabArrow;
+export default Arrow;

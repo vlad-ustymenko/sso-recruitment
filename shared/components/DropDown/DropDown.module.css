@@ -1,0 +1,135 @@
+.dropDown {
+  position: relative;
+  width: 100%;
+  margin-bottom: 48px;
+}
+
+.selectWrapper {
+  -webkit-tap-highlight-color: transparent;
+  padding: 51px 24px 24px 24px;
+  display: grid;
+  grid-template-columns: 1fr 16px;
+  cursor: pointer;
+}
+
+.dropDownTitleWrapper {
+  border-bottom: 1px solid #c5c5c5;
+  border-right: 1px solid #c5c5c5;
+}
+
+.title {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 28px;
+  letter-spacing: -1px;
+  padding: 0 24px;
+}
+
+.select {
+  width: 100%;
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 18px;
+  line-height: 16px;
+  color: #616161;
+}
+
+.dropDownList {
+  width: 100%;
+  height: 0;
+  list-style: none;
+  position: absolute;
+  left: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 18px;
+  overflow: auto;
+  background-color: white;
+  z-index: 10;
+}
+
+.dropDownActive {
+  height: 250px;
+}
+
+.dropDownList::-webkit-scrollbar {
+  width: 8px;
+  padding: 2px;
+}
+
+.dropDownList::-webkit-scrollbar-track {
+  margin: 2px;
+  background-color: white;
+}
+
+.dropDownList::-webkit-scrollbar-thumb {
+  background-color: black;
+  border: 2px solid white;
+}
+
+.dropDownList .dropDownListItem:last-child {
+  padding-bottom: 24px;
+}
+
+.dropDownList .dropDownListItem:first-child {
+  padding-top: 24px;
+}
+
+.dropDownListItem {
+  -webkit-tap-highlight-color: transparent;
+  font-size: 18px;
+  padding: 32px 24px 0 24px;
+  cursor: pointer;
+}
+
+.dropDownListItem:hover {
+  color: #0e7151;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .dropDown {
+    margin-bottom: 24px;
+  }
+  .dropDownTitleWrapper {
+    padding: 0 0 24px 0;
+    border-right: none;
+  }
+  .selectWrapper {
+    padding: 24px 0 0 0;
+  }
+  .title {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .dropDown {
+    margin-bottom: 16px;
+  }
+  .dropDownTitleWrapper {
+    padding: 0 0 16px 0;
+    border-right: none;
+  }
+  .selectWrapper {
+    padding: 16px 0 0 0;
+  }
+  .title {
+    padding-left: 0;
+
+    font-size: 22px;
+  }
+
+  .select {
+    font-size: 16px;
+  }
+  .dropDownListItem {
+    font-size: 16px;
+    padding: 24px 16px 0 16px;
+  }
+  .dropDownList .dropDownListItem:last-child {
+    padding-bottom: 16px;
+  }
+
+  .dropDownList .dropDownListItem:first-child {
+    padding-top: 16px;
+  }
+}

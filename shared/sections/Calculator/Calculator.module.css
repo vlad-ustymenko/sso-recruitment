@@ -25,6 +25,11 @@
   font-size: 18px;
 }
 
+.dropdownsWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .subtitle {
   font-family: "UAFSemiBold", sans-serif;
   font-size: 28px;
@@ -62,6 +67,9 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
+  .dropdownsWrapper {
+    grid-template-columns: 1fr;
+  }
 
   .subtitle {
     margin-bottom: 24px;
@@ -88,6 +96,9 @@
     grid-template-columns: 1fr;
     gap: 24px;
     margin-bottom: 48px;
+  }
+  .dropdownsWrapper {
+    grid-template-columns: 1fr;
   }
   .title {
     font-size: 38px;

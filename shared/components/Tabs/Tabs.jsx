@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Container from "../Container/Container";
 import styles from "./Tabs.module.css";
-import TabArrow from "../TabArrow/TabArrow";
+import TabArrow from "../Arrow/Arrow";
 
 const ContentComponent = ({ content, active, padding }) => {
   // Замінюємо всі нові рядки на <br>

@@ -3,9 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./Slider.module.css";
 
-export default function Slider() {
-  const [step, setStep] = useState(0);
-  const [value, setValue] = useState(0);
+export default function Slider({ step, setStep, value, setValue }) {
   const [isMobile, setIsMobile] = useState(false);
 
   const sliderWidth = useRef(null);
@@ -42,6 +40,7 @@ export default function Slider() {
   return (
     <div className={styles.sliderContainer} ref={sliderWidth}>
       <input
+        name="slider"
         type="range"
         min="0"
         max="31"
