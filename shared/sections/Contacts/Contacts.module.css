@@ -58,6 +58,9 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    padding: 0 32px 32px 32px;
+  }
   .adressesWrapper {
     grid-template-columns: 1fr;
     gap: 0;
@@ -79,6 +82,9 @@
 }
 
 @media (max-width: 767px) {
+  .container {
+    padding: 0 16px 16px 16px;
+  }
   .mainWrapper {
     background-color: #f3f3ea;
     padding: 32px 16px;

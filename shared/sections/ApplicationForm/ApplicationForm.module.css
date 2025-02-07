@@ -1,0 +1,139 @@
+.container {
+  background-color: #ffcc00;
+  padding: 36px 36px 0 36px;
+}
+
+.mainWrapper {
+  background-color: white;
+  padding: 48px;
+}
+
+.formTitle {
+  font-family: "UAFBold", sans-serif;
+  font-size: 56px;
+  letter-spacing: -1px;
+  margin-bottom: 136px;
+}
+
+.form {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 88px;
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: end;
+  gap: 86px;
+}
+
+.personalDataWrapper {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.personalDataCheckbox {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #c5c5c5;
+  margin-right: 24px;
+}
+
+.active {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border: none;
+  margin-right: 24px;
+}
+
+.personalDataText {
+  font-size: 14px;
+}
+
+.personalDataLink {
+  text-decoration: underline;
+  color: #0e7151;
+}
+
+.button {
+  background-color: #0e7151;
+  color: white;
+  border: none;
+  font-family: "UAFBold", sans-serif;
+  font-size: 14px;
+  padding: 30px 90px;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .container {
+    padding: 32px 32px 0 32px;
+  }
+  .formTitle {
+    font-family: "UAFBold", sans-serif;
+    font-size: 56px;
+    letter-spacing: -1px;
+    margin-bottom: 64px;
+  }
+  .form {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 32px;
+  }
+  .buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 52px;
+  }
+  .personalDataWrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+  .button {
+    width: 100%;
+  }
+}
+@media (max-width: 767px) {
+  .container {
+    padding: 16px 16px 0 16px;
+  }
+  .mainWrapper {
+    background-color: white;
+    padding: 40px 16px;
+  }
+
+  .formTitle {
+    font-family: "UAFBold", sans-serif;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+  }
+  .form {
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-bottom: 24px;
+  }
+  .buttonWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 32px;
+  }
+  .personalDataWrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+  .personalDataCheckbox {
+    flex: 1 0 auto;
+  }
+  .button {
+    white-space: nowrap;
+    width: 100%;
+  }
+}

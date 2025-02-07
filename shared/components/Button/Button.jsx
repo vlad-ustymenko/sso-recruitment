@@ -1,3 +1,5 @@
+"use client";
+
 import styles from "./Button.module.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Icon from "../../../src/assets/wolf.svg";
@@ -6,6 +8,7 @@ export function Button({
   title,
   onClick,
   logo,
+  submit,
   bgcolor,
   arrow,
   arrowDirection,

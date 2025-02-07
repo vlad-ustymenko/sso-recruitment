@@ -93,7 +93,13 @@ export default function TabsComponent() {
           <li
             key={tab.id}
             className={styles.tabContainer}
-            onClick={() => setActiveTab(tab.id)}
+            onClick={() => {
+              setActiveTab(tab.id);
+              if (activeTab === tab.id) {
+                setActiveTab(-1);
+                return;
+              }
+            }}
           >
             <div className={styles.tabTitleWrapper} ref={tabContentWrapperRef}>
               <div className={styles.tabNumber}>0{tab.id}</div>
