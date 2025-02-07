@@ -1,0 +1,76 @@
+.sliderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding-bottom: 78px;
+}
+
+.slider {
+  width: 100%;
+  height: 24px;
+  cursor: pointer;
+  appearance: none;
+  background: linear-gradient(
+    to right,
+    #00875c 0%,
+    #00875c calc(var(--value) * 1%),
+    transparent calc(var(--value) * 1%),
+    transparent 100%
+  ); /* Відображення пройденої частини */
+  outline: none;
+  z-index: 2;
+}
+
+.sliderBackground {
+  position: absolute;
+  width: 100%;
+  height: 24px;
+  background-image: url(../../../public/images/progressBar.png);
+  background-repeat: repeat;
+}
+
+/* Стилізація для самого повзунка */
+.slider::-webkit-slider-thumb {
+  position: relative;
+  -webkit-appearance: none;
+  width: 84px;
+  height: 40px;
+  background-image: url(../../../public/images/slider.png);
+  cursor: pointer;
+  z-index: 1;
+}
+
+.slider::-webkit-slider-thumb::after {
+  position: absolute;
+  content: "";
+  width: 5px;
+  height: 20px;
+  top: 50%;
+  left: 0;
+  background-color: red;
+}
+
+/* Стилізація для тексту */
+.sliderText {
+  position: absolute;
+  left: 0;
+  margin-top: 70px;
+  font-size: 18px;
+}
+
+.sliderLine {
+  position: absolute;
+  width: 1px;
+  height: 60px;
+  background-color: black;
+  left: 0;
+  font-size: 18px;
+}
+
+@media (max-width: 767px) {
+  .slider::-webkit-slider-thumb {
+    width: 40px;
+    background-image: url(../../../public/images/sliderMobile.png);
+  }
+}

@@ -20,9 +20,9 @@ export default function VerticalCarousel() {
     return () => clearInterval(interval);
   }, []);
   const positions = [
-    { scale: 1, y: 160, opacity: 1 }, // Верхній маленький
-    { scale: 0.8, y: 40, opacity: 0.5 }, // Центральний (найвище)
-    { scale: 0.6, y: -40, opacity: 0.2 }, // Верхній середній
+    { scale: 1, y: 80, opacity: 1 }, // Верхній маленький
+    { scale: 0.8, y: 0, opacity: 0.5 }, // Центральний (найвище)
+    { scale: 0.6, y: -80, opacity: 0.2 }, // Верхній середній
   ];
 
   return (

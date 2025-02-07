@@ -163,6 +163,7 @@
   .progressContainer {
     width: 100%;
     height: 800px;
+    margin-bottom: 64px;
   }
   .progressBar {
     top: 0;

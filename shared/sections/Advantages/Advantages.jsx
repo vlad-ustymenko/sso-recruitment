@@ -140,34 +140,8 @@ const Advantages = () => {
                 return newscrollCount;
               });
             }
-            // const scrollTop = window.scrollY; // Поточна позиція прокрутки (від верху)
-            // const totalHeight = document.documentElement.scrollHeight; // Загальна висота сторінки
-            // const viewportHeight = window.innerHeight; // Висота видимої області
-            // const scrollPercentage =
-            //   (scrollTop / (totalHeight - viewportHeight)) * 100;
-
-            // if (scrollPercentage > 80) {
-            //   const delta = -30;
-            //   setScrollCount((prevscrollCount) => {
-            //     let newscrollCount = prevscrollCount + delta;
-            //     if (newscrollCount < 0) {
-            //       document.documentElement.style.overflow = "";
-            //       document.body.style.overflow = "";
-            //       window.removeEventListener("wheel", handleScroll);
-            //       return 0;
-            //     }
-
-            //     return newscrollCount;
-            //   });
-            // }
-            // const delta = 30;
-            // setScrollCount((prevscrollCount) => {
-            //   let newscrollCount = prevscrollCount + delta;
-            //   return newscrollCount;
-            // });
           };
 
-          // Додаємо слухач подій на wheel
           window.addEventListener("wheel", handleScroll, { passive: false });
 
           window.addEventListener("touchmove", handleTouchMove, {
@@ -211,7 +185,6 @@ const Advantages = () => {
           ))}
         </div>
       </div>
-      <div className={styles.test}></div>
     </Container>
   );
 };

@@ -82,6 +82,10 @@ export default function TabsComponent() {
           contentContainerRef.current.offsetWidth -
           60
       );
+      if (window.innerWidth < 768) {
+        setPaddingContent(0);
+        return;
+      }
     }
   }, []);
 

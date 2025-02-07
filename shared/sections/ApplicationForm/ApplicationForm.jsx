@@ -2,11 +2,13 @@
 import { useState } from "react";
 import styles from "./ApplicationForm.module.css";
 import Checkbox from "../../../src/assets/checkbox.svg";
+import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
 
 const ApplicationForm = () => {
   const [activeCheckbox, setActiveCheckbox] = useState(false);
   return (
     <div className={styles.container}>
+      <VerticalCarousel />
       <div className={styles.mainWrapper}>
         <h2 className={styles.formTitle}>
           Перший шлях в ССО,

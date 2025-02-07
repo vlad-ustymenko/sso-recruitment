@@ -9,7 +9,8 @@ import ParallaxSection from "@/shared/sections/ParallaxSection/ParallaxSection";
 import Contacts from "@/shared/sections/Contacts/Contacts";
 import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
-
+import Slider from "@/shared/components/Slider/Slider";
+import Calculator from "@/shared/sections/Calculator/Calculator";
 export default function Home() {
   return (
     <>
@@ -17,10 +18,10 @@ export default function Home() {
         <BeforeAfter beforeImage="/before.png" afterImage="/after.png" />
         <VacanciesPrewiev />
         <Advantages />
+        <Calculator />
         <Tabs />
         <ParallaxSection />
         <AdmissionProcess />
-        <VerticalCarousel />
         <ApplicationForm />
         <Contacts />
       </main>
