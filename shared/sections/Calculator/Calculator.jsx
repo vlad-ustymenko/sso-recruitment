@@ -93,7 +93,7 @@ const Calculator = () => {
               Дізнайтесь скільки ви можете заробляти, приєднавшись до ССО
             </p>
           </div>
-          <div className={styles.dropdownsWrapper}>
+          <div className={styles.dropDownsWrapper}>
             <DropDown
               list={rankList}
               title={"Звання"}

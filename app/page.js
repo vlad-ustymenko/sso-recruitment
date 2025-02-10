@@ -11,6 +11,7 @@ import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarou
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Slider from "@/shared/components/Slider/Slider";
 import Calculator from "@/shared/sections/Calculator/Calculator";
+import News from "@/shared/sections/News/News";
 export default function Home() {
   return (
     <>
@@ -21,6 +22,7 @@ export default function Home() {
         <Calculator />
         <Tabs />
         <ParallaxSection />
+        <News />
         <AdmissionProcess />
         <ApplicationForm />
         <Contacts />

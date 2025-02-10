@@ -25,7 +25,7 @@
   font-size: 18px;
 }
 
-.dropdownsWrapper {
+.dropDownsWrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
@@ -67,7 +67,7 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .dropdownsWrapper {
+  .dropDownsWrapper {
     grid-template-columns: 1fr;
   }
 
@@ -97,7 +97,7 @@
     gap: 24px;
     margin-bottom: 48px;
   }
-  .dropdownsWrapper {
+  .dropDownsWrapper {
     grid-template-columns: 1fr;
   }
   .title {

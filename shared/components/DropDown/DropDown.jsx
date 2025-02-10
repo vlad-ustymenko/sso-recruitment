@@ -6,6 +6,7 @@ import Arrow from "../Arrow/Arrow";
 
 const DropDown = ({ list, title, selectTitle, onChange }) => {
   const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   return (
     <div className={styles.dropDown}>
@@ -15,7 +16,15 @@ const DropDown = ({ list, title, selectTitle, onChange }) => {
       >
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.selectWrapper} onClick={() => setOpen(!open)}>
-          <div className={styles.select}>{selectTitle}</div>
+          <div
+            className={styles.select}
+            style={{
+              color: selected && "black",
+              fontFamily: selected && "UAFSemiBold",
+            }}
+          >
+            {selectTitle}
+          </div>
           <Arrow open={open} />
         </div>
       </div>
@@ -28,6 +37,7 @@ const DropDown = ({ list, title, selectTitle, onChange }) => {
             onClick={() => {
               onChange(item);
               setOpen(false);
+              setSelected(true);
             }}
           >
             {item}
