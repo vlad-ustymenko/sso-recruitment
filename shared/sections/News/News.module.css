@@ -1,18 +1,17 @@
 .container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  padding: 160px 0;
+  background-color: white;
 }
 
 .newsWrapper {
+  padding: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  background-color: #f1f2eb;
 }
 
 .contentWrapper {
-  max-width: 800px;
-  text-align: center;
 }
 
 .title {
@@ -40,7 +39,7 @@
 .iframeWrapper {
   position: relative;
   width: 100%;
-  padding-top: 150%; /* Співвідношення 16:9 для адаптивності */
+  padding-top: 140%; /* Співвідношення 16:9 для адаптивності */
 }
 
 .respIframe {
@@ -50,4 +49,16 @@
   width: 100%;
   height: 100%;
   border: none;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .wrapper {
+    grid-auto-columns: calc(100% / 2);
+  }
+}
+
+@media (max-width: 767px) {
+  .newsWrapper {
+    grid-template-columns: 1fr;
+  }
 }

@@ -7,7 +7,7 @@ export default function ParallaxSection() {
   return (
     <Parallax
       bgImage="/images/parallax.png" // Замініть на ваш шлях до зображення
-      strength={400} // Сила паралаксу (чим більше, тим сильніший ефект)
+      strength={200} // Сила паралаксу (чим більше, тим сильніший ефект)
       className={styles.parallax}
     >
       <div className={styles.parallaxContent}></div>
