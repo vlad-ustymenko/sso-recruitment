@@ -1,19 +1,7 @@
 // import { Geist, Geist_Mono } from "next/font/google";
-import Footer from "@/shared/components/Footer/Footer";
 import "./globals.css";
-import Header from "@/shared/components/Header/Header";
 import localFont from "next/font/local";
 import { MenuProvider } from "../context/MenuContext";
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 const UAFBold = localFont({
   src: "../public/fonts/UAFSans-Bold.ttf",
@@ -49,9 +37,7 @@ export default function RootLayout({ children }) {
           className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
           style={{ position: "relative" }}
         >
-          <Header />
           {children}
-          <Footer />
         </body>
       </MenuProvider>
     </html>

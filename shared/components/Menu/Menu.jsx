@@ -1,17 +1,22 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Menu.module.css";
 import { useMenuContext } from "../../../context/MenuContext";
 import Link from "next/link";
+
 import CloseMenu from "../../../src/assets/closeMenu.svg";
 
 const Menu = () => {
-  // const [screenWidth, setScreenWidth] = useState(0);
-
-  // useEffect(() => {
-  //   setScreenWidth((prev) => (prev = window.innerWidth));
-  // }, []);
   const { activeMenu, setActiveMenu } = useMenuContext();
+
+  useEffect(() => {
+    if (activeMenu) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
+  }, [activeMenu]);
+
   return (
     <div className={`${styles.menu} ${activeMenu && styles.active} `}>
       <div className={styles.menuWrapper}>

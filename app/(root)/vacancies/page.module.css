@@ -1,0 +1,30 @@
+.mainScreen {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/images/vacanciesMainScreen.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.titleWrapper {
+  position: relative;
+  top: 50%;
+  left: 180px;
+  transform: translateY(-50%);
+  color: white;
+  width: 463px;
+}
+
+.titleWrapper_title {
+  font-family: "UAFBold", sans-serif;
+  font-size: 48px;
+  letter-spacing: -1px;
+  margin-bottom: 40px;
+}
+
+.titleWrapper_content {
+  font-family: "UAFRegular", sans-serif;
+  font-size: 14px;
+}

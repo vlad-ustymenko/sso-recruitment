@@ -3,22 +3,12 @@ import { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import styles from "./BeforeAfter.module.css"; // Імпортуємо стилі
 import { Button } from "../Button/Button";
-import { useMenuContext } from "../../../context/MenuContext";
 import Menu from "@/shared/components/Menu/Menu";
 
 const BeforeAfter = ({ beforeImage, afterImage }) => {
-  const { activeMenu, setActiveMenu } = useMenuContext();
   const [sliderPosition, setSliderPosition] = useState(100); // Стартова позиція
   const isDraggingRef = useRef(false);
   const containerRef = useRef(null);
-
-  useEffect(() => {
-    if (activeMenu) {
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.documentElement.style.overflow = "";
-    }
-  }, [activeMenu]);
 
   useEffect(() => {
     // Анімація з правого боку до середини

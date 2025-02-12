@@ -31,7 +31,10 @@ const Header = () => {
           </div>
         </div>
       )}
-      <nav className={styles.hotVacancies}>🔥 Гарячі вакансії (258)</nav>
+      <Link href="/vacancies">
+        <nav className={styles.hotVacancies}>🔥 Гарячі вакансії (258)</nav>
+      </Link>
+
       <div className={styles.contactWrapper}>
         <a href="tel:0800 357 174" type="tel" className={styles.telephone}>
           0800 357 174
