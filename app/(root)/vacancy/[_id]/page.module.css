@@ -1,0 +1,77 @@
+.mainScreen {
+  position: relative;
+  width: 100%;
+  height: 100svh;
+  background-size: cover;
+  background-position: center;
+}
+.titleWrapper {
+  position: absolute;
+  top: 50%;
+  left: 180px;
+  transform: translateY(-50%);
+  color: white;
+}
+
+.titleWrapper_title {
+  font-family: "UAFBold", sans-serif;
+  font-size: 48px;
+  letter-spacing: -1px;
+  margin-bottom: 40px;
+}
+
+.titleWrapper_description {
+  font-size: 14px;
+}
+
+.contentTitle {
+  font-family: "UAFBold", sans-serif;
+  font-size: 28px;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+}
+
+.mainContentWrapper {
+  border-left: 20px solid #ffcd05;
+  border-right: 20px solid #ffcd05;
+  border-bottom: 20px solid #ffcd05;
+}
+
+.contentWrapper {
+  padding: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 95px;
+}
+
+.descriptionWrapper {
+  border-bottom: 3px solid #c5c5c5;
+  margin-bottom: 30px;
+}
+
+.descriptionContent {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 30px;
+}
+
+.list {
+  list-style: none;
+}
+
+.listItem {
+  position: relative;
+  padding-left: 42px;
+  line-height: 26px;
+  margin-bottom: 30px;
+}
+
+.listItem::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  background-color: black;
+  position: absolute;
+  top: 5px;
+  left: 0;
+}

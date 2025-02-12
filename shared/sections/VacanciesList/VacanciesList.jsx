@@ -1,4 +1,4 @@
-import React from "react";
+import { Button } from "@/shared/components/Button/Button";
 import styles from "./VacanciesList.module.css";
 
 const VacanciesList = async () => {
@@ -15,41 +15,30 @@ const VacanciesList = async () => {
           <p>Немає вакансій</p>
         ) : (
           vacancies.map((vacancy) => (
-            <div key={vacancy._id} className="border p-4 my-2">
-              <h2>{vacancy.title}</h2>
-              <p>{vacancy.description}</p>
-              <p>
-                <strong>Компанія:</strong> {vacancy.company}
-              </p>
-              <p>
-                <strong>Локація:</strong> {vacancy.location}
-              </p>
-              {vacancy.salary && (
-                <p>
-                  <strong>Зарплата:</strong> ${vacancy.salary}
-                </p>
-              )}
-              <div
-                className={styles.bigImage}
-                style={{
-                  backgroundImage: `url(${vacancy.bigImage})`,
-                  width: "100%",
-                  height: "300px",
-                }}
-              ></div>
-              <div
-                className={styles.smallImage}
-                style={{
-                  backgroundImage: `url(${vacancy.smallImage})`,
-                  width: "100%",
-                  height: "300px",
-                }}
-              ></div>
+            <div key={vacancy._id} className={styles.vacancyWrapper}>
+              <div className={styles.vacancyItemWrapper}>
+                <div
+                  className={styles.image}
+                  style={{
+                    backgroundImage: `url(${vacancy.smallImage})`,
+                    width: "100%",
+                    height: "300px",
+                  }}
+                ></div>
+                <div className={styles.vacancyContent}>
+                  <h2 className={styles.vacancyTitle}>{vacancy.title}</h2>
+                  <p className={styles.vacancyCredo}>{vacancy.credo}</p>
+                  <Button
+                    title="Детальніше"
+                    pageID={vacancy._id}
+                    vacancyButton
+                  ></Button>
+                </div>
+              </div>
             </div>
           ))
         )}
       </div>
-      );
     </div>
   );
 };

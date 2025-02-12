@@ -1,6 +1,56 @@
+.vacancyWrapper {
+  padding: 70px;
+}
+
+.vacancyWrapper:hover {
+  color: white;
+  background-color: #1b946e;
+}
+
+.vacancyItemWrapper {
+  position: relative;
+  display: grid;
+  grid-template-columns: 421px 539px;
+  gap: 50px;
+}
+
+.vacancyItemWrapper::after {
+  content: "";
+  position: absolute;
+  bottom: -70px;
+  width: 100%;
+  height: 1px;
+  background-color: #c5c5c5;
+}
+
 .title {
   font-family: "UAFBold", sans-serif;
   font-size: 32px;
   letter-spacing: -1px;
   text-align: center;
+}
+
+.vacancyContent {
+  text-align: right;
+}
+
+.image {
+  background-position: center;
+  background-size: cover;
+}
+
+.vacancyTitle {
+  font-family: "UAFBold", sans-serif;
+  font-size: 28px;
+  letter-spacing: -1px;
+  margin-bottom: 17px;
+  text-align: left;
+}
+
+.vacancyCredo {
+  font-size: 18px;
+  letter-spacing: -1px;
+  line-height: 26px;
+  text-align: left;
+  margin-bottom: 20px;
 }

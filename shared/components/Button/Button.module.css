@@ -44,6 +44,17 @@
   background-color: #1d946e;
 }
 
+.vacancyButton {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 14px;
+  letter-spacing: -1px;
+  line-height: 16px;
+  padding: 15px 65px;
+  border: 1px solid #c5c5c5;
+  background-color: white;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) and (max-width: 1279px) {
 }
 

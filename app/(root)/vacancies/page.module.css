@@ -7,6 +7,10 @@
   background-size: cover;
   position: relative;
 }
+.containerWrapper {
+  padding: 0 36px;
+  background-color: white;
+}
 
 .titleWrapper {
   position: relative;

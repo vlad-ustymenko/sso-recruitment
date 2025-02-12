@@ -1,6 +1,4 @@
-import Menu from "@/shared/components/Menu/Menu";
 import styles from "./page.module.css";
-import Image from "next/image";
 import VacanciesList from "@/shared/sections/VacanciesList/VacanciesList";
 
 export default function Vacancies() {
@@ -17,8 +15,9 @@ export default function Vacancies() {
           </p>
         </div>
       </div>
-      <VacanciesList />
-      <Menu />
+      <div className={styles.containerWrapper}>
+        <VacanciesList />
+      </div>
     </main>
   );
 }

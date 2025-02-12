@@ -1,5 +1,3 @@
-import Image from "next/image";
-import styles from "./page.module.css";
 import BeforeAfter from "@/shared/components/BeforeAfter/BeforeAfter";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
 import Advantages from "@/shared/sections/Advantages/Advantages";
