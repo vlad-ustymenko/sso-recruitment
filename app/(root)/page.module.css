@@ -5,12 +5,12 @@
 
 @media (min-width: 768px) and (max-width: 1279px) {
   .yellowContainer {
-    padding: 0 32px 32px 32px;
+    padding: 32px;
   }
 }
 
 @media (max-width: 767px) {
   .yellowContainer {
-    padding: 0 16px 16px 16px;
+    padding: 16px;
   }
 }

@@ -10,6 +10,7 @@
   line-height: 16px;
   transition: all 0.3s ease-in-out;
   align-self: flex-start;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .button:hover {
@@ -22,6 +23,7 @@
   border: none;
   background-color: white;
   color: black;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .buttonWithLogo {
@@ -38,6 +40,7 @@
   padding: 15px 40px;
   border: none;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .buttonWithLogo:hover {
@@ -53,10 +56,11 @@
   border: 1px solid #c5c5c5;
   background-color: white;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
-@media (min-width: 768px) and (max-width: 1279px) {
-}
-
-@media (max-width: 767px) {
+@media (max-width: 1279px) {
+  .vacancyButton {
+    width: 100%;
+  }
 }

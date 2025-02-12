@@ -46,6 +46,7 @@
   padding: 24px;
   margin: 0;
   font: inherit;
+  color: black;
 }
 
 .buttonWrapper {
@@ -95,6 +96,10 @@
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: #1d946e;
+}
+
 .required {
   color: red;
   border-bottom: 1px solid red;
@@ -103,7 +108,7 @@
 @media (min-width: 768px) and (max-width: 1279px) {
   .formTitle {
     font-family: "UAFBold", sans-serif;
-    font-size: 56px;
+    font-size: 50px;
     letter-spacing: -1px;
     margin-bottom: 64px;
   }
@@ -111,6 +116,18 @@
     display: grid;
     grid-template-columns: 1fr;
     margin-bottom: 32px;
+  }
+
+  .inputWrapper {
+    border-right: none;
+    gap: 0;
+  }
+
+  .input {
+    padding: 24px 0;
+  }
+  .label {
+    padding: 24px 0;
   }
   .buttonWrapper {
     display: flex;
@@ -125,6 +142,10 @@
   }
   .button {
     width: 100%;
+    padding: 30px 0;
+  }
+  .button:hover {
+    background-color: #0e7151;
   }
 }
 @media (max-width: 767px) {
@@ -135,7 +156,7 @@
 
   .formTitle {
     font-family: "UAFBold", sans-serif;
-    font-size: 38px;
+    font-size: 24px;
     line-height: 1;
     letter-spacing: -1px;
     margin-bottom: 24px;
@@ -144,6 +165,16 @@
     display: grid;
     grid-template-columns: 1fr;
     margin-bottom: 24px;
+  }
+  .inputWrapper {
+    gap: 0;
+    border-right: none;
+  }
+  .input {
+    padding: 12px 0;
+  }
+  .label {
+    padding: 12px 0;
   }
   .buttonWrapper {
     display: flex;
@@ -161,6 +192,10 @@
   }
   .button {
     white-space: nowrap;
+    padding: 30px 0;
     width: 100%;
+  }
+  .button:hover {
+    background-color: #0e7151;
   }
 }

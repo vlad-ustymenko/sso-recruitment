@@ -21,10 +21,10 @@ export default function Home() {
         <Calculator />
         <Tabs />
         <ParallaxSection />
-        <News />
+        {/* <News /> */}
         <AdmissionProcess />
         <div className={styles.yellowContainer}>
-          <ApplicationForm />
+          <ApplicationForm title="Перший шлях в ССО,& це заповнити заявку" />
           <Contacts />
         </div>
       </main>

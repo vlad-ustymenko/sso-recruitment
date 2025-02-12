@@ -5,8 +5,9 @@ import styles from "./ApplicationForm.module.css";
 import Checkbox from "../../../src/assets/checkbox.svg";
 import { Loader } from "lucide-react";
 import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
+import BrFromater from "@/shared/components/BrFormater/BrFromater";
 
-const ApplicationForm = () => {
+const ApplicationForm = ({ title, vacancies }) => {
   const [sending, setSending] = useState(false);
   const [activeCheckbox, setActiveCheckbox] = useState(false);
   const formRef = useRef(null);
@@ -51,11 +52,12 @@ const ApplicationForm = () => {
   };
 
   return (
-    <div className={styles.mainWrapper}>
-      <h2 className={styles.formTitle}>
-        Перший шлях в ССО,
-        <br /> це заповнити заявку
-      </h2>
+    <div className={styles.mainWrapper} id="form">
+      {title && (
+        <h2 className={styles.formTitle} style={{}}>
+          {<BrFromater text={title} />}
+        </h2>
+      )}
 
       {/*  Форма */}
       <form
@@ -86,6 +88,7 @@ const ApplicationForm = () => {
                 {...field}
                 className={styles.input}
                 id="name"
+                autoComplete="name"
                 placeholder="Ваше ім’я та прізвище"
                 onChange={(e) => {
                   const value = e.target.value.replace(
@@ -124,6 +127,7 @@ const ApplicationForm = () => {
                 className={styles.input}
                 {...field}
                 id="email"
+                autoComplete="email"
                 placeholder="Ваша електронна адреса"
               />
             )}
@@ -155,6 +159,7 @@ const ApplicationForm = () => {
                 {...field}
                 className={styles.input}
                 id="phone"
+                autoComplete="phone"
                 type="tel"
                 placeholder="Ваш номер телефону"
                 maxLength={10}

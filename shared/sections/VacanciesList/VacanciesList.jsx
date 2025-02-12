@@ -10,12 +10,12 @@ const VacanciesList = () => {
   return (
     <div>
       <h2 className={styles.title}>В кому ми зацікавлені?</h2>
-      <div>
+      <ul className={styles.vacancyList}>
         {vacancies.length === 0 ? (
           <p>Немає вакансій</p>
         ) : (
           vacancies.map((vacancy) => (
-            <div key={vacancy._id} className={styles.vacancyWrapper}>
+            <li key={vacancy._id} className={styles.vacancyWrapper}>
               <div className={styles.vacancyItemWrapper}>
                 <div
                   className={styles.image}
@@ -37,10 +37,10 @@ const VacanciesList = () => {
                   ></Button>
                 </div>
               </div>
-            </div>
+            </li>
           ))
         )}
-      </div>
+      </ul>
     </div>
   );
 };

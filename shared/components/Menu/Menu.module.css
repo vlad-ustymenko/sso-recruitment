@@ -65,6 +65,9 @@
     width: 90%;
     transform: translateX(100%);
   }
+  .menuWrapper {
+    transform: translateY(-10px);
+  }
   .active {
     transform: translateX(0);
   }

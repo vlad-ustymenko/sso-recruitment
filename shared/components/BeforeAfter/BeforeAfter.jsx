@@ -131,7 +131,16 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
               height={32}
             />
           </div>
-          <Button className={styles.button} title="Знайди свою зграю" logo />
+          <Button
+            className={styles.button}
+            title="Знайди свою зграю"
+            logo
+            onClick={() => {
+              document
+                .getElementById("form")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+          />
         </div>
       </div>
       <Menu />

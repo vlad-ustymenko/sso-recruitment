@@ -62,14 +62,16 @@ const VacancyPage = async ({ params }) => {
               </div>
             </div>
             <div className={styles.rightContent}>
-              <h2 className={styles.contentTitle}>Гарантії</h2>
-              <ul className={styles.list}>
-                {guarantees.map((item, index) => (
-                  <li key={`${item}${index}`} className={styles.listItem}>
-                    {item}
-                  </li>
-                ))}
-              </ul>
+              <div className={styles.guarantees}>
+                <h2 className={styles.contentTitle}>Гарантії</h2>
+                <ul className={styles.list}>
+                  {guarantees.map((item, index) => (
+                    <li key={`${item}${index}`} className={styles.listItem}>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
           <ApplicationForm></ApplicationForm>

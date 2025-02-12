@@ -2,6 +2,7 @@ import Menu from "@/shared/components/Menu/Menu";
 import styles from "./page.module.css";
 import VacanciesList from "@/shared/sections/VacanciesList/VacanciesList";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
+import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 
 export default function Vacancies() {
   return (
@@ -21,6 +22,12 @@ export default function Vacancies() {
       </div>
       <div className={styles.containerWrapper}>
         <VacanciesList />
+      </div>
+      <div className={styles.formWrapper}>
+        <ApplicationForm
+          title="Не знайшов, що шукав? Тоді заповни форму &і ми знайдемо застосування твоїм талантам"
+          vacancies
+        />
       </div>
       <Menu />
     </main>

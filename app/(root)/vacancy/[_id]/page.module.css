@@ -38,6 +38,7 @@
 }
 
 .contentWrapper {
+  position: relative;
   padding: 60px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -45,7 +46,17 @@
 }
 
 .descriptionWrapper {
-  border-bottom: 3px solid #c5c5c5;
+  border-bottom: 3px solid #09694c;
+  margin-bottom: 30px;
+}
+
+.responsibilities {
+  border-bottom: 3px solid #09694c;
+  margin-bottom: 30px;
+}
+
+.guarantees {
+  border-bottom: 3px solid #09694c;
   margin-bottom: 30px;
 }
 
@@ -74,4 +85,43 @@
   position: absolute;
   top: 5px;
   left: 0;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .titleWrapper {
+    top: 70%;
+    left: 80px;
+    width: 50%;
+  }
+  .titleWrapper_title {
+    font-size: 36px;
+  }
+  .contentWrapper {
+    padding: 40px;
+
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .guarantees {
+    border-bottom: none;
+  }
+}
+@media (max-width: 767px) {
+  .titleWrapper {
+    top: 70%;
+    left: 16px;
+    width: 90%;
+  }
+  .titleWrapper_title {
+    font-size: 36px;
+  }
+  .contentWrapper {
+    padding: 24px;
+
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .guarantees {
+    border-bottom: none;
+  }
 }
