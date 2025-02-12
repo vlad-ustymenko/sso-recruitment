@@ -10,6 +10,7 @@ import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Slider from "@/shared/components/Slider/Slider";
 import Calculator from "@/shared/sections/Calculator/Calculator";
 import News from "@/shared/sections/News/News";
+import styles from "./page.module.css";
 export default function Home() {
   return (
     <>
@@ -22,8 +23,10 @@ export default function Home() {
         <ParallaxSection />
         <News />
         <AdmissionProcess />
-        <ApplicationForm />
-        <Contacts />
+        <div className={styles.yellowContainer}>
+          <ApplicationForm />
+          <Contacts />
+        </div>
       </main>
     </>
   );

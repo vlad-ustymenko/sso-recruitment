@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Instagram from "../../../src/assets/socialIcon/instagram.svg";
 import Telegram from "../../../src/assets/socialIcon/telegram.svg";
@@ -9,9 +11,13 @@ import DesignetBy from "../../../src/assets/socialIcon/designetBy.svg";
 import Logo from "../../../src/assets/logo.svg";
 import styles from "./Footer.module.css";
 import Container from "../Container/Container";
+import { useVacanciesContext } from "@/context/VacanciesContext";
+
 import Link from "next/link";
 
 const Footer = () => {
+  const { vacancies } = useVacanciesContext();
+
   return (
     <footer className={styles.footer}>
       <Container>
@@ -26,8 +32,10 @@ const Footer = () => {
             </p>
           </div>
 
-          <Link href="/">
-            <p className={styles.hotVacancies}>🔥 Гарячі вакансії </p>
+          <Link href="/vacancies">
+            <p className={styles.hotVacancies}>
+              🔥 Гарячі вакансії ({vacancies.length})
+            </p>
           </Link>
           <div className={styles.socialWrapper}>
             <Link
