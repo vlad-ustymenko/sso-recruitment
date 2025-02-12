@@ -2,6 +2,8 @@ import React from "react";
 import styles from "./page.module.css";
 import Container from "@/shared/components/Container/Container";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
+import Menu from "@/shared/components/Menu/Menu";
+import BrFromater from "@/shared/components/BrFormater/BrFromater";
 
 const VacancyPage = async ({ params }) => {
   const { _id } = params;
@@ -33,7 +35,9 @@ const VacancyPage = async ({ params }) => {
       >
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleWrapper_title}>{vacancy.title}</h1>
-          <p className={styles.titleWrapper_description}>{vacancy.subTitle}</p>
+          <p className={styles.titleWrapper_description}>
+            <BrFromater text={vacancy.subTitle} />
+          </p>
         </div>
       </div>
       <Container>
@@ -43,7 +47,7 @@ const VacancyPage = async ({ params }) => {
               <div className={styles.descriptionWrapper}>
                 <h2 className={styles.contentTitle}>Опис вакансії</h2>
                 <p className={styles.descriptionContent}>
-                  {vacancy.description}
+                  <BrFromater text={vacancy.description} />
                 </p>
               </div>
               <div className={styles.responsibilities}>
@@ -71,6 +75,7 @@ const VacancyPage = async ({ params }) => {
           <ApplicationForm></ApplicationForm>
         </div>
       </Container>
+      <Menu />
     </main>
   );
 };

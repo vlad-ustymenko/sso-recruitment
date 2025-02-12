@@ -1,12 +1,12 @@
+"use client";
 import { Button } from "@/shared/components/Button/Button";
+import { useVacanciesContext } from "@/context/VacanciesContext";
+
 import styles from "./VacanciesList.module.css";
+import BrFromater from "@/shared/components/BrFormater/BrFromater";
 
-const VacanciesList = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/vacancies`, {
-    cache: "no-store",
-  });
-
-  const vacancies = await res.json();
+const VacanciesList = () => {
+  const { vacancies } = useVacanciesContext();
   return (
     <div>
       <h2 className={styles.title}>В кому ми зацікавлені?</h2>
@@ -27,7 +27,9 @@ const VacanciesList = async () => {
                 ></div>
                 <div className={styles.vacancyContent}>
                   <h2 className={styles.vacancyTitle}>{vacancy.title}</h2>
-                  <p className={styles.vacancyCredo}>{vacancy.credo}</p>
+                  <p className={styles.vacancyCredo}>
+                    <BrFromater text={vacancy.credo} />
+                  </p>
                   <Button
                     title="Детальніше"
                     pageID={vacancy._id}

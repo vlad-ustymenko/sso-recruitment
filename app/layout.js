@@ -2,6 +2,7 @@
 import "./globals.css";
 import localFont from "next/font/local";
 import { MenuProvider } from "../context/MenuContext";
+import { VacanciesProvider } from "@/context/VacanciesContext";
 
 const UAFBold = localFont({
   src: "../public/fonts/UAFSans-Bold.ttf",
@@ -33,12 +34,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="ua">
       <MenuProvider>
-        <body
-          className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
-          style={{ position: "relative" }}
-        >
-          {children}
-        </body>
+        <VacanciesProvider>
+          <body
+            className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
+            style={{ position: "relative" }}
+          >
+            {children}
+          </body>
+        </VacanciesProvider>
       </MenuProvider>
     </html>
   );

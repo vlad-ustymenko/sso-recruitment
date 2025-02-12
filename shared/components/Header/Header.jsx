@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 import Logo from "../../../src/assets/logo.svg";
 import MenuBurger from "../../../src/assets/menuBurger.svg";
 import { useMenuContext } from "../../../context/MenuContext";
+import { useVacanciesContext } from "@/context/VacanciesContext";
 import Link from "next/link";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const { activeMenu, setActiveMenu } = useMenuContext();
+  const { vacancies } = useVacanciesContext();
   const [scrollWidth, setScrollWidth] = useState(false);
 
   useEffect(() => {
@@ -32,7 +34,9 @@ const Header = () => {
         </div>
       )}
       <Link href="/vacancies">
-        <nav className={styles.hotVacancies}>🔥 Гарячі вакансії (258)</nav>
+        <nav className={styles.hotVacancies}>
+          🔥 Гарячі вакансії ({vacancies.length})
+        </nav>
       </Link>
 
       <div className={styles.contactWrapper}>
