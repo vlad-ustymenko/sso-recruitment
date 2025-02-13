@@ -23,6 +23,7 @@
   border: none;
   background-color: white;
   color: black;
+  cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
 

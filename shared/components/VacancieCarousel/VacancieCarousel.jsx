@@ -6,15 +6,22 @@ import { Button } from "../Button/Button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./VacancieCarousel.module.css";
 import Container from "../Container/Container";
+import Link from "next/link";
+import { set } from "mongoose";
 
 export default function VacancyCarousel({ vacanciesList }) {
   const carouselRef = useRef(null);
   const cardRefs = useRef([]);
+  const scrollRef = useRef(null);
+  const [step, setStep] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [measurement, setMeasurement] = useState(500);
   const [viewsCards, setViewsCards] = useState(1);
+  const [lineWidth, setLineWidth] = useState(0);
 
   useEffect(() => {
+    setLineWidth(scrollRef.current.offsetWidth / vacanciesList.length);
+
     const screen = window.innerWidth;
 
     if (screen > 450 && screen <= 768) {
@@ -38,9 +45,7 @@ export default function VacancyCarousel({ vacanciesList }) {
   }, [viewsCards]);
 
   const scroll = (direction) => {
-    if (isScrolling) return; // Якщо прокрутка вже йде, не дозволяємо натискати знову
     const cardWidth = cardRefs.current[0].offsetWidth;
-    setIsScrolling(true);
 
     if (carouselRef.current) {
       if (direction === "left") {
@@ -76,7 +81,6 @@ export default function VacancyCarousel({ vacanciesList }) {
             () => (carouselRef.current.scrollLeft = cardWidth * viewsCards),
             600
           );
-          console.log("finish");
         } else {
           carouselRef.current.scrollBy({
             left: cardWidth,
@@ -85,9 +89,6 @@ export default function VacancyCarousel({ vacanciesList }) {
         }
       }
     }
-
-    // Задаємо таймер для зняття блокування прокрутки через деякий час
-    setTimeout(() => setIsScrolling(false), 600); // 600 мс — час прокрутки
   };
 
   return (
@@ -109,39 +110,70 @@ export default function VacancyCarousel({ vacanciesList }) {
       </div>
       <Container>
         <div className={styles.scrollContainer}>
-          <Button
-            onClick={() => scroll("left")} // Прокрутка вліво
-            arrow
-            arrowDirection={"left"}
-          >
-            <ChevronLeft />
-          </Button>
           <div className={styles.scrollWrapper}>
-            <span
-              style={{
-                position: "absolute",
-                top: "50%",
-                borderTop: "4px solid black",
+            <Button
+              onClick={() => {
+                if (!isScrolling) {
+                  scroll("left");
+                  setIsScrolling(true);
+                  setStep((prev) =>
+                    prev === 0 ? vacanciesList.length - 1 : prev - 1
+                  );
+                  setTimeout(() => {
+                    setIsScrolling(false);
+                  }, 600);
+                }
               }}
-            />
+              arrow
+              arrowDirection={"left"}
+            >
+              <ChevronLeft />
+            </Button>
+            <div className={styles.scroll} ref={scrollRef}>
+              <span
+                className={styles.line}
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  borderTop: "4px solid black",
+                  width: `${lineWidth}px`,
+                  transform: `translateX(${step * lineWidth}px)`,
+                  transition: "all 0.3s ease",
+                }}
+              />
 
-            <span
-              style={{
-                position: "absolute",
-                top: "50%",
-
-                width: "100%",
-                borderTop: "4px dotted black",
+              <span
+                style={{
+                  position: "absolute",
+                  top: "50%",
+                  width: "100%",
+                  borderTop: "4px dotted black",
+                }}
+              />
+            </div>
+            <Button
+              onClick={() => {
+                if (!isScrolling) {
+                  scroll("right");
+                  setIsScrolling(true);
+                  setStep((prev) =>
+                    prev === vacanciesList.length - 1 ? 0 : prev + 1
+                  );
+                  setTimeout(() => {
+                    setIsScrolling(false);
+                  }, 600);
+                }
               }}
-            />
+              arrow
+              arrowDirection={"right"}
+            >
+              <ChevronRight />
+            </Button>
           </div>
-          <Button
-            onClick={() => scroll("right")} // Прокрутка вправо
-            arrow
-            arrowDirection={"right"}
-          >
+          <Link href={"/vacancies"} className={styles.link}>
+            Всі вакансії
             <ChevronRight />
-          </Button>
+          </Link>
         </div>
       </Container>
     </>

@@ -26,31 +26,36 @@
   display: flex;
   align-items: center;
   padding-top: 32px;
+  gap: 56px;
 }
 
 .scrollWrapper {
-  position: relative;
+  display: flex;
+  width: 100%;
   flex: 1;
-  margin: 0 20px;
 }
 
 .scroll {
-  display: grid;
-  overflow: hidden;
-  grid-auto-flow: column;
-  position: absolute;
-  top: 50%;
-  width: 100%;
+  position: relative;
+  flex: 1;
+  margin: 0 20px;
 }
 
 .scroll li:nth-child(2) {
   border-top: unset;
 }
 
-.scrollChild {
-  width: 100%;
-  border-top: 4px solid black;
-  list-style: none;
+.link {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.link:hover {
+  color: #0e7151;
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
@@ -62,5 +67,14 @@
 @media (max-width: 767px) {
   .carouselWrapper {
     grid-auto-columns: 100%;
+  }
+  .scrollWrapper {
+    gap: 20px;
+  }
+  .scroll {
+    display: none;
+  }
+  .link:hover {
+    color: black;
   }
 }

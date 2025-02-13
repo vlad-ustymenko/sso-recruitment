@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import VacanciesList from "@/shared/sections/VacanciesList/VacanciesList";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
+import FormModal from "@/shared/components/FormModal/FormModal";
 
 export default function Vacancies() {
   return (
@@ -30,6 +31,7 @@ export default function Vacancies() {
         />
       </div>
       <Menu />
+      <FormModal />
     </main>
   );
 }

@@ -4,7 +4,7 @@ import Container from "@/shared/components/Container/Container";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Menu from "@/shared/components/Menu/Menu";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
-
+import FormModal from "@/shared/components/FormModal/FormModal";
 const VacancyPage = async ({ params }) => {
   const { _id } = params;
 
@@ -78,6 +78,7 @@ const VacancyPage = async ({ params }) => {
         </div>
       </Container>
       <Menu />
+      <FormModal />
     </main>
   );
 };

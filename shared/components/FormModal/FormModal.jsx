@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect } from "react";
 import styles from "./FormModal.module.css";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
@@ -9,8 +10,7 @@ const FormModal = () => {
 
   useEffect(() => {
     if (activeFormModal) {
-      const scrollbarWidth = (document.documentElement.style.overflow =
-        "hidden");
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.documentElement.style.overflow = "";
     }

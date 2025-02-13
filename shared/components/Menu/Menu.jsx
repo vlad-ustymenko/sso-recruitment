@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useMenuContext } from "../../../context/MenuContext";
 import { useFormModalContext } from "../../../context/FormModalContext";
 import CloseMenu from "../../../src/assets/closeMenu.svg";
