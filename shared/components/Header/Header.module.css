@@ -16,6 +16,10 @@
   margin: 20px 0;
 }
 
+.link {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .menuButtonWrapper {
   width: fit-content;
   display: none;
@@ -60,6 +64,19 @@
   color: #0e7151;
 }
 
+.button {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  color: white;
+  cursor: pointer;
+}
+
+.button:hover {
+  color: #0e7151;
+}
+
 @media (min-width: 768px) and (max-width: 1279px) {
   .menuButton {
     flex: 1;
@@ -74,10 +91,12 @@
   .hotVacancies {
     display: none;
   }
-  .telephoneWrapper {
-    font-size: 12px;
-  }
+
   .telephone:hover {
+    color: white;
+  }
+
+  .button:hover {
     color: white;
   }
 }
@@ -103,9 +122,6 @@
   }
   .hotVacancies {
     display: none;
-  }
-  .telephoneWrapper {
-    font-size: 12px;
   }
 
   .telephone {

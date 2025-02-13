@@ -57,6 +57,7 @@
   background-color: white;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+  color: black;
 }
 
 @media (max-width: 1279px) {

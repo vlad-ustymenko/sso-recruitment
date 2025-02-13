@@ -3,13 +3,15 @@ import { useState, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import styles from "./ApplicationForm.module.css";
 import Checkbox from "../../../src/assets/checkbox.svg";
-import { Loader } from "lucide-react";
 import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
+import { useFormModalContext } from "../../../context/FormModalContext";
 
 const ApplicationForm = ({ title, vacancies }) => {
   const [sending, setSending] = useState(false);
   const [activeCheckbox, setActiveCheckbox] = useState(false);
+  const { activeFormModal, setActiveFormModal } = useFormModalContext();
+
   const formRef = useRef(null);
 
   const {
@@ -40,19 +42,21 @@ const ApplicationForm = ({ title, vacancies }) => {
         alert("Заявка успішно надіслана!");
         reset();
         setActiveCheckbox(false);
+        setActiveFormModal(false);
       } else {
         alert("Помилка при відправці форми.");
       }
     } catch (error) {
       console.error("Помилка:", error);
       alert("Щось пішло не так. Спробуйте пізніше.");
+      setActiveFormModal(false);
     } finally {
-      setSending(false); // Скидаємо статус після завершення запиту
+      setSending(false);
     }
   };
 
   return (
-    <div className={styles.mainWrapper} id="form">
+    <div className={styles.mainWrapper}>
       {title && (
         <h2 className={styles.formTitle} style={{}}>
           {<BrFromater text={title} />}

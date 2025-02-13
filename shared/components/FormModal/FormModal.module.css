@@ -1,0 +1,44 @@
+.formModalBG {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  z-index: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.activeFormModalBG {
+  opacity: 1;
+  z-index: 10;
+}
+
+.formModalContainer {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+.activeFormModalContainer {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.closeBTN {
+  -webkit-tap-highlight-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  padding: 10px;
+  cursor: pointer;
+}

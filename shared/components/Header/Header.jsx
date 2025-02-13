@@ -5,11 +5,14 @@ import Logo from "../../../src/assets/logo.svg";
 import MenuBurger from "../../../src/assets/menuBurger.svg";
 import { useMenuContext } from "../../../context/MenuContext";
 import { useVacanciesContext } from "@/context/VacanciesContext";
+import { useFormModalContext } from "../../../context/FormModalContext";
 import Link from "next/link";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const { activeMenu, setActiveMenu } = useMenuContext();
+  const { activeFormModal, setActiveFormModal } = useFormModalContext();
+
   const { vacancies } = useVacanciesContext();
   const [scrollWidth, setScrollWidth] = useState(false);
 
@@ -19,7 +22,7 @@ const Header = () => {
 
   return (
     <header className={styles.container}>
-      <Link href="/">
+      <Link href="/" className={styles.link}>
         <Logo width={60} height={64} fill="white" className={styles.logo} />
       </Link>
       {scrollWidth >= 768 && scrollWidth < 1280 && (
@@ -43,7 +46,12 @@ const Header = () => {
         <a href="tel:0800 357 174" type="tel" className={styles.telephone}>
           0800 357 174
         </a>
-        <div className={styles.button}>Заповнити анкету</div>
+        <button
+          className={styles.button}
+          onClick={() => setActiveFormModal(true)}
+        >
+          Заповнити анкету
+        </button>
       </div>
       {scrollWidth < 768 && (
         <MenuBurger

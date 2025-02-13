@@ -1,13 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import styles from "./Menu.module.css";
 import { useMenuContext } from "../../../context/MenuContext";
-import Link from "next/link";
-
+import { useFormModalContext } from "../../../context/FormModalContext";
 import CloseMenu from "../../../src/assets/closeMenu.svg";
+import Link from "next/link";
+import styles from "./Menu.module.css";
 
 const Menu = () => {
   const { activeMenu, setActiveMenu } = useMenuContext();
+  const { activeFormModal, setActiveFormModal } = useFormModalContext();
 
   useEffect(() => {
     if (activeMenu) {
@@ -37,7 +38,15 @@ const Menu = () => {
         <a href="tel:0800 357 174" type="tel" className={styles.telephone}>
           0800 357 174
         </a>
-        <div>Заповнити анкету</div>
+        <button
+          className={styles.button}
+          onClick={() => {
+            setActiveFormModal(true);
+            setActiveMenu(false);
+          }}
+        >
+          Заповнити анкету
+        </button>
       </div>
     </div>
   );

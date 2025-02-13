@@ -17,6 +17,10 @@
   list-style: none;
 }
 
+.vacancyList li:last-child .vacancyItemWrapper::after {
+  background-color: transparent;
+}
+
 .vacancyItemWrapper::after {
   content: "";
   position: absolute;

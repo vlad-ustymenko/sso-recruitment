@@ -15,7 +15,7 @@ export function Button({
   arrow,
   arrowDirection,
   className,
-	vacancyButton,
+  vacancyButton,
   pageID,
 }) {
   const router = useRouter();
