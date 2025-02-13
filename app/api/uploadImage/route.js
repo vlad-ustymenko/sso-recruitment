@@ -3,11 +3,12 @@ export async function POST(req) {
     const formData = await req.formData();
     const image1 = formData.get("file1");
     const image2 = formData.get("file2");
+    const image3 = formData.get("file3");
 
     // Перевірка наявності файлів
-    if (!image1 || !image2) {
+    if (!image1 || !image2 || !image3) {
       return new Response(
-        JSON.stringify({ error: "Обидва файли повинні бути надані!" }),
+        JSON.stringify({ error: "Всі файли повинні бути надані!" }),
         { status: 400 }
       );
     }
@@ -49,10 +50,27 @@ export async function POST(req) {
       throw new Error(result2.error.message);
     }
 
+    // Завантаження зображення 3 на Cloudinary
+    const uploadFormData3 = new FormData();
+    uploadFormData3.append("file", image3);
+    uploadFormData3.append("upload_preset", cloudinaryPreset);
+    uploadFormData3.append("cloud_name", cloudName);
+
+    const response3 = await fetch(cloudinaryUrl, {
+      method: "POST",
+      body: uploadFormData3,
+    });
+
+    const result3 = await response3.json();
+    if (!response3.ok) {
+      throw new Error(result3.error.message);
+    }
+
     return new Response(
       JSON.stringify({
         image1_url: result1.secure_url,
         image2_url: result2.secure_url,
+        image3_url: result3.secure_url,
       }),
       { status: 200 }
     );

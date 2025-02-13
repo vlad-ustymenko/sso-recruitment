@@ -1,0 +1,47 @@
+.vacanciesContainer {
+}
+
+.vacanciesContainer li:nth-child(even) {
+  background-color: #ededed;
+  color: gray;
+}
+
+.vacanciesContainer li:nth-child(even) .vacancyImage {
+  filter: blur(3px);
+}
+
+.vacancyWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+.vacancyImage {
+  position: relative;
+
+  background-position: center;
+  background-size: cover;
+  min-height: 200px;
+}
+
+.vacancyTitle {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 26px;
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.vacancyDescription {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+.vacancyIcon {
+  position: absolute;
+  top: -17px;
+  left: -17px;
+  width: 35px;
+  height: 35px;
+}

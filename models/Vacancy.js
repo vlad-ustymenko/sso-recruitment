@@ -13,6 +13,7 @@ const VacancySchema = new mongoose.Schema(
     militaryUnit: { type: String, required: true },
     bigImage: { type: String, required: true },
     smallImage: { type: String, required: true },
+    iconImage: { type: String, required: true },
   },
   { collection: "vacancies" }
 );
