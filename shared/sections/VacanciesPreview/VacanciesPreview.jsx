@@ -10,7 +10,9 @@ const VacanciesPrewiev = ({ title, filter }) => {
   const { vacancies, isLoading, error } = useVacanciesContext();
   const [vacanciesType, setVacanciesType] = useState("front");
 
-  const filteredVacancies = vacancies
+  const activeVacancies = vacancies.filter((vacancy) => vacancy.isActive);
+
+  const filteredVacancies = activeVacancies
     .filter((vacancy) => vacancy.type === vacanciesType)
     .slice(-6);
 

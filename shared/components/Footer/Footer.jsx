@@ -39,42 +39,42 @@ const Footer = () => {
           </Link>
           <div className={styles.socialWrapper}>
             <Link
-              href="https://www.google.com/"
+              href="https://t.me/recruiting_sofua"
               target="_blank"
               className={styles.socialIcon}
             >
               <Telegram width={16} height={16} className={styles.icon} />
             </Link>
             <Link
-              href="https://www.google.com/"
+              href="https://www.instagram.com/sofua.army"
               target="_blank"
               className={styles.socialIcon}
             >
               <Instagram width={16} height={16} className={styles.icon} />
             </Link>
             <Link
-              href="https://www.google.com/"
+              href="https://www.facebook.com/sofua.army/"
               target="_blank"
               className={styles.socialIcon}
             >
               <Facebook width={16} height={16} className={styles.icon} />
             </Link>
             <Link
-              href="https://www.google.com/"
+              href="https://youtube.com/@recsof?si=_wdXFi6m3VJNT6fG"
               target="_blank"
               className={styles.socialIcon}
             >
               <Youtube width={16} height={16} className={styles.icon} />
             </Link>
             <Link
-              href="https://www.google.com/"
+              href="http://linkedin.com/in/andrey-vasyanovych-3b14151a1"
               target="_blank"
               className={styles.socialIcon}
             >
               <Linkedin width={16} height={16} className={styles.icon} />
             </Link>
             <Link
-              href="https://www.google.com/"
+              href="https://x.com/sof_ukr?s=21&t=6_tOu0qiRhJKNMVOo2xpew"
               target="_blank"
               className={styles.socialIcon}
             >
