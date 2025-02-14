@@ -5,13 +5,13 @@ import Logo from "../../../src/assets/logo.svg";
 import MenuBurger from "../../../src/assets/menuBurger.svg";
 import { useMenuContext } from "../../../context/MenuContext";
 import { useVacanciesContext } from "@/context/VacanciesContext";
-import { useFormModalContext } from "../../../context/FormModalContext";
+import { useModalContext } from "../../../context/ModalContext";
 import Link from "next/link";
 import styles from "./Header.module.css";
 
 const Header = () => {
   const { activeMenu, setActiveMenu } = useMenuContext();
-  const { activeFormModal, setActiveFormModal } = useFormModalContext();
+  const { activeFormModal, setActiveFormModal } = useModalContext();
 
   const { vacancies } = useVacanciesContext();
   const [scrollWidth, setScrollWidth] = useState(false);
@@ -38,7 +38,8 @@ const Header = () => {
       )}
       <Link href="/vacancies">
         <nav className={styles.hotVacancies}>
-          🔥 Гарячі вакансії ({vacancies.length})
+          🔥 Гарячі вакансії ({vacancies.filter((item) => item.isActive).length}
+          )
         </nav>
       </Link>
 

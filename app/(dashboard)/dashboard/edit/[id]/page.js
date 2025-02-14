@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useParams } from "next/navigation";
 import jwt from "jsonwebtoken";
 import { useVacanciesContext } from "@/context/VacanciesContext";
-import styles from "./page.module.css"; // Використовуємо ті ж стилі
+import styles from "./page.module.css";
 import Link from "next/link";
 
 export default function EditVacancy() {
@@ -116,7 +116,7 @@ export default function EditVacancy() {
       iconImage: oldInfo.iconImage,
     };
 
-    // Оновлення bigImage
+ 
     if (formData.image1 !== oldInfo.bigImage && formData.image1 !== null) {
       const bigImageData = new FormData();
       bigImageData.append("oldImageUrl", oldInfo.bigImage);
@@ -131,7 +131,7 @@ export default function EditVacancy() {
         if (response.ok) {
           dataToSend = {
             ...dataToSend,
-            bigImage: result.newImageUrl, // новий URL зображення
+            bigImage: result.newImageUrl,
           };
         }
       } catch (error) {
@@ -139,7 +139,6 @@ export default function EditVacancy() {
       }
     }
 
-    // Оновлення smallImage
     if (formData.image2 !== oldInfo.smallImage && formData.image2 !== null) {
       const smallImageData = new FormData();
       smallImageData.append("oldImageUrl", oldInfo.smallImage);
@@ -154,7 +153,7 @@ export default function EditVacancy() {
         if (response.ok) {
           dataToSend = {
             ...dataToSend,
-            smallImage: result.newImageUrl, // новий URL зображення
+            smallImage: result.newImageUrl, 
           };
         }
       } catch (error) {
@@ -162,7 +161,7 @@ export default function EditVacancy() {
       }
     }
 
-    // Оновлення iconImage
+   
     if (formData.image3 !== oldInfo.iconImage && formData.image3 !== null) {
       const iconImageData = new FormData();
       iconImageData.append("oldImageUrl", oldInfo.iconImage);
@@ -177,7 +176,7 @@ export default function EditVacancy() {
         if (response.ok) {
           dataToSend = {
             ...dataToSend,
-            iconImage: result.newImageUrl, // новий URL зображення
+            iconImage: result.newImageUrl, 
           };
         }
       } catch (error) {
@@ -185,7 +184,7 @@ export default function EditVacancy() {
       }
     }
 
-    // Тепер відправляємо оновлені дані вакансії
+   
     try {
       const saveResponse = await fetch(`/api/vacancies/${id}`, {
         method: "PUT",

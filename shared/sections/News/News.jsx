@@ -3,6 +3,7 @@
 import React from "react";
 import Container from "@/shared/components/Container/Container";
 import styles from "./News.module.css";
+import Link from "next/link";
 
 const News = () => {
   return (
@@ -22,7 +23,7 @@ const News = () => {
               територіальної цілісності України!
             </div>
           </div>
-          <div className={styles.post}>
+          {/* <div className={styles.post}>
             <div className={styles.respContainer}>
               <div className={styles.iframeWrapper}>
                 <iframe
@@ -33,7 +34,11 @@ const News = () => {
                 />
               </div>
             </div>
-          </div>
+          </div> */}
+          <Link
+            href={"https://t.me/recruiting_sofua"}
+            className={styles.imageWrapper}
+          ></Link>
         </div>
       </Container>
     </div>

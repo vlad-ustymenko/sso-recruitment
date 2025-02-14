@@ -1,14 +1,14 @@
 "use client";
 import React, { useEffect } from "react";
 import { useMenuContext } from "../../../context/MenuContext";
-import { useFormModalContext } from "../../../context/FormModalContext";
+import { useModalContext } from "../../../context/ModalContext";
 import CloseMenu from "../../../src/assets/closeMenu.svg";
 import Link from "next/link";
 import styles from "./Menu.module.css";
 
 const Menu = () => {
   const { activeMenu, setActiveMenu } = useMenuContext();
-  const { activeFormModal, setActiveFormModal } = useFormModalContext();
+  const { activeFormModal, setActiveFormModal } = useModalContext();
 
   useEffect(() => {
     if (activeMenu) {

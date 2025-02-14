@@ -15,10 +15,9 @@ export async function POST(req) {
       },
     });
 
-    // Конфігурація листа
     const mailOptions = {
-      from: process.env.EMAIL_USER, // Відправник
-      to: "vlad.ustimenko@gmail.com", // Куди відправити (твоя пошта)
+      from: process.env.EMAIL_USER,
+      to: process.env.EMAIL_TO,
       subject: `Нова заявка від ${name} ${email}`,
       html: `
 				<html>

@@ -9,7 +9,6 @@ export async function POST(req) {
       "https://api.cloudinary.com/v1_1/dffb9mawi/image/upload";
     const uploadPreset = "sso-recruitment";
 
-    // Функція для завантаження файлу на Cloudinary
     const uploadImage = async (file) => {
       const uploadData = new FormData();
       uploadData.append("file", file);

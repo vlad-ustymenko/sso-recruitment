@@ -5,13 +5,33 @@ import React, { useState, useEffect } from "react";
 import { useVacanciesContext } from "@/context/VacanciesContext";
 import Container from "@/shared/components/Container/Container";
 import styles from "./page.module.css";
-import BrFromater from "@/shared/components/BrFormater/BrFromater";
+import BrFromater from "../../../shared/components/BrFormater/BrFromater";
 import Link from "next/link";
 
 export default function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const { vacancies, updateVacancyStatus, deleteVacancy } =
     useVacanciesContext();
+
+  // Стани для фільтрів
+  const [filterRank, setFilterRank] = useState(null);
+  const [filterType, setFilterType] = useState(null);
+  const [filterActive, setFilterActive] = useState(null);
+
+  // Відфільтровані вакансії
+  const [filteredVacancies, setFilteredVacancies] = useState(vacancies);
+
+  useEffect(() => {
+    let filtered = vacancies.filter((vacancy) => {
+      return (
+        (filterRank === null || vacancy.rank === filterRank) &&
+        (filterType === null || vacancy.type === filterType) &&
+        (filterActive === null || vacancy.isActive.toString() === filterActive)
+      );
+    });
+
+    setFilteredVacancies(filtered);
+  }, [filterRank, filterType, filterActive, vacancies]);
 
   useEffect(() => {
     const getToken = () => {
@@ -49,6 +69,26 @@ export default function Dashboard() {
       deleteVacancy(id);
     }
   };
+
+  const rankList = [
+    { name: "Фільтр посади", value: "" },
+    { name: "Солдатські посади", value: "soldier" },
+    { name: "Сержантські посади", value: "sergeant" },
+    { name: "Офіцерські посади", value: "officer" },
+  ];
+
+  const typeList = [
+    { name: "Фільтр напрямку", value: "" },
+    { name: "Бойові", value: "front" },
+    { name: "Тилові", value: "rear" },
+  ];
+
+  const activeList = [
+    { name: "Фільтр активності", value: "" },
+    { name: "Активна", value: "true" },
+    { name: "Неактивна", value: "false" },
+  ];
+
   return (
     <Container>
       <div className={styles.container}>
@@ -65,9 +105,52 @@ export default function Dashboard() {
           Вийти
         </button>
         <h1 className={styles.title}>Вакансії</h1>
+        <div className={styles.filterWrapper}>
+          <select
+            value={filterRank || ""}
+            onChange={(e) => setFilterRank(e.target.value || null)}
+            style={{
+              border: filterRank !== null && "2px solid #0E7151",
+            }}
+          >
+            {rankList.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={filterType || ""}
+            onChange={(e) => setFilterType(e.target.value || null)}
+            style={{
+              border: filterType !== null && "2px solid #0E7151",
+            }}
+          >
+            {typeList.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+
+          <select
+            value={filterActive || ""}
+            onChange={(e) => setFilterActive(e.target.value || null)}
+            style={{
+              border: filterActive !== null && "2px solid #0E7151",
+            }}
+          >
+            {activeList.map((item) => (
+              <option key={item.value} value={item.value}>
+                {item.name}
+              </option>
+            ))}
+          </select>
+        </div>
 
         <ul className={styles.vacanciesContainer}>
-          {vacancies.map((vacancy) => (
+          {filteredVacancies.map((vacancy) => (
             <li
               className={styles.vacancyWrapper}
               key={vacancy._id}
@@ -93,7 +176,7 @@ export default function Dashboard() {
                 <BrFromater
                   className={styles.vacancyDescription}
                   text={vacancy.description}
-                ></BrFromater>
+                />
               </div>
               <div className={styles.buttonsWrapper}>
                 <button

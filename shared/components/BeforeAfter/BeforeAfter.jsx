@@ -4,14 +4,14 @@ import { ChevronRight, ChevronLeft } from "lucide-react";
 import styles from "./BeforeAfter.module.css"; // Імпортуємо стилі
 import { Button } from "../Button/Button";
 import Menu from "@/shared/components/Menu/Menu";
-import FormModal from "../FormModal/FormModal";
-import { useFormModalContext } from "../../../context/FormModalContext";
+import Modal from "../Modal/Modal";
+import { useModalContext } from "../../../context/ModalContext";
 
 const BeforeAfter = ({ beforeImage, afterImage }) => {
   const [sliderPosition, setSliderPosition] = useState(100); // Стартова позиція
   const isDraggingRef = useRef(false);
   const containerRef = useRef(null);
-  const { activeFormModal, setActiveFormModal } = useFormModalContext();
+  const { activeFormModal, setActiveFormModal } = useModalContext();
 
   useEffect(() => {
     // Анімація з правого боку до середини
@@ -145,7 +145,7 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
         </div>
       </div>
       <Menu />
-      <FormModal />
+      <Modal isFormModal />
     </>
   );
 };

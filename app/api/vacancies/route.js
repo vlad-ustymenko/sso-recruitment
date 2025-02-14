@@ -30,7 +30,7 @@ export async function GET() {
 export async function DELETE(req) {
   try {
     await connectDB();
-    const { id } = await req.json(); // Отримуємо ID з тіла запиту
+    const { id } = await req.json();
 
     if (!id) {
       return NextResponse.json({ error: "ID обов'язковий" }, { status: 400 });

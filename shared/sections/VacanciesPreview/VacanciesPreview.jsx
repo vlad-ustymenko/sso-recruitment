@@ -11,7 +11,6 @@ const VacanciesPrewiev = ({ title, filter }) => {
   const [vacanciesType, setVacanciesType] = useState("front");
 
   const activeVacancies = vacancies.filter((vacancy) => vacancy.isActive);
-
   const filteredVacancies = activeVacancies
     .filter((vacancy) => vacancy.type === vacanciesType)
     .slice(-6);
@@ -45,7 +44,7 @@ const VacanciesPrewiev = ({ title, filter }) => {
       {isLoading && <p>Завантаження вакансій...</p>}
       {!isLoading && !error && vacancies.length > 0 && (
         <VacancyCarousel
-          vacanciesList={filter ? filteredVacancies : vacancies.slice(-6)}
+          vacanciesList={filter ? filteredVacancies : activeVacancies.slice(-6)}
         />
       )}
     </>

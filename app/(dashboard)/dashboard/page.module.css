@@ -55,7 +55,6 @@
 
 .vacancyImage {
   position: relative;
-
   background-position: center;
   background-size: cover;
   min-height: 200px;
@@ -98,4 +97,58 @@
   cursor: pointer;
   font-size: 16px;
   text-align: center;
+}
+.filterWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.filterWrapper select {
+  outline: none;
+  min-width: 200px;
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filterWrapper option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 16px;
+}
+
+.filterWrapper option:hover {
+  background-color: #f2f2f2;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .buttonsWrapper {
+    flex-direction: row;
+    justify-content: right;
+  }
+  .vacancyImage {
+    grid-row: span 2;
+  }
+  .vacancyWrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .buttonsWrapper {
+    flex-direction: row;
+    justify-content: right;
+  }
+
+  .vacancyWrapper {
+    grid-template-columns: 1fr;
+  }
 }

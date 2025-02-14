@@ -2,9 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import { useVacanciesContext } from "@/context/VacanciesContext";
-
 import jwt from "jsonwebtoken";
 import styles from "./page.module.css";
 
@@ -51,10 +49,6 @@ export default function Create() {
       router.push("/login");
     }
   }, []);
-
-  const goBack = () => {
-    router.back();
-  };
 
   useEffect(() => {
     if (isSending) {
@@ -240,7 +234,6 @@ export default function Create() {
           </div>
         ))}
 
-        {/* Випадаючі списки для rank і type */}
         {[
           {
             name: "type",

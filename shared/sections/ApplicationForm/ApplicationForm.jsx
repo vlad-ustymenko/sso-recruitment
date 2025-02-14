@@ -1,21 +1,20 @@
 "use client";
 import { useState, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
-import styles from "./ApplicationForm.module.css";
 import Checkbox from "../../../src/assets/checkbox.svg";
-import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
+// import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
-import { useFormModalContext } from "../../../context/FormModalContext";
-
+import { useModalContext } from "../../../context/ModalContext";
+import styles from "./ApplicationForm.module.css";
 const ApplicationForm = ({ title, vacancies }) => {
   const [sending, setSending] = useState(false);
   const [activeCheckbox, setActiveCheckbox] = useState(false);
-  const { activeFormModal, setActiveFormModal } = useFormModalContext();
+  const { setActiveFormModal, activeSendMailModal, setActiveSendMailModal } =
+    useModalContext();
 
   const formRef = useRef(null);
 
   const {
-    register,
     handleSubmit,
     control,
     formState: { errors },
@@ -39,7 +38,7 @@ const ApplicationForm = ({ title, vacancies }) => {
       });
 
       if (response.ok) {
-        alert("Заявка успішно надіслана!");
+        setActiveSendMailModal(true);
         reset();
         setActiveCheckbox(false);
         setActiveFormModal(false);

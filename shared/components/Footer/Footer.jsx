@@ -34,7 +34,8 @@ const Footer = () => {
 
           <Link href="/vacancies">
             <p className={styles.hotVacancies}>
-              🔥 Гарячі вакансії ({vacancies.length})
+              🔥 Гарячі вакансії (
+              {vacancies.filter((item) => item.isActive).length})
             </p>
           </Link>
           <div className={styles.socialWrapper}>

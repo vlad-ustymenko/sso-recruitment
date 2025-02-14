@@ -15,7 +15,6 @@ export const VacanciesProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Функція для завантаження вакансій
   const fetchVacancies = useCallback(async () => {
     setIsLoading(true);
     setError(null);
@@ -33,9 +32,8 @@ export const VacanciesProvider = ({ children }) => {
 
   useEffect(() => {
     fetchVacancies();
-  }, [fetchVacancies]); // Викликаємо fetch при першому рендері та кожного разу, коли змінюється fetchVacancies
+  }, [fetchVacancies]);
 
-  // Функція для оновлення статусу вакансії
   const updateVacancyStatus = useCallback(async (id, isActive) => {
     try {
       const response = await fetch("/api/vacancies/toogle-active", {
@@ -44,14 +42,13 @@ export const VacanciesProvider = ({ children }) => {
         body: JSON.stringify({ id, isActive }),
       });
 
-      const data = await response.json(); // Отримуємо відповідь сервера
+      const data = await response.json();
 
       if (!response.ok) {
         console.error("Помилка оновлення:", data);
         throw new Error(data.error || "Помилка оновлення вакансії");
       }
 
-      // Оновлюємо локальний стан
       setVacancies((prevVacancies) =>
         prevVacancies.map((vacancy) =>
           vacancy._id === id ? { ...vacancy, isActive } : vacancy
@@ -78,7 +75,6 @@ export const VacanciesProvider = ({ children }) => {
         throw new Error(data.error || "Помилка видалення вакансії");
       }
 
-      // Оновлюємо локальний стан
       setVacancies((prevVacancies) =>
         prevVacancies.filter((vacancy) => vacancy._id !== id)
       );

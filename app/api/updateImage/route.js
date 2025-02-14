@@ -1,4 +1,4 @@
-import { connectDB } from "../../../lib/mongodb"; // Ваш файл для підключення до MongoDB
+import { connectDB } from "../../../lib/mongodb";
 import { v2 as cloudinary } from "cloudinary";
 import { NextResponse } from "next/server";
 
@@ -8,23 +8,15 @@ export async function PUT(req) {
     const oldImageUrl = formData.get("oldImageUrl");
     const newImage = formData.get("newImage");
 
-    // Підключення до MongoDB
     const { db } = await connectDB();
     const collection = db.collection("vacancies");
-    console.log("connecnt to DB");
 
-    // Видаляємо старе зображення з Cloudinary
     const publicId = `vacancies/${
       oldImageUrl.split("/").slice(-1)[0].split(".")[0]
     }`;
 
-    console.log("publicId", publicId);
     cloudinary.uploader.destroy(publicId);
 
-    // // Завантажуємо нове зображення в Cloudinary
-    // const uploadResponse = await cloudinary.v2.uploader.upload(newImage, {
-    //   folder: "vacancies", // Місце, де зберігаються зображення
-    // });
     const cloudinaryUrl =
       "https://api.cloudinary.com/v1_1/dffb9mawi/image/upload";
     const uploadPreset = "sso-recruitment";

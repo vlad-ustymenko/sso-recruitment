@@ -19,7 +19,7 @@ export default function Home() {
         <Calculator />
         <Tabs />
         <ParallaxSection />
-        {/* <News /> */}
+        <News />
         <AdmissionProcess />
         <div className={styles.yellowContainer}>
           <ApplicationForm title="Перший шлях в ССО,& це заповнити заявку" />

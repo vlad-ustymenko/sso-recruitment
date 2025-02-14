@@ -12,7 +12,6 @@ export async function DELETE(req) {
       return NextResponse.json({ error: "ID не вказано" }, { status: 400 });
     }
 
-    // Знайти вакансію
     const vacancy = await Vacancy.findById(id);
     if (!vacancy) {
       return NextResponse.json(
@@ -21,21 +20,9 @@ export async function DELETE(req) {
       );
     }
 
-    // cloudinary.uploader.destroy(
-    //   "vacancies/vffpj6mivjydzmdrk9yn",
-    //   (error, result) => {
-    //     if (error) {
-    //       console.error("Помилка видалення з Cloudinary:", error);
-    //     } else {
-    //       console.log("Результат видалення:", result);
-    //     }
-    //   }
-    // );
-
     const deleteImageFromCloudinary = async (imageUrl) => {
       if (!imageUrl) return;
 
-      // Отримуємо public_id із URL
       const publicId = `vacancies/${
         imageUrl.split("/").slice(-1)[0].split(".")[0]
       }`;

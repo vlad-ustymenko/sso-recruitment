@@ -3,7 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { MenuProvider } from "../context/MenuContext";
 import { VacanciesProvider } from "@/context/VacanciesContext";
-import { FormModalProvider } from "@/context/FormModalContext";
+import { ModalProvider } from "@/context/ModalContext";
 
 const UAFBold = localFont({
   src: "../public/fonts/UAFSans-Bold.ttf",
@@ -41,7 +41,7 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
       </head>
       <MenuProvider>
-        <FormModalProvider>
+        <ModalProvider>
           <VacanciesProvider>
             <body
               className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
@@ -50,7 +50,7 @@ export default function RootLayout({ children }) {
               {children}
             </body>
           </VacanciesProvider>
-        </FormModalProvider>
+        </ModalProvider>
       </MenuProvider>
     </html>
   );

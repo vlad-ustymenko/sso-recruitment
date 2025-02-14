@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import VacanciesList from "@/shared/sections/VacanciesList/VacanciesList";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
-import FormModal from "@/shared/components/FormModal/FormModal";
+import FormModal from "@/shared/components/Modal/Modal";
 
 export default function Vacancies() {
   return (
@@ -31,7 +31,7 @@ export default function Vacancies() {
         />
       </div>
       <Menu />
-      <FormModal />
+      <FormModal isFormModal />
     </main>
   );
 }
