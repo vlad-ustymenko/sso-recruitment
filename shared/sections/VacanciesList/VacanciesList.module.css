@@ -1,7 +1,31 @@
 .vacancyWrapper {
   padding: 70px;
+  margin: 36px;
 }
 
+.filterButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  background-color: #f3f3e9;
+}
+
+.typeButtonsWrapper {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.rankButtonsWrapper {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
 .vacancyWrapper:hover {
   color: white;
   background-color: #1b946e;
@@ -15,6 +39,7 @@
 }
 .vacancyList {
   list-style: none;
+  background-color: white;
 }
 
 .vacancyList li:last-child .vacancyItemWrapper::after {
@@ -35,6 +60,8 @@
   font-size: 32px;
   letter-spacing: -1px;
   text-align: center;
+  padding-top: 40px;
+  background-color: #f3f3e9;
 }
 
 .vacancyContent {
@@ -42,6 +69,17 @@
 }
 
 .image {
+  position: relative;
+  background-position: center;
+  background-size: cover;
+}
+
+.icon {
+  position: absolute;
+  top: -15px;
+  left: -15px;
+  width: 30px;
+  height: 30px;
   background-position: center;
   background-size: cover;
 }
@@ -62,13 +100,46 @@
   margin-bottom: 20px;
 }
 
+.button {
+  font-family: "UAFBold", sans-serif;
+  font-size: 15px;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  border: none;
+  padding: 17px 20px;
+  background-color: transparent;
+}
+.button:hover {
+  color: #00875c;
+}
+
+.active {
+  border-bottom: 4px solid #00875c;
+}
+
+.noVacancies {
+  font-family: "UAFBold", sans-serif;
+  font-size: 56px;
+  letter-spacing: -1px;
+  line-height: 1;
+  text-align: center;
+  padding: 60px;
+}
+
 @media (min-width: 768px) and (max-width: 1279px) {
+  .vacancyWrapper {
+    margin: 36px 0;
+  }
   .vacancyWrapper {
     padding: 33px;
   }
   .vacancyWrapper:hover {
     color: black;
     background-color: white;
+  }
+  .rankButtonsWrapper {
+    flex-direction: column;
+    gap: 40px;
   }
   .vacancyItemWrapper {
     grid-template-columns: 1fr;
@@ -82,7 +153,14 @@
 }
 @media (max-width: 767px) {
   .vacancyWrapper {
+    margin: 36px 0;
+  }
+  .vacancyWrapper {
     padding: 33px;
+  }
+  .rankButtonsWrapper {
+    flex-direction: column;
+    gap: 20px;
   }
   .vacancyWrapper:hover {
     color: black;

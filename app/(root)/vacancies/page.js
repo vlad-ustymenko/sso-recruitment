@@ -21,9 +21,9 @@ export default function Vacancies() {
           </p>
         </div>
       </div>
-      <div className={styles.containerWrapper}>
-        <VacanciesList />
-      </div>
+
+      <VacanciesList />
+
       <div className={styles.formWrapper}>
         <ApplicationForm
           title="Не знайшов, що шукав? Тоді заповни форму &і ми знайдемо застосування твоїм талантам"
