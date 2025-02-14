@@ -7,7 +7,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import styles from "./VacancieCarousel.module.css";
 import Container from "../Container/Container";
 import Link from "next/link";
-import { set } from "mongoose";
 
 export default function VacancyCarousel({ vacanciesList }) {
   const carouselRef = useRef(null);
@@ -21,7 +20,9 @@ export default function VacancyCarousel({ vacanciesList }) {
 
   useEffect(() => {
     setLineWidth(scrollRef.current.offsetWidth / vacanciesList.length);
+  });
 
+  useEffect(() => {
     const screen = window.innerWidth;
 
     if (screen > 450 && screen <= 768) {
@@ -101,7 +102,7 @@ export default function VacancyCarousel({ vacanciesList }) {
             ...vacanciesList.slice(0, viewsCards),
           ].map((vacancie, index) => (
             <Card
-              key={`${vacancie.image} + ${index}`}
+              key={`${vacancie._id}${index}`}
               vacancie={vacancie}
               ref={(el) => (cardRefs.current[index] = el)} // Збереження рефів для кожної картки
             />

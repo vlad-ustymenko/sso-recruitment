@@ -28,23 +28,23 @@ const Advantages = () => {
     },
     ,
     {
-      title: "Людяний підхід",
+      title: "Якісне навчання",
       description:
         "Людиноцентричний підхід, кваліфіковані та досвічені командири",
-      imgSrc: "/images/icons/hands.png",
+      imgSrc: "/images/icons/head.png",
     },
     {
-      title: "Грошове забезпечення",
+      title: "Сучасна зброя",
       description:
         "Людиноцентричний підхід, кваліфіковані та досвічені командири",
-      imgSrc: "/images/icons/helmet.png",
+      imgSrc: "/images/icons/fire.png",
     },
 
     {
-      title: "Військова підготовка",
+      title: "Зграя професіоналів",
       description:
         "Людиноцентричний підхід, кваліфіковані та досвічені командири",
-      imgSrc: "/images/icons/money.png",
+      imgSrc: "/images/icons/wolf.png",
     },
   ];
 
@@ -60,10 +60,8 @@ const Advantages = () => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.intersectionRatio === 1) {
-          // **Зупиняємо інерцію прокрутки**
           document.documentElement.style.overflow = "hidden";
 
-          // Примусово зафіксуємо `scrollY`
           window.scrollTo({
             top: window.scrollY,
             behavior: "instant",
@@ -76,7 +74,6 @@ const Advantages = () => {
             setScrollCount((prevscrollCount) => {
               let newscrollCount = prevscrollCount + delta;
 
-              // Якщо прокручено більше ніж ширина контейнера, зупиняємо прокрутку
               if (containerRef.current) {
                 if (
                   newscrollCount >=
@@ -91,7 +88,6 @@ const Advantages = () => {
                   window.removeEventListener("wheel", handleScroll);
                 }
 
-                // Якщо scrollCount менше нуля, зупиняємо прокрутку
                 if (newscrollCount < 0) {
                   document.documentElement.style.overflow = "";
                   window.removeEventListener("wheel", handleScroll);
@@ -151,7 +147,6 @@ const Advantages = () => {
             passive: true,
           });
 
-          // Очищаємо слухач події при розмонтуванні
           return () => {
             window.removeEventListener("wheel", handleScroll);
             window.removeEventListener("touchmove", handleTouchMove);
@@ -159,13 +154,12 @@ const Advantages = () => {
         }
       },
       {
-        threshold: 1, // Блок буде активований, коли 100% його висоти буде в центрі екрану
+        threshold: 1,
       }
     );
 
     observer.observe(section);
 
-    // Очищаємо observer при розмонтуванні компонента
     return () => {
       observer.unobserve(section);
     };
@@ -177,7 +171,7 @@ const Advantages = () => {
       <div className={styles.container} ref={sectionRef}>
         <div
           className={styles.wrapper}
-          ref={containerRef} // Прикріплюємо реф до контейнера
+          ref={containerRef}
           style={{ transform: `translateX(-${scrollCount}px)` }}
         >
           {cards.map((card, index) => (

@@ -29,11 +29,17 @@ const UAFRegular = localFont({
 export const metadata = {
   title: "SSO Recruitment",
   description: "SSO Recruitment",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="ua">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <MenuProvider>
         <FormModalProvider>
           <VacanciesProvider>
