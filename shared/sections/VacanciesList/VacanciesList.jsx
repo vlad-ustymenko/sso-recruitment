@@ -7,6 +7,9 @@ import BrFromater from "@/shared/components/BrFormater/BrFromater";
 
 const VacanciesList = () => {
   const { vacancies } = useVacanciesContext();
+  const filteredVacancies = vacancies.filter(
+    (vacancy) => vacancy.isActive === true
+  );
   return (
     <div>
       <h2 className={styles.title}>В кому ми зацікавлені?</h2>
@@ -14,7 +17,7 @@ const VacanciesList = () => {
         {vacancies.length === 0 ? (
           <p>Немає вакансій</p>
         ) : (
-          vacancies.map((vacancy) => (
+          filteredVacancies.map((vacancy) => (
             <li key={vacancy._id} className={styles.vacancyWrapper}>
               <div className={styles.vacancyItemWrapper}>
                 <div

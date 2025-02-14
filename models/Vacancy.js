@@ -14,6 +14,7 @@ const VacancySchema = new mongoose.Schema(
     bigImage: { type: String, required: true },
     smallImage: { type: String, required: true },
     iconImage: { type: String, required: true },
+    isActive: { type: Boolean, default: true },
   },
   { collection: "vacancies" }
 );

@@ -1,0 +1,215 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Спінер */
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-top: 5px solid #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.container {
+  position: relative;
+  max-width: 1100px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.backButton {
+  font-family: "UAFSemiBold", sans-serif;
+  border: none;
+  border-radius: 8px;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  background-color: #0e7151;
+  color: white;
+  cursor: pointer;
+  padding: 10px 30px;
+}
+
+.title {
+  font-family: "UAFBold", sans-serif;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.subTitle {
+  font-size: 12px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  border-color: #0e7151;
+  outline: none;
+}
+
+.textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.imageUploadContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.imageInputWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fileInput {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+  border: 2px dashed #bbb;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.fileInput:hover {
+  border-color: #0e7151;
+}
+
+.imagePreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.button {
+  font-family: "UAFSemiBold", sans-serif;
+  padding: 12px;
+  background: #0e7151;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background: #1d946e;
+}
+
+.checkboxGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.checkboxGroup input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #00875c; /* Колір чекбокса */
+  cursor: pointer;
+}
+
+.checkboxGroup label {
+  margin-top: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  user-select: none;
+}
+.select {
+  appearance: none; /* Вимикаємо стандартну стрілку браузера */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: white;
+  color: #333;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #00875c; /* Колір обводки при фокусі */
+}
+
+.select option {
+  padding: 10px;
+}
+
+/* Стилізуємо контейнер для випадаючого списку, щоб не було стрілки */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "▼";
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+}

@@ -28,7 +28,7 @@ export default function LoginPage() {
         // Перенаправляємо на dashboard після успішного логіну
         window.location.href = "/dashboard";
       } else {
-        console.error("Помилка логіну", result);
+        alert("Неправильний логін або пароль");
       }
     } catch (error) {
       console.error("Помилка при відправці запиту", error);
