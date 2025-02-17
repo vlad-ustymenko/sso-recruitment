@@ -21,7 +21,7 @@ const Card = React.forwardRef(({ vacancie }, ref) => {
       <h3 className={styles.title}>{vacancie.title}</h3>
       <p className={styles.unit}>{vacancie.militaryUnit}</p>
       <Button
-        className={styles.detailsButton}
+        className={styles.button}
         title="Детальніше"
         onClick={() => {
           router.push(`/vacancy/${vacancie._id}`);

@@ -174,7 +174,7 @@ const Advantages = () => {
           style={{ transform: `translateX(-${scrollCount}px)` }}
         >
           {cards.map((card, index) => (
-            <AdvantagesCard key={index} card={cards[index]} />
+            <AdvantagesCard key={index} card={card} />
           ))}
         </div>
       </div>

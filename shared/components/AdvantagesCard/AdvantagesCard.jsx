@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import styles from "./AdvantagesCard.module.css";
 
 const AdvantagesCard = ({ card }) => {

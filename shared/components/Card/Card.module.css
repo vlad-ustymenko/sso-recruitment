@@ -16,6 +16,7 @@
 .card:hover button {
   background-color: white;
   color: black;
+  min-width: 100%;
 }
 
 .image {
@@ -53,30 +54,32 @@
   margin-bottom: 28px;
 }
 
-.detailsButton {
-  margin-top: 16px;
-  width: 100%;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 8px;
-  cursor: pointer;
-  border-radius: 6px;
-  text-align: center;
-}
-
-.detailsButton:hover {
-  background-color: #0056b3;
-}
-
-@media (min-width: 1024px) {
-}
 @media (min-width: 768px) and (max-width: 1023px) {
+  .card:hover {
+    background-color: transparent;
+    color: black;
+  }
+  .card:hover button {
+    background-color: transparent;
+  }
+  .card button {
+    min-width: 100%;
+  }
 }
 
 @media (max-width: 767px) {
   .card {
     padding: 24px;
+  }
+  .card:hover {
+    background-color: transparent;
+    color: black;
+  }
+  .card:hover button {
+    background-color: transparent;
+  }
+  .card button {
+    min-width: 100%;
   }
   .title {
     font-size: 23px;
@@ -86,5 +89,8 @@
     margin-top: 24px;
     margin-bottom: 24px;
     font-size: 18px;
+  }
+  .button {
+    min-width: 100%;
   }
 }

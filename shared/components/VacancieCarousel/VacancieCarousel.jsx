@@ -104,7 +104,7 @@ export default function VacancyCarousel({ vacanciesList }) {
             <Card
               key={`${vacancie._id}${index}`}
               vacancie={vacancie}
-              ref={(el) => (cardRefs.current[index] = el)} // Збереження рефів для кожної картки
+              ref={(el) => (cardRefs.current[index] = el)}
             />
           ))}
         </ul>

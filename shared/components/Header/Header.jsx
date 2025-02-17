@@ -36,12 +36,14 @@ const Header = () => {
           </div>
         </div>
       )}
-      <Link href="/vacancies">
-        <nav className={styles.hotVacancies}>
-          🔥 Гарячі вакансії ({vacancies.filter((item) => item.isActive).length}
-          )
-        </nav>
-      </Link>
+      {scrollWidth >= 768 && (
+        <Link href="/vacancies">
+          <nav className={styles.hotVacancies}>
+            🔥 Гарячі вакансії (
+            {vacancies.filter((item) => item.isActive).length})
+          </nav>
+        </Link>
+      )}
 
       <div className={styles.contactWrapper}>
         <a href="tel:0800 357 174" type="tel" className={styles.telephone}>

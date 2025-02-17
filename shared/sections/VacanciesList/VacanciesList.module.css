@@ -108,6 +108,7 @@
   border: none;
   padding: 17px 20px;
   background-color: transparent;
+  color: black;
 }
 .button:hover {
   color: #00875c;

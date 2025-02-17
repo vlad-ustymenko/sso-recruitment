@@ -36,7 +36,6 @@ const VacanciesList = () => {
     <div>
       <h2 className={styles.title}>В кому ми зацікавлені?</h2>
 
-      {/* Фільтри для типу вакансій */}
       <div className={styles.filterButtons}>
         <div className={styles.typeButtonsWrapper}>
           {types.map((type) => (

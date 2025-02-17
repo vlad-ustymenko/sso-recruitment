@@ -3,10 +3,14 @@ import React, { useEffect } from "react";
 import { useMenuContext } from "../../../context/MenuContext";
 import { useModalContext } from "../../../context/ModalContext";
 import CloseMenu from "../../../src/assets/closeMenu.svg";
+import { useVacanciesContext } from "@/context/VacanciesContext";
+
 import Link from "next/link";
 import styles from "./Menu.module.css";
 
 const Menu = () => {
+  const { vacancies } = useVacanciesContext();
+
   const { activeMenu, setActiveMenu } = useMenuContext();
   const { activeFormModal, setActiveFormModal } = useModalContext();
 
@@ -31,7 +35,10 @@ const Menu = () => {
       </div>
       <div className={styles.navigation}>
         <Link href="/vacancies" onClick={() => setActiveMenu(false)}>
-          <div className={styles.hotVacancies}>🔥 Гарячі вакансії (258)</div>
+          <div className={styles.hotVacancies}>
+            🔥 Гарячі вакансії (
+            {vacancies.filter((item) => item.isActive).length})
+          </div>
         </Link>
       </div>
       <div className={styles.contactWrapper}>
