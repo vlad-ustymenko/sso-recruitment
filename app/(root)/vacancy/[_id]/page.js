@@ -1,4 +1,5 @@
 import React from "react";
+import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 import Container from "@/shared/components/Container/Container";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
@@ -6,28 +7,32 @@ import Menu from "@/shared/components/Menu/Menu";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import FormModal from "@/shared/components/Modal/Modal";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
+
 const VacancyPage = async ({ params }) => {
-  const { _id } = params;
+  const { _id } = await params;
 
-  // Отримуємо всі вакансії з API
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/vacancies`, {
-    cache: "no-store",
-  });
-  const vacancies = await res.json();
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/vacancies/${_id}`,
+    {
+      cache: "no-store",
+    }
+  );
 
-  const vacancy = vacancies.find((item) => item._id === _id);
+  if (!res.ok) {
+    redirect("/vacancies");
+  }
 
-  const responsibilities = vacancy.responsibilities
-    .split("*")
-    .filter((item) => item);
-
-  const guarantees = vacancy.guarantees.split("*").filter((item) => item);
+  const vacancy = await res.json();
 
   if (!vacancy) {
     return <div>Вакансію не знайдено</div>;
   }
 
-  // Виведення даних вакансії
+  const responsibilities =
+    vacancy.responsibilities?.split("*").filter((item) => item) || [];
+  const guarantees =
+    vacancy.guarantees?.split("*").filter((item) => item) || [];
+
   return (
     <main>
       <div
@@ -75,7 +80,7 @@ const VacancyPage = async ({ params }) => {
               </div>
             </div>
           </div>
-          <ApplicationForm></ApplicationForm>
+          <ApplicationForm />
         </div>
       </Container>
       <VacanciesPrewiev title={"Інші вакансії"} />

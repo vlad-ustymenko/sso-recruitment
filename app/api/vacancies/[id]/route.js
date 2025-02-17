@@ -1,9 +1,10 @@
 import { connectDB } from "@/lib/mongodb";
 import Vacancy from "@/models/Vacancy";
 
-export async function GET(req, { params }) {
+export async function GET(req, context) {
   await connectDB();
-  const { id } = params;
+  const { params } = context;
+  const { id } = await params;
 
   try {
     const vacancy = await Vacancy.findById(id);

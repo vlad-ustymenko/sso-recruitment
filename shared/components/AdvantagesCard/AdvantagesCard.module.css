@@ -1,6 +1,4 @@
 .cardWrapper {
-  display: grid;
-  grid-template-columns: 1fr;
   border: 1px solid #c5c5c5;
   padding: 40px;
 }
@@ -11,6 +9,9 @@
   background-color: white;
   padding: 20px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {

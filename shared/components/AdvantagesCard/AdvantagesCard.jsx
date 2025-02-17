@@ -5,9 +5,7 @@ import styles from "./AdvantagesCard.module.css";
 const AdvantagesCard = ({ card }) => {
   return (
     <div className={styles.cardWrapper}>
-      <div className={styles.icon}>
-        <Image src={card.imgSrc} alt={card.title} width={26} height={26} />
-      </div>
+      <div className={styles.icon}>{card.icon}</div>
       <h3 className={styles.title}>{card.title}</h3>
       <p className={styles.description}>{card.description}</p>
     </div>
