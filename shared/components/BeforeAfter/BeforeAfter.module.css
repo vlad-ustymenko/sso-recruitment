@@ -111,23 +111,21 @@
   }
   .beforeImage::before {
     left: 16px;
-    font-size: 48px;
+    font-size: 35px;
     bottom: 152px;
-    line-height: 3rem;
+    line-height: 2rem;
   }
+
   .divider {
     height: calc(100% - 91px);
   }
   .divider::after {
     left: 16px;
-    font-size: 48px;
+    font-size: 35px;
     bottom: 152px;
-    line-height: 3rem;
+    line-height: 2rem;
   }
 
-  .divider::after {
-    font-size: 48px;
-  }
   .arrowLeft,
   .arrowRight {
     width: 40px;

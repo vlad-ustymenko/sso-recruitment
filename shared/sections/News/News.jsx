@@ -22,19 +22,15 @@ const News = () => {
               країні. Дякуємо вам за ваш величезний внесок у захист
               територіальної цілісності України!
             </div>
+            <a
+              href="https://t.me/recruiting_sofua"
+              target="_blank"
+              className={styles.button}
+            >
+              Переглянути
+            </a>
           </div>
-          {/* <div className={styles.post}>
-            <div className={styles.respContainer}>
-              <div className={styles.iframeWrapper}>
-                <iframe
-                  className={styles.respIframe}
-                  src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fsofua.army%2Fvideos%2F612252781398529&width=&show_text=true&appId=491557047053986&height="
-                  allowFullScreen={true}
-                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                />
-              </div>
-            </div>
-          </div> */}
+
           <Link
             href={"https://t.me/recruiting_sofua"}
             className={styles.imageWrapper}

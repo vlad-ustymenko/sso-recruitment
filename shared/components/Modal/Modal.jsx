@@ -2,6 +2,8 @@
 import React, { useEffect } from "react";
 import styles from "./Modal.module.css";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
+import Facebook from "../../../src/assets/socialIcon/facebook.svg";
+import Telegram from "../../../src/assets/socialIcon/telegram.svg";
 import { X } from "lucide-react";
 import { useModalContext } from "../../../context/ModalContext";
 
@@ -13,13 +15,11 @@ const Modal = ({ isFormModal, isSendMailModal }) => {
     setActiveSendMailModal,
   } = useModalContext();
 
-  // Блокування скролу при відкритті будь-якої модалки
   useEffect(() => {
     const isModalOpen = activeFormModal || activeSendMailModal;
     document.documentElement.style.overflow = isModalOpen ? "hidden" : "";
   }, [activeFormModal, activeSendMailModal]);
 
-  // Якщо жодна з модалок не активна, нічого не рендеримо
   if (!activeFormModal && !activeSendMailModal) return null;
 
   return (
@@ -34,9 +34,32 @@ const Modal = ({ isFormModal, isSendMailModal }) => {
                 Дякуємо вам! В найближчий час ми зконтактуємо з вами.
               </p>
               <p className={styles.shareText}>
-                Ви можете поділитися інформацією про наші соц мережі щоб зробити
-                нас ще сильнішими!
+                Ви можете підписатися на наші соц мережі щоб зробити нас ще
+                сильнішими!
               </p>
+              <div className={styles.buttonsWrapper}>
+                <a
+                  href="https://t.me/recruiting_sofua"
+                  target="_blank"
+                  className={styles.button}
+                >
+                  <Telegram className={styles.icon} fill="currentColor" />
+                  <div>Telegram</div>
+                </a>
+                <a
+                  href="https://www.facebook.com/sofua.army/"
+                  target="_blank"
+                  className={styles.button}
+                >
+                  <Facebook
+                    width={20}
+                    height={20}
+                    className={styles.icon}
+                    fill="currentColor"
+                  />
+                  <div>Facebook</div>
+                </a>
+              </div>
             </div>
           </div>
         )}

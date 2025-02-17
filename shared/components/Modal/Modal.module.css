@@ -67,4 +67,36 @@
 .shareText {
   font-family: "UAFSemiBold", sans-serif;
   font-size: 18px;
+  margin-bottom: 40px;
+}
+
+.buttonsWrapper {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 31px 69px;
+  background-color: black;
+  color: white;
+  font-family: "UAFSemiBold", sans-serif;
+  font-size: 18px;
+}
+
+.icon {
+  color: white;
+  margin-right: 10px;
+}
+
+@media (max-width: 767px) {
+  .buttonsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+  }
 }
