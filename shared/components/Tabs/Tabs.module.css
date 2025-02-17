@@ -50,18 +50,31 @@
   transform: translateY(7px);
 }
 
-.tabContent {
-  overflow: hidden;
-  font-size: 14px;
-  transition: all 0.3s ease;
-}
-
 .tabArrow {
   justify-self: end;
 }
 
 .activeTab {
   grid-template-rows: 1fr;
+}
+
+.content {
+  overflow: hidden;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.tabList {
+  list-style: none;
+}
+
+.listItem:before {
+  display: inline-block;
+  content: "";
+  margin-right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: black;
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
