@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   background-image: url("/images/vacanciesMainScreen.png");
-  background-position: center;
+  background-position: 67%;
   background-size: cover;
   position: relative;
 }
@@ -31,10 +31,16 @@
 .formWrapper {
   border: 20px solid #ffcd05;
 }
+.button {
+  display: none !important;
+}
 
 @media (min-width: 768px) and (max-width: 1279px) {
   .containerWrapper {
     padding: 0;
+  }
+  .mainScreen {
+    background-position: 67%;
   }
   .titleWrapper {
     top: 70%;
@@ -43,15 +49,24 @@
   }
 }
 @media (max-width: 767px) {
+  .mainScreen {
+    background-position: 70%;
+  }
   .containerWrapper {
     padding: 0;
   }
   .titleWrapper {
-    top: 70%;
+    top: 75%;
     left: 16px;
     width: 90%;
   }
   .titleWrapper_title {
     margin-bottom: 20px;
+  }
+  .titleWrapper_content {
+    display: none;
+  }
+  .button {
+    display: flex !important;
   }
 }

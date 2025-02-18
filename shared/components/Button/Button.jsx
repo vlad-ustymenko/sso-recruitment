@@ -1,30 +1,31 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-
 import styles from "./Button.module.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Icon from "../../../src/assets/wolf.svg";
 
 export function Button({
+  style,
   title,
   onClick,
   logo,
-  submit,
   bgcolor,
   arrow,
   arrowDirection,
-  className,
+  className = "",
   vacancyButton,
   pageID,
 }) {
   const router = useRouter();
+
   if (logo) {
     return (
       <button
-        type={"button"}
+        style={style}
+        type="button"
         onClick={onClick}
-        className={`${styles.buttonWithLogo} ${className} `}
+        className={`${className} ${styles.buttonWithLogo}`}
       >
         {title}
         <Icon />
@@ -35,9 +36,9 @@ export function Button({
   if (bgcolor) {
     return (
       <button
-        type={"button"}
+        type="button"
         onClick={onClick}
-        className={`${styles.button} ${styles[bgcolor]}`}
+        className={`${className} ${styles.button} ${styles[bgcolor]}`}
       >
         {title}
       </button>
@@ -46,7 +47,11 @@ export function Button({
 
   if (arrow) {
     return (
-      <button type={"button"} onClick={onClick} className={styles.arrowButton}>
+      <button
+        type="button"
+        onClick={onClick}
+        className={`${className} ${styles.arrowButton}`}
+      >
         {arrowDirection === "left" ? (
           <ChevronLeft className={styles.arrow} width={32} height={32} />
         ) : (
@@ -55,12 +60,13 @@ export function Button({
       </button>
     );
   }
+
   if (vacancyButton) {
     return (
       <button
-        type={"button"}
+        type="button"
         onClick={() => router.push(`/vacancy/${pageID}`)}
-        className={`${styles.vacancyButton}`}
+        className={`${className} ${styles.vacancyButton}`}
       >
         {title}
       </button>
@@ -68,7 +74,11 @@ export function Button({
   }
 
   return (
-    <button type={"button"} onClick={onClick} className={`${styles.button}`}>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`${className} ${styles.button}`}
+    >
       {title}
     </button>
   );
