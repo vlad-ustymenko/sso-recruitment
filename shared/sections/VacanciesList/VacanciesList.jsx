@@ -25,7 +25,6 @@ const VacanciesList = () => {
     { name: "Офіцерські посади", value: "officer" },
   ];
 
-  // Фільтрація вакансій за обома параметрами
   const filteredVacancies = activeVacancies.filter((vacancy) => {
     const matchesRank = vacancy.rank === rank;
     const matchesType = vacancy.type === vacancyType;
@@ -33,7 +32,7 @@ const VacanciesList = () => {
   });
 
   return (
-    <div>
+    <div className={styles.vacanciesContainer}>
       <h2 className={styles.title}>В кому ми зацікавлені?</h2>
 
       <div className={styles.filterButtons}>
@@ -53,7 +52,6 @@ const VacanciesList = () => {
           ))}
         </div>
 
-        {/* Фільтри для рангу вакансій */}
         <div className={styles.rankButtonsWrapper}>
           {ranks.map((rankItem) => (
             <button
@@ -71,7 +69,6 @@ const VacanciesList = () => {
         </div>
       </div>
 
-      {/* Виведення вакансій після фільтрації */}
       <ul className={styles.vacancyList}>
         {filteredVacancies.length === 0 ? (
           <h2 className={styles.noVacancies}>
@@ -80,33 +77,31 @@ const VacanciesList = () => {
         ) : (
           filteredVacancies.map((vacancy) => (
             <li key={vacancy._id} className={styles.vacancyWrapper}>
-              <div className={styles.vacancyItemWrapper}>
+              <div
+                className={styles.image}
+                style={{
+                  backgroundImage: `url(${vacancy.smallImage})`,
+                  width: "100%",
+                  height: "300px",
+                }}
+              >
                 <div
-                  className={styles.image}
+                  className={styles.icon}
                   style={{
-                    backgroundImage: `url(${vacancy.smallImage})`,
-                    width: "100%",
-                    height: "300px",
+                    backgroundImage: `url(${vacancy.iconImage})`,
                   }}
-                >
-                  <div
-                    className={styles.icon}
-                    style={{
-                      backgroundImage: `url(${vacancy.iconImage})`,
-                    }}
-                  ></div>
-                </div>
-                <div className={styles.vacancyContent}>
-                  <h2 className={styles.vacancyTitle}>{vacancy.title}</h2>
-                  <p className={styles.vacancyCredo}>
-                    <BrFromater text={vacancy.credo} />
-                  </p>
-                  <Button
-                    title="Детальніше"
-                    pageID={vacancy._id}
-                    vacancyButton
-                  ></Button>
-                </div>
+                ></div>
+              </div>
+              <div className={styles.vacancyContent}>
+                <h2 className={styles.vacancyTitle}>{vacancy.title}</h2>
+                <p className={styles.vacancyCredo}>
+                  <BrFromater text={vacancy.credo} />
+                </p>
+                <Button
+                  title="Детальніше"
+                  pageID={vacancy._id}
+                  vacancyButton
+                ></Button>
               </div>
             </li>
           ))
