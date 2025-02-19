@@ -17,7 +17,7 @@ export async function POST(req) {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: process.env.EMAIL_TO,
+      to: [process.env.EMAIL_TO_FIRST, process.env.EMAIL_TO_SECOND],
       subject: `Нова заявка від ${name} ${email}`,
       html: `
 				<html>
