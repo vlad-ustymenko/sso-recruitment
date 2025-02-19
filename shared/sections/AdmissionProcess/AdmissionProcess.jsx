@@ -8,7 +8,7 @@ const AdmissionProcess = () => {
     0: {
       width: `1%`,
       stepTitle: `Подача заявки`,
-      stepDescription: `29 грудня 2024`,
+      stepDescription: ``,
     },
     1: {
       width: `15%`,
@@ -40,22 +40,12 @@ const AdmissionProcess = () => {
   const [activeStep, setActiveStep] = useState(1);
   const [viewWidth, setViewWidth] = useState(0);
   const [isDesctop, setIsDesctop] = useState(false);
-  const [today, setToday] = useState("");
 
   useEffect(() => {
     setViewWidth(window.innerWidth);
     if (viewWidth > 1279) {
       setIsDesctop(true);
     }
-    const today = new Date();
-    const formatter = new Intl.DateTimeFormat("uk-UA", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-
-    const formattedDate = formatter.format(today).replace(" р.", "");
-    setToday(formattedDate);
   }, [viewWidth]);
 
   const handleActiveStep = (id) => {
@@ -175,9 +165,7 @@ const AdmissionProcess = () => {
                       }
                 }
               >
-                {index === 0
-                  ? `${today}`
-                  : `${properties[index].stepDescription}`}
+                {`${properties[index].stepDescription}`}
               </li>
             )
           )}

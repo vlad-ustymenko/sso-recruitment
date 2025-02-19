@@ -1,6 +1,8 @@
 .mainWrapper {
   background-color: white;
   padding: 48px;
+  position: relative;
+  z-index: 1;
 }
 
 .formTitle {

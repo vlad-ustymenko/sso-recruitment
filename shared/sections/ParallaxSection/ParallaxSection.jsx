@@ -6,7 +6,7 @@ import styles from "./ParallaxSection.module.css";
 export default function ParallaxSection() {
   return (
     <Parallax
-      bgImage="/images/parallax.png" // Замініть на ваш шлях до зображення
+      bgImage="/images/parallax.jpg" // Замініть на ваш шлях до зображення
       strength={200} // Сила паралаксу (чим більше, тим сильніший ефект)
       className={styles.parallax}
     >

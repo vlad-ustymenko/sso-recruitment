@@ -5,7 +5,7 @@ import Container from "@/shared/components/Container/Container";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Menu from "@/shared/components/Menu/Menu";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
-import FormModal from "@/shared/components/Modal/Modal";
+import Modal from "@/shared/components/Modal/Modal";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
 
 const VacancyPage = async ({ params }) => {
@@ -80,12 +80,12 @@ const VacancyPage = async ({ params }) => {
               </div>
             </div>
           </div>
-          <ApplicationForm />
+          <ApplicationForm vacancy={vacancy.title} />
         </div>
       </Container>
       <VacanciesPrewiev title={"Інші вакансії"} />
       <Menu />
-      <FormModal isFormModal />
+      <Modal isFormModal vacancy={vacancy.title} />
     </main>
   );
 };

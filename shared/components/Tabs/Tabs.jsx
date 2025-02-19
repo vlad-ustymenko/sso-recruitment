@@ -344,6 +344,7 @@ export default function TabsComponent() {
                 className={styles.content}
                 style={{
                   paddingLeft: `${paddingContent}px`,
+                  paddingRight: `${paddingContent * 0.4}px`,
                   marginBottom: activeTab === tab.id ? "28px" : "0",
                 }}
               >

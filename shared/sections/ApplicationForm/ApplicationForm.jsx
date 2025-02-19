@@ -2,11 +2,10 @@
 import { useState, useRef } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Checkbox from "../../../src/assets/checkbox.svg";
-// import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import { useModalContext } from "../../../context/ModalContext";
 import styles from "./ApplicationForm.module.css";
-const ApplicationForm = ({ title, vacancies }) => {
+const ApplicationForm = ({ title, vacancy }) => {
   const [sending, setSending] = useState(false);
   const [activeCheckbox, setActiveCheckbox] = useState(false);
   const { setActiveFormModal, activeSendMailModal, setActiveSendMailModal } =
@@ -29,12 +28,13 @@ const ApplicationForm = ({ title, vacancies }) => {
 
     try {
       setSending(true);
+      const formData = { ...data, vacancy };
       const response = await fetch("/api/sendmail", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(formData),
       });
 
       if (response.ok) {
@@ -62,13 +62,11 @@ const ApplicationForm = ({ title, vacancies }) => {
         </h2>
       )}
 
-      {/*  Форма */}
       <form
         ref={formRef}
         className={styles.form}
         onSubmit={handleSubmit(onSubmit)}
       >
-        {/* Поле імені */}
         <div
           className={`${styles.inputWrapper} ${errors.name && styles.required}`}
         >
@@ -105,7 +103,6 @@ const ApplicationForm = ({ title, vacancies }) => {
           />
         </div>
 
-        {/* Поле email */}
         <div
           className={`${styles.inputWrapper} ${
             errors.email && styles.required
@@ -137,7 +134,6 @@ const ApplicationForm = ({ title, vacancies }) => {
           />
         </div>
 
-        {/* Поле телефону */}
         <div
           className={`${styles.inputWrapper} ${
             errors.phone && styles.required

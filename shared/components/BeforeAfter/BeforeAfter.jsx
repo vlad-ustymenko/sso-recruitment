@@ -145,7 +145,7 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
         </div>
       </div>
       <Menu />
-      <Modal isFormModal />
+      <Modal isFormModal vacancy="main" />
     </>
   );
 };

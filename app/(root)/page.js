@@ -9,6 +9,7 @@ import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Calculator from "@/shared/sections/Calculator/Calculator";
 import News from "@/shared/sections/News/News";
 import styles from "./page.module.css";
+import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
 export default function Home() {
   return (
     <>
@@ -22,7 +23,11 @@ export default function Home() {
         <News />
         <AdmissionProcess />
         <div className={styles.yellowContainer}>
-          <ApplicationForm title="Перший шлях в ССО,& це заповнити заявку" />
+          <VerticalCarousel></VerticalCarousel>
+          <ApplicationForm
+            title="Перший шлях в ССО,& це заповнити заявку"
+            vacancy="main"
+          />
           <Contacts />
         </div>
       </main>

@@ -8,9 +8,11 @@ const items = [
   "/images/solder1.png",
   "/images/solder2.png",
   "/images/solder3.png",
+  "/images/solder2.png",
+  "/images/solder1.png",
 ];
 
-export default function VerticalCarousel() {
+export default function HorizontalCarousel() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -19,17 +21,20 @@ export default function VerticalCarousel() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
   const positions = [
-    { scale: 1, y: 80, opacity: 1 }, // Верхній маленький
-    { scale: 0.8, y: 0, opacity: 0.5 }, // Центральний (найвище)
-    { scale: 0.6, y: -80, opacity: 0.2 }, // Верхній середній
+    { scale: 0.6, x: -200, opacity: 0.3, zIndex: 1 }, // Праворуч (найближче)
+    { scale: 0.8, x: -100, opacity: 0.6, zIndex: 2 }, // Центр
+    { scale: 1, x: 0, opacity: 1, zIndex: 3 }, // Ліворуч
+    { scale: 0.8, x: 100, opacity: 0.3, zIndex: 2 }, // Дальній лівий
+    { scale: 0.6, x: 200, opacity: 0.6, zIndex: 1 }, // Дальній лівий
   ];
 
   return (
     <div className={styles.carousel}>
       {items.map((src, i) => {
-        const posIndex = (i - index + items.length) % items.length; // Обчислюємо позицію в 3D ефекті
-        const { scale, y, opacity } = positions[posIndex];
+        const posIndex = (i - index + items.length) % items.length;
+        const { scale, x, opacity, zIndex } = positions[posIndex];
 
         return (
           <motion.img
@@ -37,9 +42,9 @@ export default function VerticalCarousel() {
             src={src}
             alt={`Slide ${i + 1}`}
             className={styles.image}
-            style={{ zIndex: items.length - posIndex }}
-            animate={{ opacity, y, scale }}
-            transition={{ duration: 0.4, ease: "easeInOut" }}
+            style={{ zIndex }}
+            animate={{ opacity, x, scale }} // Замінили `y` на `x`
+            transition={{ duration: 0.6, ease: "easeInOut" }}
           />
         );
       })}

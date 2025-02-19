@@ -30,19 +30,22 @@ const DropDown = ({ list, title, selectTitle, onChange }) => {
       </div>
 
       <ul className={`${styles.dropDownList} ${open && styles.dropDownActive}`}>
-        {list.map((item) => (
-          <li
-            key={item}
-            className={styles.dropDownListItem}
-            onClick={() => {
-              onChange(item);
-              setOpen(false);
-              setSelected(true);
-            }}
-          >
-            {item}
-          </li>
-        ))}
+        {list.map((item, index) => {
+          const newKey = Object.keys(item)[0];
+          return (
+            <li
+              key={newKey + index}
+              className={styles.dropDownListItem}
+              onClick={() => {
+                onChange(item.name);
+                setOpen(false);
+                setSelected(true);
+              }}
+            >
+              {item.name}
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

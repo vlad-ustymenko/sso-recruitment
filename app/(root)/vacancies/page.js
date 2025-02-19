@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 import VacanciesList from "@/shared/sections/VacanciesList/VacanciesList";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
-import FormModal from "@/shared/components/Modal/Modal";
+import Modal from "@/shared/components/Modal/Modal";
 import { Button } from "@/shared/components/Button/Button";
 
 export default function Vacancies() {
@@ -34,11 +34,11 @@ export default function Vacancies() {
       <div className={styles.formWrapper}>
         <ApplicationForm
           title="Не знайшов, що шукав? Тоді заповни форму &і ми знайдемо застосування твоїм талантам"
-          vacancies
+          vacancy="main"
         />
       </div>
       <Menu />
-      <FormModal isFormModal />
+      <Modal isFormModal vacancy="main" />
     </main>
   );
 }

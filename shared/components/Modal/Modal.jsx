@@ -7,7 +7,7 @@ import Telegram from "../../../src/assets/socialIcon/telegram.svg";
 import { X } from "lucide-react";
 import { useModalContext } from "../../../context/ModalContext";
 
-const Modal = ({ isFormModal, isSendMailModal }) => {
+const Modal = ({ vacancy }) => {
   const {
     activeFormModal,
     setActiveFormModal,
@@ -25,7 +25,7 @@ const Modal = ({ isFormModal, isSendMailModal }) => {
   return (
     <div className={`${styles.formModalBG} ${styles.activeFormModalBG}`}>
       <div className={styles.formModalContainer}>
-        {activeFormModal && <ApplicationForm />}
+        {activeFormModal && <ApplicationForm vacancy={vacancy} />}
         {activeSendMailModal && (
           <div className={styles.mailContentWrapper}>
             <div className={styles.mailContent}>
