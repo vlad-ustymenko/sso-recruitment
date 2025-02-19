@@ -8,7 +8,7 @@ const AdmissionProcess = () => {
     0: {
       width: `1%`,
       stepTitle: `Подача заявки`,
-      stepDescription: ``,
+      stepDescription: `Нарешті наважився`,
     },
     1: {
       width: `15%`,
