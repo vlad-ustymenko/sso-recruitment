@@ -18,10 +18,12 @@
   font-size: 48px;
   letter-spacing: -1px;
   margin-bottom: 40px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 .titleWrapper_description {
   font-size: 14px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 .contentTitle {
