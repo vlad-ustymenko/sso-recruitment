@@ -166,16 +166,19 @@ const Advantages = () => {
 
   return (
     <Container>
-      <h2 className={styles.title}>Переваги служби в ССО</h2>
-      <div className={styles.container} ref={sectionRef}>
-        <div
-          className={styles.wrapper}
-          ref={containerRef}
-          style={{ transform: `translateX(-${scrollCount}px)` }}
-        >
-          {cards.map((card, index) => (
-            <AdvantagesCard key={index} card={card} />
-          ))}
+      <div className={styles.advantages}>
+        <div className={styles.image}></div>
+        <h2 className={styles.title}>Переваги служби в ССО</h2>
+        <div className={styles.container} ref={sectionRef}>
+          <div
+            className={styles.wrapper}
+            ref={containerRef}
+            style={{ transform: `translateX(-${scrollCount}px)` }}
+          >
+            {cards.map((card, index) => (
+              <AdvantagesCard key={index} card={card} />
+            ))}
+          </div>
         </div>
       </div>
     </Container>
