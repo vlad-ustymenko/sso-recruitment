@@ -5,7 +5,14 @@ const AdvantagesCard = ({ card }) => {
   return (
     <div className={styles.cardWrapper}>
       <div className={styles.icon}>{card.icon}</div>
-      <h3 className={styles.title}>{card.title}</h3>
+      <h3 className={styles.title}>
+        {card.title.split("\n").map((line, i) => (
+          <React.Fragment key={i}>
+            {line}
+            <br />
+          </React.Fragment>
+        ))}
+      </h3>
       <p className={styles.description}>{card.description}</p>
     </div>
   );
