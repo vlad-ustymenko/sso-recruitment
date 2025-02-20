@@ -51,7 +51,6 @@
 .vacancyContent {
   display: flex;
   flex-direction: column;
-  height: 220px;
 }
 
 .vacancyList li:last-child .vacancyItemWrapper::after {
