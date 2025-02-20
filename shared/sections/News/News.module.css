@@ -31,8 +31,8 @@
 
 .imageWrapper {
   background-image: url("/images/News.webp");
-  background-position: center;
-  background-size: contain;
+  background-position: top;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 500px;
 }
