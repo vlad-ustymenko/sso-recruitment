@@ -4,7 +4,6 @@ import { useMenuContext } from "../../../context/MenuContext";
 import { useModalContext } from "../../../context/ModalContext";
 import CloseMenu from "../../../src/assets/closeMenu.svg";
 import { useVacanciesContext } from "@/context/VacanciesContext";
-
 import Link from "next/link";
 import styles from "./Menu.module.css";
 

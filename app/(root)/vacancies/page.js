@@ -1,12 +1,18 @@
+"use client";
+
 import Menu from "@/shared/components/Menu/Menu";
 import styles from "./page.module.css";
 import VacanciesList from "@/shared/sections/VacanciesList/VacanciesList";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Modal from "@/shared/components/Modal/Modal";
+import { useModalContext } from "../../../context/ModalContext";
+
 import { Button } from "@/shared/components/Button/Button";
 
 export default function Vacancies() {
+  const { activeFormModal, setActiveFormModal } = useModalContext();
+
   return (
     <main>
       <div className={styles.mainScreen}>
@@ -25,6 +31,9 @@ export default function Vacancies() {
             title="Знайди свою зграю"
             logo
             className={styles.button}
+            onClick={() => {
+              setActiveFormModal(true);
+            }}
           />
         </div>
       </div>

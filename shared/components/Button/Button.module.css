@@ -66,4 +66,7 @@
   .vacancyButton {
     width: 100%;
   }
+  .buttonWithLogo:hover {
+    background-color: #0e7151;
+  }
 }
