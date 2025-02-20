@@ -18,7 +18,7 @@ const Calculator = () => {
 
   useEffect(() => {
     const rankData = rankList.find((item) => item.name === rank);
-    if (!rankData) return setResult(frontDay);
+    if (rankData.name === "Оберіть опцію") return setResult(frontDay);
 
     const OVZ = rankData.OVZ || 0;
 

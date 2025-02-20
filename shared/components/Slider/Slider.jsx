@@ -33,6 +33,7 @@ export default function Slider({
             e.target.value
         );
         setValue(e.target.value);
+        setfrontDay(e.target.value * 3333.33);
         return;
       }
       setStep(
