@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./DropDown.module.css";
 import Arrow from "../Arrow/Arrow";
 
-const DropDown = ({ list, title, selectTitle, onChange }) => {
+const DropDown = ({ list, title, selectTitle, onChange, disabled }) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(false);
 
@@ -12,10 +12,19 @@ const DropDown = ({ list, title, selectTitle, onChange }) => {
     <div className={styles.dropDown}>
       <div
         className={styles.dropDownTitleWrapper}
-        style={{ borderRight: title === "Вислуга років" && "none" }}
+        style={{
+          borderRight: title === "Вислуга років" && "none",
+          opacity: disabled ? 0.5 : 1,
+          pointerEvents: disabled ? "none" : "auto",
+        }}
       >
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.selectWrapper} onClick={() => setOpen(!open)}>
+        <div
+          className={styles.selectWrapper}
+          onClick={() => {
+            setOpen(!open);
+          }}
+        >
           <div
             className={styles.select}
             style={{

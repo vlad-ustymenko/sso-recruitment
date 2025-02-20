@@ -3,7 +3,13 @@
 import { useState, useEffect, useRef } from "react";
 import styles from "./Slider.module.css";
 
-export default function Slider({ step, setStep, value, setValue }) {
+export default function Slider({
+  step,
+  setStep,
+  value,
+  setValue,
+  setfrontDay,
+}) {
   const [isMobile, setIsMobile] = useState(false);
 
   const sliderWidth = useRef(null);
@@ -34,6 +40,8 @@ export default function Slider({ step, setStep, value, setValue }) {
           (prev = (sliderWidth.current.scrollWidth - 84) / 31) * e.target.value
       );
       setValue(e.target.value);
+
+      setfrontDay(e.target.value * 3333.33);
     }
   };
 
