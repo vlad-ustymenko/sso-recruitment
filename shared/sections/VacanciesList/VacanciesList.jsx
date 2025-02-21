@@ -7,7 +7,7 @@ import styles from "./VacanciesList.module.css";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 
 const VacanciesList = () => {
-  const [rank, setRank] = useState("soldier");
+  const [rank, setRank] = useState("all");
   const [vacancyType, setVacancyType] = useState("front");
   const { vacancies } = useVacanciesContext();
   const activeVacancies = vacancies.filter(
@@ -20,13 +20,14 @@ const VacanciesList = () => {
   ];
 
   const ranks = [
+    { name: "Всі", value: "all" },
     { name: "Солдатські посади", value: "soldier" },
     { name: "Сержантські посади", value: "sergeant" },
     { name: "Офіцерські посади", value: "officer" },
   ];
 
   const filteredVacancies = activeVacancies.filter((vacancy) => {
-    const matchesRank = vacancy.rank === rank;
+    const matchesRank = rank === "all" || vacancy.rank === rank;
     const matchesType = vacancy.type === vacancyType;
     return matchesRank && matchesType;
   });
@@ -54,17 +55,20 @@ const VacanciesList = () => {
 
         <div className={styles.rankButtonsWrapper}>
           {ranks.map((rankItem) => (
-            <button
-              key={rankItem.value}
-              onClick={() => setRank(rankItem.value)}
-              className={
-                rankItem.value === rank
-                  ? `${styles.active} ${styles.button}`
-                  : styles.button
-              }
-            >
-              {rankItem.name}
-            </button>
+            <div key={rankItem.value} className={styles.radioWrapper}>
+              <input
+                type="radio"
+                id={rankItem.value}
+                name="rank"
+                value={rankItem.value}
+                checked={rank === rankItem.value}
+                onChange={() => setRank(rankItem.value)}
+                className={styles.radioInput}
+              />
+              <label htmlFor={rankItem.value} className={styles.radioLabel}>
+                {rankItem.name}
+              </label>
+            </div>
           ))}
         </div>
       </div>
