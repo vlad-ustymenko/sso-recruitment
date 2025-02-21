@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import { MenuProvider } from "../context/MenuContext";
 import { VacanciesProvider } from "@/context/VacanciesContext";
 import { ModalProvider } from "@/context/ModalContext";
+import Script from "next/script";
 
 const UAFBold = localFont({
   src: "../public/fonts/UAFSans-Bold.ttf",
@@ -27,10 +28,23 @@ const UAFRegular = localFont({
 });
 
 export const metadata = {
-  title: "SSO Recruitment",
-  description: "SSO Recruitment",
+  title: "Рекрутинг Сил спеціальних операцій.",
+  description: "Звичайні люди. Надзвичайні задачі.",
   icons: {
     icon: "/favicon.png",
+  },
+  openGraph: {
+    metadataBase: new URL("https://sofua.army/"),
+    title: "Рекрутинг Сил спеціальних операцій.",
+    description: "Звичайні люди. Надзвичайні задачі.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1920,
+        height: 1080,
+        alt: "Рекрутинг Сил спеціальних операцій.",
+      },
+    ],
   },
 };
 
