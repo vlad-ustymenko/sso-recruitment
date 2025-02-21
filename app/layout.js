@@ -28,18 +28,16 @@ const UAFRegular = localFont({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://sofua.army"),
   title: "Рекрутинг Сил спеціальних операцій.",
   description: "Звичайні люди. Надзвичайні задачі.",
-  icons: {
-    icon: "/favicon.png",
-  },
+  icons: "/favicon.png",
   openGraph: {
-    metadataBase: new URL("https://sofua.army/"),
     title: "Рекрутинг Сил спеціальних операцій.",
     description: "Звичайні люди. Надзвичайні задачі.",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "og-image.jpg",
         width: 1920,
         height: 1080,
         alt: "Рекрутинг Сил спеціальних операцій.",
