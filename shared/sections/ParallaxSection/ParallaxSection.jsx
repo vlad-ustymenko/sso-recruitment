@@ -1,4 +1,4 @@
-"use client"; // якщо Next.js 13+ з app router
+"use client";
 
 import { Parallax } from "react-parallax";
 import styles from "./ParallaxSection.module.css";
@@ -6,8 +6,8 @@ import styles from "./ParallaxSection.module.css";
 export default function ParallaxSection() {
   return (
     <Parallax
-      bgImage="/images/parallax.jpg" // Замініть на ваш шлях до зображення
-      strength={200} // Сила паралаксу (чим більше, тим сильніший ефект)
+      bgImage="/images/parallax.webp"
+      strength={100}
       className={styles.parallax}
     >
       <div className={styles.parallaxContent}></div>

@@ -5,11 +5,11 @@ import { motion } from "framer-motion";
 import styles from "./VerticalCarousel.module.css";
 
 const items = [
-  "/images/01.jpg",
-  "/images/02.jpeg",
-  "/images/03.jpeg",
-  "/images/04.jpeg",
-  "/images/05.jpeg",
+  "/images/01.webp",
+  "/images/02.webp",
+  "/images/03.webp",
+  "/images/04.webp",
+  "/images/05.webp",
 ];
 
 export default function HorizontalCarousel() {

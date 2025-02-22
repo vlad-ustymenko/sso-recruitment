@@ -1,7 +1,7 @@
 .mainScreen {
   width: 100vw;
   height: 100svh;
-  background-image: url("/images/vacanciesMainScreen.png");
+  background-image: url("/images/vacanciesMainScreen.webp");
   background-position: 67%;
   background-size: cover;
   position: relative;

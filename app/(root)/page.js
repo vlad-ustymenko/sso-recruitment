@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
       <main>
-        <BeforeAfter beforeImage="/Before.png" afterImage="/After.png" />
+        <BeforeAfter beforeImage="/before.webp" afterImage="/after.webp" />
         <VacanciesPrewiev title="Кого ми шукаємо?" filter />
         <Advantages />
         <Calculator />
