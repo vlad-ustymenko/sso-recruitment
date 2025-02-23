@@ -14,7 +14,12 @@ export default function Home() {
   return (
     <>
       <main>
-        <BeforeAfter beforeImage="/before.webp" afterImage="/after.webp" />
+        <BeforeAfter
+          beforeImage="/before.webp"
+          afterImage="/after.webp"
+          beforeMobile={"/beforeMobile.webp"}
+          afterMobile={"/afterMobile.webp"}
+        />
         <VacanciesPrewiev title="Кого ми шукаємо?" filter />
         <Advantages />
         <Calculator />

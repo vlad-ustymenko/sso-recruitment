@@ -48,7 +48,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ua">
+    <html lang="uk">
       <head>
         <Script
           id="google-tag-manager"

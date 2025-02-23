@@ -1,13 +1,19 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronRight, ChevronLeft } from "lucide-react";
 import styles from "./BeforeAfter.module.css";
 import { Button } from "../Button/Button";
 import Menu from "@/shared/components/Menu/Menu";
 import Modal from "../Modal/Modal";
 import { useModalContext } from "../../../context/ModalContext";
+import Image from "next/image";
 
-const BeforeAfter = ({ beforeImage, afterImage }) => {
+const BeforeAfter = ({
+  beforeImage,
+  afterImage,
+  beforeMobile,
+  afterMobile,
+}) => {
   const [sliderPosition, setSliderPosition] = useState(100);
   const isDraggingRef = useRef(false);
   const containerRef = useRef(null);
@@ -27,38 +33,32 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
     return () => clearInterval(animation);
   }, []);
 
+  const updateSliderPosition = useCallback((clientX) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const newPosition = ((clientX - rect.left) / rect.width) * 100;
+    setSliderPosition(Math.min(Math.max(newPosition, 0), 100));
+  }, []);
+
   useEffect(() => {
-    const updateSliderPosition = (clientX) => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const newPosition = ((clientX - rect.left) / rect.width) * 100;
-      setSliderPosition(Math.min(Math.max(newPosition, 0), 100));
-    };
-
-    const handleMouseMove = (e) => {
-      if (isDraggingRef.current) updateSliderPosition(e.clientX);
-    };
-
-    const handleTouchMove = (e) => {
-      if (isDraggingRef.current) updateSliderPosition(e.touches[0].clientX);
-    };
-
-    const startDragging = () => (isDraggingRef.current = true);
-
     const stopDragging = () => (isDraggingRef.current = false);
-
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("touchmove", handleTouchMove);
+    window.addEventListener(
+      "mousemove",
+      (e) => isDraggingRef.current && updateSliderPosition(e.clientX)
+    );
+    window.addEventListener(
+      "touchmove",
+      (e) => isDraggingRef.current && updateSliderPosition(e.touches[0].clientX)
+    );
     window.addEventListener("mouseup", stopDragging);
     window.addEventListener("touchend", stopDragging);
-
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("touchmove", handleTouchMove);
+      window.removeEventListener("mousemove", updateSliderPosition);
+      window.removeEventListener("touchmove", updateSliderPosition);
       window.removeEventListener("mouseup", stopDragging);
       window.removeEventListener("touchend", stopDragging);
     };
-  }, []);
+  }, [updateSliderPosition]);
 
   const handleMouseDown = (event) => {
     const target = event.target;
@@ -92,33 +92,62 @@ const BeforeAfter = ({ beforeImage, afterImage }) => {
           <br /> Рекрутинг
         </h1>
         <div className={styles.imageWrapper}>
-          {/* After Image */}
-          <div
-            className={styles.afterImage}
-            style={{ backgroundImage: `url(${afterImage})` }}
-          ></div>
+          <div className={styles.afterImage}>
+            <Image
+              sizes="(max-width: 768px) 768px, (max-width: 1280px) 1280px"
+              srcSet={`${afterMobile} 768w, ${afterImage} 1280w`}
+              src={afterImage}
+              alt="After"
+              fill
+              quality={100}
+              priority={false}
+              loading="lazy"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center top",
+              }}
+            />
+          </div>
 
-          {/* Before Image */}
           <div
             className={styles.beforeImage}
             style={{
-              backgroundImage: `url(${beforeImage})`,
               clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
             }}
-          ></div>
+          >
+            <Image
+              src={beforeImage}
+              sizes="(max-width: 768px) 768px, (max-width: 1280px) 1280px"
+              srcSet={`${beforeMobile} 768w, ${beforeImage} 1280w`}
+              alt="Before"
+              fill
+              quality={100}
+              priority={false}
+              loading="lazy"
+              style={{
+                objectFit: "cover",
+                objectPosition: "center top",
+              }}
+            />
+          </div>
 
-          {/* Дівайдер */}
           <div
             className={styles.divider}
             style={{ left: `${sliderPosition}%` }}
-            onMouseDown={handleMouseDown}
-            onTouchStart={handleTouchStart}
           >
-            <ChevronLeft className={styles.arrowLeft} width={32} height={32} />
+            <ChevronLeft
+              className={styles.arrowLeft}
+              width={32}
+              height={32}
+              onMouseDown={handleMouseDown}
+              onTouchStart={handleTouchStart}
+            />
             <ChevronRight
               className={styles.arrowRight}
               width={32}
               height={32}
+              onMouseDown={handleMouseDown}
+              onTouchStart={handleTouchStart}
             />
           </div>
           <Button

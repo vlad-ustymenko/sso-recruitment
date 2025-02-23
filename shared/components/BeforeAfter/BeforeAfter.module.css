@@ -30,6 +30,7 @@
   height: 100%;
   background-size: cover;
   background-position: top;
+  user-select: none;
 }
 
 .beforeImage {
@@ -47,6 +48,7 @@
   letter-spacing: -1px;
   line-height: 4rem;
   white-space: pre;
+  z-index: 1;
 }
 
 .divider {
@@ -74,6 +76,7 @@
   margin: 0 5px;
   border-radius: 4px;
   user-select: none;
+  cursor: pointer;
 }
 
 .arrowLeft {
@@ -91,6 +94,7 @@
   line-height: 4rem;
   opacity: var(--opacity);
   transition: opacity 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .button {
