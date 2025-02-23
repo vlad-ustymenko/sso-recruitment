@@ -42,6 +42,7 @@ const Footer = () => {
             <Link
               href="https://t.me/recruiting_sofua"
               target="_blank"
+              aria-label="Посилання на телеграм"
               className={styles.socialIcon}
             >
               <Telegram
@@ -54,6 +55,7 @@ const Footer = () => {
             <Link
               href="https://www.instagram.com/sofua.army"
               target="_blank"
+              aria-label="Посилання на інстаграм"
               className={styles.socialIcon}
             >
               <Instagram
@@ -66,6 +68,7 @@ const Footer = () => {
             <Link
               href="https://www.facebook.com/sofua.army/"
               target="_blank"
+              aria-label="Посилання на фейсбук"
               className={styles.socialIcon}
             >
               <Facebook
@@ -78,6 +81,7 @@ const Footer = () => {
             <Link
               href="https://youtube.com/@recsof?si=_wdXFi6m3VJNT6fG"
               target="_blank"
+              aria-label="Посилання на ютуб"
               className={styles.socialIcon}
             >
               <Youtube
@@ -90,6 +94,7 @@ const Footer = () => {
             <Link
               href="http://linkedin.com/in/andrey-vasyanovych-3b14151a1"
               target="_blank"
+              aria-label="Посилання на лінкедін"
               className={styles.socialIcon}
             >
               <Linkedin
@@ -102,6 +107,7 @@ const Footer = () => {
             <Link
               href="https://x.com/sof_ukr?s=21&t=6_tOu0qiRhJKNMVOo2xpew"
               target="_blank"
+              aria-label="Посилання на X"
               className={styles.socialIcon}
             >
               <X

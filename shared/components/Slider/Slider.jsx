@@ -48,15 +48,17 @@ export default function Slider({
 
   return (
     <div className={styles.sliderContainer} ref={sliderWidth}>
-      <input
-        name="slider"
-        type="range"
-        min="0"
-        max="31"
-        value={value}
-        onChange={handleChange}
-        className={styles.slider}
-      />
+      <label>
+        <input
+          type="range"
+          min="0"
+          max="31"
+          value={value}
+          onChange={handleChange}
+          className={styles.slider}
+          aria-label="Кількість днів на бойових"
+        />
+      </label>
       <span className={styles.sliderBackground}></span>
       <div
         className={styles.sliderLine}

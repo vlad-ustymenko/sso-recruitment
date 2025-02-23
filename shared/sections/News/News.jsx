@@ -25,6 +25,7 @@ const News = () => {
             <a
               href="https://t.me/recruiting_sofua"
               target="_blank"
+              aria-label="Посилання на телеграм"
               className={styles.button}
             >
               Переглянути
@@ -33,6 +34,7 @@ const News = () => {
 
           <Link
             href={"https://t.me/recruiting_sofua"}
+            aria-label="Посилання на телеграм"
             className={styles.imageWrapper}
           ></Link>
         </div>

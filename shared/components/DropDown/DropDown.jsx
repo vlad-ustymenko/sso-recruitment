@@ -14,7 +14,7 @@ const DropDown = ({ list, title, selectTitle, onChange, disabled }) => {
         className={styles.dropDownTitleWrapper}
         style={{
           borderRight: title === "Вислуга років" && "none",
-          opacity: disabled ? 0.5 : 1,
+          opacity: disabled ? 0.6 : 1,
           pointerEvents: disabled ? "none" : "auto",
         }}
       >

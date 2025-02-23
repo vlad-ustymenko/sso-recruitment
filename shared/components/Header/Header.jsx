@@ -22,7 +22,7 @@ const Header = () => {
 
   return (
     <header className={styles.container}>
-      <Link href="/" className={styles.link}>
+      <Link href="/" className={styles.link} aria-label="Головна сторінка">
         <Logo width={60} height={64} fill="white" className={styles.logo} />
       </Link>
       {scrollWidth >= 768 && scrollWidth < 1280 && (

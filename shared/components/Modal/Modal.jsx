@@ -1,11 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
-import styles from "./Modal.module.css";
+import { useEffect } from "react";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Facebook from "../../../src/assets/socialIcon/facebook.svg";
 import Telegram from "../../../src/assets/socialIcon/telegram.svg";
 import { X } from "lucide-react";
 import { useModalContext } from "../../../context/ModalContext";
+import styles from "./Modal.module.css";
 
 const Modal = ({ vacancy }) => {
   const {

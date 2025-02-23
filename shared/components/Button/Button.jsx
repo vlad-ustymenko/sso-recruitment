@@ -50,6 +50,7 @@ export function Button({
       <button
         type="button"
         onClick={onClick}
+        aria-label="Arrow button"
         className={`${className} ${styles.arrowButton}`}
       >
         {arrowDirection === "left" ? (

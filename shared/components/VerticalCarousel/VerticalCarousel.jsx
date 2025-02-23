@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import styles from "./VerticalCarousel.module.css";
 
@@ -14,58 +14,75 @@ const items = [
 
 export default function HorizontalCarousel() {
   const [index, setIndex] = useState(0);
-  const [viewWidth, setViewWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 0
-  );
+  const [viewWidth, setViewWidth] = useState(0);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
     const updateWidth = () => setViewWidth(window.innerWidth);
+    updateWidth();
     window.addEventListener("resize", updateWidth);
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  useEffect(() => {
-    setIndex(0);
-  }, [viewWidth]);
-
   const positions = useMemo(() => {
+    const configs = {
+      mobile: [
+        { scale: 0.6, x: -100, opacity: 0.3, zIndex: 1 },
+        { scale: 0.8, x: -50, opacity: 0.6, zIndex: 2 },
+        { scale: 1, x: 0, opacity: 1, zIndex: 3 },
+        { scale: 0.8, x: 50, opacity: 0.6, zIndex: 2 },
+        { scale: 0.6, x: 100, opacity: 0.3, zIndex: 1 },
+      ],
+      desktop: [
+        { scale: 0.6, x: -500, opacity: 0.3, zIndex: 1 },
+        { scale: 0.8, x: -250, opacity: 0.6, zIndex: 2 },
+        { scale: 1, x: 0, opacity: 1, zIndex: 3 },
+        { scale: 0.8, x: 250, opacity: 0.6, zIndex: 2 },
+        { scale: 0.6, x: 500, opacity: 0.3, zIndex: 1 },
+      ],
+      tablet: [
+        { scale: 0.6, x: -300, opacity: 0.3, zIndex: 1 },
+        { scale: 0.8, x: -200, opacity: 0.6, zIndex: 2 },
+        { scale: 1, x: 0, opacity: 1, zIndex: 3 },
+        { scale: 0.8, x: 200, opacity: 0.6, zIndex: 2 },
+        { scale: 0.6, x: 300, opacity: 0.3, zIndex: 1 },
+      ],
+    };
     return viewWidth < 768
-      ? [
-          { scale: 0.6, x: -100, opacity: 0.3, zIndex: 1 },
-          { scale: 0.8, x: -50, opacity: 0.6, zIndex: 2 },
-          { scale: 1, x: 0, opacity: 1, zIndex: 3 },
-          { scale: 0.8, x: 50, opacity: 0.6, zIndex: 2 },
-          { scale: 0.6, x: 100, opacity: 0.3, zIndex: 1 },
-        ]
+      ? configs.mobile
       : viewWidth > 1919
-      ? [
-          { scale: 0.6, x: -500, opacity: 0.3, zIndex: 1 },
-          { scale: 0.8, x: -250, opacity: 0.6, zIndex: 2 },
-          { scale: 1, x: 0, opacity: 1, zIndex: 3 },
-          { scale: 0.8, x: 250, opacity: 0.6, zIndex: 2 },
-          { scale: 0.6, x: 500, opacity: 0.3, zIndex: 1 },
-        ]
-      : [
-          { scale: 0.6, x: -300, opacity: 0.3, zIndex: 1 },
-          { scale: 0.8, x: -200, opacity: 0.6, zIndex: 2 },
-          { scale: 1, x: 0, opacity: 1, zIndex: 3 },
-          { scale: 0.8, x: 200, opacity: 0.6, zIndex: 2 },
-          { scale: 0.6, x: 300, opacity: 0.3, zIndex: 1 },
-        ];
+      ? configs.desktop
+      : configs.tablet;
   }, [viewWidth]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % items.length);
-    }, 3000);
-    return () => clearInterval(interval);
+    const startInterval = () => {
+      intervalRef.current = setInterval(() => {
+        setIndex((prev) => (prev + 1) % items.length);
+      }, 3000);
+    };
+
+    startInterval();
+
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        clearInterval(intervalRef.current);
+      } else {
+        startInterval();
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+
+    return () => {
+      clearInterval(intervalRef.current);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
   }, []);
 
   const getPosition = useCallback(
-    (i) => {
-      return (i - index + items.length) % items.length;
-    },
-    [index, items.length]
+    (i) => (i - index + items.length) % items.length,
+    [index]
   );
 
   return (
@@ -83,6 +100,7 @@ export default function HorizontalCarousel() {
             style={{ zIndex }}
             animate={{ opacity, x, scale }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
+            loading="lazy"
           />
         );
       })}
