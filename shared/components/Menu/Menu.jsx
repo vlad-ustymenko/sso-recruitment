@@ -11,7 +11,7 @@ const Menu = () => {
   const { vacancies } = useVacanciesContext();
 
   const { activeMenu, setActiveMenu } = useMenuContext();
-  const { activeFormModal, setActiveFormModal } = useModalContext();
+  const { setActiveFormModal } = useModalContext();
 
   useEffect(() => {
     if (activeMenu) {
