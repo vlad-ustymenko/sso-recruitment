@@ -55,7 +55,7 @@
   position: absolute;
   bottom: 0;
   transform: translateX(-50%);
-  height: calc(100% - 111px);
+  height: 100%;
   width: 1px;
   background-color: #fff;
   z-index: 1;
