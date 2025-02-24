@@ -10,18 +10,27 @@ import Link from "next/link";
 import styles from "./Header.module.css";
 
 const Header = () => {
-  const { activeMenu, setActiveMenu } = useMenuContext();
-  const { activeFormModal, setActiveFormModal } = useModalContext();
-
+  const { setActiveMenu } = useMenuContext();
+  const { setActiveFormModal } = useModalContext();
   const { vacancies } = useVacanciesContext();
   const [scrollWidth, setScrollWidth] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    setScrollWidth((prev) => (prev = window.innerWidth));
+    setScrollWidth(window.innerWidth);
+
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // Якщо прокрутили більше ніж 50px, зменшуємо хедер
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header className={styles.container}>
+    <header
+      className={`${styles.container} ${isScrolled ? styles.shrink : ""}`}
+    >
       <Link href="/" className={styles.link} aria-label="Головна сторінка">
         <Logo width={60} height={64} fill="white" className={styles.logo} />
       </Link>
