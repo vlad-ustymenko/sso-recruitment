@@ -118,12 +118,17 @@
 
 @media (max-width: 767px) {
   .container {
-    padding: 0 16px;
+    padding: 15px 16px;
   }
-  .logo {
-    margin: 16px 0;
-    width: 48px;
-    height: 52px;
+
+  .shrink {
+    padding: 10px 16px;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .shrink .logo {
+    width: 40px;
+    height: 44px;
   }
   .menuButtonWrapper {
     display: none;
