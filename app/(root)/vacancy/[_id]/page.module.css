@@ -1,9 +1,14 @@
 .mainScreen {
   position: relative;
   width: 100%;
-  height: 100svh;
+  height: calc(100svh - 111px);
   background-size: cover;
   background-position: center;
+}
+
+.header {
+  height: 111px;
+  background-color: black;
 }
 .titleWrapper {
   position: absolute;
@@ -109,6 +114,12 @@
   }
 }
 @media (max-width: 767px) {
+  .header {
+    height: 101px;
+  }
+  .mainScreen {
+    height: calc(100svh - 101px);
+  }
   .titleWrapper {
     top: 70%;
     left: 16px;

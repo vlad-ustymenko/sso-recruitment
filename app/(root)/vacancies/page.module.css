@@ -1,10 +1,15 @@
 .mainScreen {
   width: 100vw;
-  height: 100svh;
+  height: calc(100svh - 111px);
   background-image: url("/images/vacanciesMainScreen.webp");
   background-position: 67%;
   background-size: cover;
   position: relative;
+}
+
+.header {
+  height: 111px;
+  background-color: black;
 }
 
 .titleWrapper {
@@ -51,6 +56,11 @@
 @media (max-width: 767px) {
   .mainScreen {
     background-position: 70%;
+    height: calc(100svh - 101px);
+  }
+
+  .header {
+    height: 101px;
   }
   .containerWrapper {
     padding: 0;
