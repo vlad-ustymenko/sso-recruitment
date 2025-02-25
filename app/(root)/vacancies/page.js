@@ -1,14 +1,13 @@
 "use client";
 
 import Menu from "@/shared/components/Menu/Menu";
-import styles from "./page.module.css";
 import VacanciesList from "@/shared/sections/VacanciesList/VacanciesList";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Modal from "@/shared/components/Modal/Modal";
-import { useModalContext } from "../../../context/ModalContext";
-
 import { Button } from "@/shared/components/Button/Button";
+import { useModalContext } from "../../../context/ModalContext";
+import styles from "./page.module.css";
 
 export default function Vacancies() {
   const { activeFormModal, setActiveFormModal } = useModalContext();
@@ -46,6 +45,7 @@ export default function Vacancies() {
           vacancy="main"
         />
       </div>
+
       <Menu />
       <Modal isFormModal vacancy="main" />
     </main>

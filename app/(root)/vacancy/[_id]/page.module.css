@@ -42,10 +42,12 @@
 
 .contentWrapper {
   position: relative;
-  padding: 60px;
+  padding-top: 30px;
+  margin: 0 60px 60px 60px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 95px;
+  border-bottom: 3px solid #09694c;
 }
 
 .descriptionWrapper {
@@ -54,12 +56,10 @@
 }
 
 .responsibilities {
-  border-bottom: 3px solid #09694c;
   margin-bottom: 30px;
 }
 
 .guarantees {
-  border-bottom: 3px solid #09694c;
   margin-bottom: 30px;
 }
 
@@ -91,6 +91,12 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
+  .responsibilities {
+    border-bottom: 3px solid #09694c;
+  }
+  .guarantees {
+    border-bottom: 3px solid #09694c;
+  }
   .titleWrapper {
     top: 70%;
     left: 80px;
@@ -100,16 +106,25 @@
     font-size: 36px;
   }
   .contentWrapper {
-    padding: 40px;
-
+    margin: 0 40px 40px 40px;
+    padding-top: 30px;
     grid-template-columns: 1fr;
-    gap: 0;
-  }
-  .guarantees {
     border-bottom: none;
+
+    gap: 0;
   }
 }
 @media (max-width: 767px) {
+  .contentWrapper {
+    padding-top: 30px;
+    border-bottom: none;
+  }
+  .responsibilities {
+    border-bottom: 3px solid #09694c;
+  }
+  .guarantees {
+    border-bottom: 3px solid #09694c;
+  }
   .titleWrapper {
     top: 70%;
     left: 16px;
@@ -119,12 +134,8 @@
     font-size: 36px;
   }
   .contentWrapper {
-    padding: 24px;
-
+    margin: 0 24px 24px 24px;
     grid-template-columns: 1fr;
     gap: 0;
-  }
-  .guarantees {
-    border-bottom: none;
   }
 }
