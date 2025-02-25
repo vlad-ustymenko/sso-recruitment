@@ -7,6 +7,7 @@ import Menu from "@/shared/components/Menu/Menu";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import Modal from "@/shared/components/Modal/Modal";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
+import { Button } from "@/shared/components/Button/Button";
 
 const VacancyPage = async ({ params }) => {
   const { _id } = await params;
@@ -40,6 +41,14 @@ const VacancyPage = async ({ params }) => {
         className={styles.mainScreen}
         style={{ backgroundImage: `url(${vacancy.bigImage})` }}
       >
+        <Button
+          className={styles.backButton}
+          type="button"
+          title="Назад"
+          backButton
+        >
+          Назад
+        </Button>
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleWrapper_title}>{vacancy.title}</h1>
           <p className={styles.titleWrapper_description}>

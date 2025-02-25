@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import styles from "./Button.module.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Icon from "../../../src/assets/wolf.svg";
+import BackArrow from "../../../src/assets/backArrow.svg";
 
 export function Button({
   style,
@@ -16,6 +17,7 @@ export function Button({
   className = "",
   vacancyButton,
   pageID,
+  backButton,
 }) {
   const router = useRouter();
 
@@ -29,6 +31,19 @@ export function Button({
       >
         {title}
         <Icon />
+      </button>
+    );
+  }
+
+  if (backButton) {
+    return (
+      <button
+        type="button"
+        onClick={() => router.back()}
+        className={`${className} ${styles.backButton}`}
+      >
+        <BackArrow fill="transparent" className={styles.backArrow} />
+        {title}
       </button>
     );
   }
