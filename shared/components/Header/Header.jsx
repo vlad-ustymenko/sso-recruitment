@@ -20,7 +20,7 @@ const Header = () => {
     setScrollWidth(window.innerWidth);
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50); // Якщо прокрутили більше ніж 50px, зменшуємо хедер
+      setIsScrolled(window.scrollY > 50); 
     };
 
     window.addEventListener("scroll", handleScroll);

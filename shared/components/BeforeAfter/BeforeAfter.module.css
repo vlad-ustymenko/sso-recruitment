@@ -120,9 +120,6 @@
     line-height: 2rem;
   }
 
-  .divider {
-    height: calc(100% - 91px);
-  }
   .divider::after {
     left: 16px;
     font-size: 35px;

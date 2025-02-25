@@ -13,7 +13,7 @@
   border-bottom: 1px solid white;
   backdrop-filter: blur(10px);
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 20px 34px;
+  padding: 10px 34px;
   transition: padding 0.3s ease, background-color 0.3s ease;
 }
 
@@ -23,12 +23,14 @@
 }
 
 .logo {
+  width: 40px;
+  height: 44px;
   transition: width 0.3s ease, height 0.3s ease;
 }
 
 .shrink .logo {
-  width: 40px;
-  height: 44px;
+  width: 30px;
+  height: 34px;
 }
 
 .link {
@@ -40,7 +42,7 @@
   display: none;
   align-items: center;
   border: 1px solid #808080;
-  padding: 24px;
+  padding: 20px;
   margin-left: 24px;
 }
 
@@ -93,6 +95,19 @@
 }
 
 @media (min-width: 768px) and (max-width: 1279px) {
+  .logo {
+    width: 60px;
+    height: 64px;
+  }
+  .shrink .logo {
+    width: 50px;
+    height: 54px;
+  }
+
+  .shrink .menuButtonWrapper {
+    padding: 15px;
+  }
+
   .menuButton {
     flex: 1;
   }
@@ -127,17 +142,17 @@
   }
 
   .shrink .logo {
-    width: 40px;
-    height: 44px;
+    width: 30px;
+    height: 34px;
   }
   .menuButtonWrapper {
     display: none;
   }
   .menuBurgerMobile {
     display: block;
-    width: 48px;
-    height: 48px;
-    padding: 15px;
+    width: 40px;
+    height: 40px;
+    padding: 13px;
     border: 1px solid #808080;
   }
   .hotVacancies {
