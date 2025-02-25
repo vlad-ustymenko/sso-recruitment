@@ -12,14 +12,13 @@
   z-index: 5;
   border-bottom: 1px solid white;
   backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   padding: 10px 34px;
   transition: padding 0.3s ease, background-color 0.3s ease;
 }
 
 .shrink {
   padding: 5px 34px;
-  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .logo {

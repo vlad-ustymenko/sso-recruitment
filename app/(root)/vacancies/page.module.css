@@ -1,15 +1,10 @@
 .mainScreen {
   width: 100vw;
-  height: calc(100svh - 111px);
+  height: 100svh;
   background-image: url("/images/vacanciesMainScreen.webp");
-  background-position: 67%;
+  background-position: center bottom;
   background-size: cover;
   position: relative;
-}
-
-.header {
-  height: 111px;
-  background-color: black;
 }
 
 .titleWrapper {
@@ -26,11 +21,13 @@
   font-size: 48px;
   letter-spacing: -1px;
   margin-bottom: 40px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
 }
 
 .titleWrapper_content {
   font-family: "UAFRegular", sans-serif;
   font-size: 14px;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 1);
 }
 
 .formWrapper {
@@ -55,13 +52,9 @@
 }
 @media (max-width: 767px) {
   .mainScreen {
-    background-position: 70%;
-    height: calc(100svh - 101px);
+    background-position: 36% bottom;
   }
 
-  .header {
-    height: 101px;
-  }
   .containerWrapper {
     padding: 0;
   }

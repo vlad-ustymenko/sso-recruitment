@@ -15,7 +15,6 @@ export default function Vacancies() {
 
   return (
     <main>
-      <div className={styles.header}></div>
       <div className={styles.mainScreen}>
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleWrapper_title}> Кого ми шукаємо?</h1>

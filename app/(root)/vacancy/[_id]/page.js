@@ -36,7 +36,6 @@ const VacancyPage = async ({ params }) => {
 
   return (
     <main>
-      <div className={styles.header}></div>
       <div
         className={styles.mainScreen}
         style={{ backgroundImage: `url(${vacancy.bigImage})` }}
