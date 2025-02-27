@@ -51,19 +51,17 @@ export default function Tabs({ tabs, title, admin, deleteTab }) {
       <ul className={styles.tabsList}>
         {tabs.map((tab, index) => (
           <li key={tab._id} className={styles.tabContainer}>
-            <div
-              className={styles.tabWrapper}
-              onClick={() => {
-                setActiveTab(tab._id);
-                if (activeTab === tab._id) {
-                  setActiveTab(null);
-                  return;
-                }
-              }}
-            >
+            <div className={styles.tabWrapper}>
               <div
                 className={styles.tabTitleWrapper}
                 ref={tabContentWrapperRef}
+                onClick={() => {
+                  setActiveTab(tab._id);
+                  if (activeTab === tab._id) {
+                    setActiveTab(null);
+                    return;
+                  }
+                }}
               >
                 <div className={styles.tabNumber}>0{index + 1}</div>
                 <div className={styles.tabTitle} ref={contentContainerRef}>

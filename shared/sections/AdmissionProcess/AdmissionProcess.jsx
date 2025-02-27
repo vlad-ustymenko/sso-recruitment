@@ -3,37 +3,66 @@ import React, { useEffect, useState } from "react";
 import styles from "./AdmissionProcess.module.css";
 import Container from "@/shared/components/Container/Container";
 
+const formatDate = (date) => {
+  return new Intl.DateTimeFormat("uk-UA", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "2-digit",
+  })
+    .format(date)
+    .replace("р.", "");
+};
+
 const AdmissionProcess = () => {
+  const today = new Date();
   const properties = {
     0: {
       width: `1%`,
       stepTitle: `Подача заявки`,
-      stepDescription: `Нарешті наважився`,
+      stepDescription: formatDate(today),
     },
     1: {
       width: `15%`,
       stepTitle: `Крок 2`,
-      stepDescription: `Первинна співбесіда з центром рекрутингу (3 дні)`,
+      stepDescription: `Первинна співбесіда з центром рекрутингу (${formatDate(
+        new Date(today.getTime() + 0 * 24 * 60 * 60 * 1000)
+      )} - ${formatDate(new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000))})`,
     },
     2: {
       width: `25%`,
       stepTitle: `Крок 3`,
-      stepDescription: `Відбір та співбесіда з командиром підрозділу (7 днів)`,
+      stepDescription: `Відбір та співбесіда з командиром підрозділу (${formatDate(
+        new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000)
+      )} - ${formatDate(
+        new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000)
+      )})`,
     },
     3: {
       width: `45%`,
       stepTitle: `Крок 4`,
-      stepDescription: `Підготовка документів, перевірка внутрішньої безпеки, проходження ВЛК (30 днів)`,
+      stepDescription: `Підготовка документів, перевірка внутрішньої безпеки, проходження ВЛК (${formatDate(
+        new Date(today.getTime() + 10 * 24 * 60 * 60 * 1000)
+      )} - ${formatDate(
+        new Date(today.getTime() + 43 * 24 * 60 * 60 * 1000)
+      )})`,
     },
     4: {
       width: `68%`,
       stepTitle: `Крок 5`,
-      stepDescription: `Зарахування до списків частини та відправка на БЗВП на 7 тижнів`,
+      stepDescription: `Зарахування до списків частини та проходження БЗВП (${formatDate(
+        new Date(today.getTime() + 43 * 24 * 60 * 60 * 1000)
+      )} - ${formatDate(
+        new Date(today.getTime() + 92 * 24 * 60 * 60 * 1000)
+      )})`,
     },
     5: {
       width: `97%`,
       stepTitle: `Фініш`,
-      stepDescription: `Повернення в частину для проходження служби`,
+      stepDescription: `Повернення в частину для проходження служби (${formatDate(
+        new Date(today.getTime() + 92 * 24 * 60 * 60 * 1000)
+      )} - ${formatDate(
+        new Date(today.getTime() + 93 * 24 * 60 * 60 * 1000)
+      )})`,
     },
   };
 
@@ -154,7 +183,7 @@ const AdmissionProcess = () => {
                         top:
                           index === 5 ? "unset" : `${properties[index].width}`,
                         opacity: activeStep >= index ? 1 : 0,
-                        width: `${viewWidth / 2 - 40}px`,
+                        width: `${viewWidth / 2.4}px`,
                         bottom: index === 5 ? "85px" : "unset",
                         transform:
                           index % 2 === 0

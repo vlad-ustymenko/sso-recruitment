@@ -135,7 +135,7 @@
 }
 
 .stepsDescriptionsWrapper li:nth-child(odd) {
-  top: 10%;
+  top: 5%;
 }
 
 .stepsDescriptionsWrapper li:first-child {
