@@ -96,20 +96,21 @@ const BeforeAfter = ({
         </h1>
         <div className={styles.imageWrapper}>
           <div className={styles.afterImage}>
-            <Image
-              sizes="(max-width: 768px) 768px, (max-width: 1280px) 1280px"
-              srcSet={`${afterMobile} 768w, ${afterImage} 1280w`}
-              src={afterImage}
-              alt="After"
-              fill
-              quality={100}
-              priority={false}
-              loading="lazy"
-              style={{
-                objectFit: "cover",
-                objectPosition: "center top",
-              }}
-            />
+            <picture>
+              <source srcSet={afterMobile} media="(max-width: 768px)" />
+              <source srcSet={afterImage} media="(min-width: 769px)" />
+              <Image
+                src={afterImage}
+                alt="After"
+                fill
+                quality={100}
+                priority={false}
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                }}
+              />
+            </picture>
           </div>
 
           <div
@@ -118,20 +119,21 @@ const BeforeAfter = ({
               clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
             }}
           >
-            <Image
-              src={beforeImage}
-              sizes="(max-width: 768px) 768px, (max-width: 1280px) 1280px"
-              srcSet={`${beforeMobile} 768w, ${beforeImage} 1280w`}
-              alt="Before"
-              fill
-              quality={100}
-              priority={false}
-              loading="lazy"
-              style={{
-                objectFit: "cover",
-                objectPosition: "center top",
-              }}
-            />
+            <picture>
+              <source srcSet={beforeMobile} media="(max-width: 768px)" />
+              <source srcSet={beforeImage} media="(min-width: 769px)" />
+              <Image
+                src={beforeImage}
+                alt="Before"
+                fill
+                quality={100}
+                priority={false}
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center top",
+                }}
+              />
+            </picture>
           </div>
 
           <div
