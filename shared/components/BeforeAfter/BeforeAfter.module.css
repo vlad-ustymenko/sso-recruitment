@@ -49,6 +49,7 @@
   line-height: 4rem;
   white-space: pre;
   z-index: 1;
+  opacity: var(--opacityBefore);
 }
 
 .divider {
@@ -92,7 +93,7 @@
   font-family: "UAFBold", sans-serif;
   letter-spacing: -1px;
   line-height: 4rem;
-  opacity: var(--opacity);
+  opacity: var(--opacityAfter);
   transition: opacity 0.3s ease;
   -webkit-tap-highlight-color: transparent;
 }

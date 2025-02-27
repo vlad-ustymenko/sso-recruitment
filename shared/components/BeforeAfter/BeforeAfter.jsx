@@ -84,7 +84,10 @@ const BeforeAfter = ({
         ref={containerRef}
         className={styles.container}
         style={{
-          "--opacity": sliderPosition > 0 ? 1 - (sliderPosition - 5) / 50 : 1,
+          "--opacityAfter":
+            sliderPosition > 0 ? 1 - (sliderPosition - 5) / 50 : 1,
+          "--opacityBefore":
+            sliderPosition > 0 ? 0 + (sliderPosition - 5) / 50 : 0,
         }}
       >
         <h1 className={styles.title}>
