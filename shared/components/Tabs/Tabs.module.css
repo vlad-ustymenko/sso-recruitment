@@ -10,10 +10,18 @@
   margin-bottom: 160px;
 }
 
-.tabContainer {
+.tabWrapper {
+  flex: 1;
   background-color: white;
   padding: 28px 32px 0 32px;
   border-bottom: 1px solid #c5c5c5;
+}
+
+.tabContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
 .tabTitleWrapper {
@@ -32,6 +40,7 @@
 .tabContentWrapper {
   display: grid;
   grid-template-rows: 0fr;
+
   transition: 0.3s ease;
 }
 
@@ -77,7 +86,24 @@
   height: 10px;
   background-color: black;
 }
+.buttonsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 20px;
+}
 
+.button {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.button:hover {
+  color: #1b946b;
+}
 @media (min-width: 768px) and (max-width: 1279px) {
   .title {
     font-size: 18px;
