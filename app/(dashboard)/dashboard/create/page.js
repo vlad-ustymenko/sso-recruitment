@@ -302,7 +302,7 @@ export default function Create() {
             <div key={index} className={styles.imageInputWrapper}>
               <label className={styles.label}>{`${
                 imageKey === "image1"
-                  ? "Велике 1280x690"
+                  ? "Велике 1280x380"
                   : imageKey === "image2"
                   ? "Мініатюра 420x240"
                   : "Іконка 35x35"

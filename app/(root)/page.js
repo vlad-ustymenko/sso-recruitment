@@ -1,7 +1,7 @@
 import BeforeAfter from "@/shared/components/BeforeAfter/BeforeAfter";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
 import Advantages from "@/shared/sections/Advantages/Advantages";
-import Tabs from "@/shared/components/Tabs/Tabs";
+import TabsSection from "@/shared/sections/TabsSection/TabsSection";
 import AdmissionProcess from "@/shared/sections/AdmissionProcess/AdmissionProcess";
 import ParallaxSection from "@/shared/sections/ParallaxSection/ParallaxSection";
 import Contacts from "@/shared/sections/Contacts/Contacts";
@@ -23,7 +23,7 @@ export default function Home() {
         <VacanciesPrewiev title="Кого ми шукаємо?" filter />
         <Advantages />
         <Calculator />
-        <Tabs />
+        <TabsSection />
         <ParallaxSection />
         <News />
         <AdmissionProcess />

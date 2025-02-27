@@ -36,8 +36,6 @@ export default function EditVacancy() {
     isActive: true,
   });
 
-  const [showImageInputs, setShowImageInputs] = useState(false);
-
   useEffect(() => {
     const token =
       typeof window !== "undefined" ? localStorage.getItem("token") : null;
@@ -116,7 +114,6 @@ export default function EditVacancy() {
       iconImage: oldInfo.iconImage,
     };
 
- 
     if (formData.image1 !== oldInfo.bigImage && formData.image1 !== null) {
       const bigImageData = new FormData();
       bigImageData.append("oldImageUrl", oldInfo.bigImage);
@@ -153,7 +150,7 @@ export default function EditVacancy() {
         if (response.ok) {
           dataToSend = {
             ...dataToSend,
-            smallImage: result.newImageUrl, 
+            smallImage: result.newImageUrl,
           };
         }
       } catch (error) {
@@ -161,7 +158,6 @@ export default function EditVacancy() {
       }
     }
 
-   
     if (formData.image3 !== oldInfo.iconImage && formData.image3 !== null) {
       const iconImageData = new FormData();
       iconImageData.append("oldImageUrl", oldInfo.iconImage);
@@ -176,7 +172,7 @@ export default function EditVacancy() {
         if (response.ok) {
           dataToSend = {
             ...dataToSend,
-            iconImage: result.newImageUrl, 
+            iconImage: result.newImageUrl,
           };
         }
       } catch (error) {
@@ -184,7 +180,6 @@ export default function EditVacancy() {
       }
     }
 
-   
     try {
       const saveResponse = await fetch(`/api/vacancies/${id}`, {
         method: "PUT",
@@ -360,7 +355,7 @@ export default function EditVacancy() {
             <div key={index} className={styles.imageInputWrapper}>
               <label className={styles.label}>{`${
                 imageKey === "image1"
-                  ? "Велике 1280x690"
+                  ? "Велике 1280x380"
                   : imageKey === "image2"
                   ? "Мініатюра 420x240"
                   : "Іконка 35x35"

@@ -3,22 +3,25 @@ import { redirect } from "next/navigation";
 import jwt from "jsonwebtoken";
 import React, { useState, useEffect } from "react";
 import { useVacanciesContext } from "@/context/VacanciesContext";
+import { useTabsContext } from "@/context/TabsContext";
 import Container from "@/shared/components/Container/Container";
 import styles from "./page.module.css";
 import BrFromater from "../../../shared/components/BrFormater/BrFromater";
 import Link from "next/link";
+import Tabs from "@/shared/components/Tabs/Tabs";
 
 export default function Dashboard() {
+  const [activePanel, setActivePanel] = useState("tabs");
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const { vacancies, updateVacancyStatus, deleteVacancy } =
     useVacanciesContext();
 
-  // Стани для фільтрів
+  const { tabs, deleteTab } = useTabsContext();
+
   const [filterRank, setFilterRank] = useState(null);
   const [filterType, setFilterType] = useState(null);
   const [filterActive, setFilterActive] = useState(null);
 
-  // Відфільтровані вакансії
   const [filteredVacancies, setFilteredVacancies] = useState(vacancies);
 
   useEffect(() => {
@@ -91,128 +94,164 @@ export default function Dashboard() {
 
   return (
     <Container>
-      <div className={styles.container}>
-        <Link href="/dashboard/create" className={styles.createButton}>
-          Створити вакансію
-        </Link>
-        <button
-          className={styles.logoutButton}
-          onClick={() => {
-            localStorage.removeItem("token");
-            document.location.reload();
-          }}
-        >
-          Вийти
-        </button>
-        <h1 className={styles.title}>Вакансії</h1>
-        <div className={styles.filterWrapper}>
-          <select
-            value={filterRank || ""}
-            onChange={(e) => setFilterRank(e.target.value || null)}
-            style={{
-              border: filterRank !== null && "2px solid #0E7151",
+      <>
+        <div className={styles.container}>
+          <button
+            className={styles.logoutButton}
+            onClick={() => {
+              localStorage.removeItem("token");
+              document.location.reload();
             }}
           >
-            {rankList.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.name}
-              </option>
-            ))}
-          </select>
+            Вийти
+          </button>
 
-          <select
-            value={filterType || ""}
-            onChange={(e) => setFilterType(e.target.value || null)}
-            style={{
-              border: filterType !== null && "2px solid #0E7151",
-            }}
-          >
-            {typeList.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-
-          <select
-            value={filterActive || ""}
-            onChange={(e) => setFilterActive(e.target.value || null)}
-            style={{
-              border: filterActive !== null && "2px solid #0E7151",
-            }}
-          >
-            {activeList.map((item) => (
-              <option key={item.value} value={item.value}>
-                {item.name}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <ul className={styles.vacanciesContainer}>
-          {filteredVacancies.map((vacancy) => (
-            <li
-              className={styles.vacancyWrapper}
-              key={vacancy._id}
-              style={{
-                backgroundColor: vacancy.isActive ? "white" : "#ededed",
-                color: vacancy.isActive ? "black" : "gray",
-              }}
+          <div className={styles.mainButtonsWrapper}>
+            <button
+              className={
+                activePanel === "tabs"
+                  ? `${styles.mainButton} ${styles.active}`
+                  : `${styles.mainButton}`
+              }
+              onClick={() => setActivePanel("tabs")}
             >
-              <div
-                className={styles.vacancyImage}
+              Таби
+            </button>
+            <button
+              className={
+                activePanel === "vacancies"
+                  ? `${styles.mainButton} ${styles.active}`
+                  : `${styles.mainButton}`
+              }
+              onClick={() => setActivePanel("vacancies")}
+            >
+              Вакансії
+            </button>
+          </div>
+
+          {activePanel === "tabs" ? (
+            <Link href="/dashboard/createTab" className={styles.createButton}>
+              Створити
+            </Link>
+          ) : (
+            <Link href="/dashboard/create" className={styles.createButton}>
+              Створити
+            </Link>
+          )}
+        </div>
+        {activePanel === "tabs" ? (
+          <Tabs tabs={tabs} admin deleteTab={deleteTab}></Tabs>
+        ) : (
+          <>
+            <div className={styles.filterWrapper}>
+              <select
+                value={filterRank || ""}
+                onChange={(e) => setFilterRank(e.target.value || null)}
                 style={{
-                  backgroundImage: `url(${vacancy.smallImage})`,
-                  filter: vacancy.isActive ? "blur(0)" : "blur(3px)",
+                  border: filterRank !== null && "2px solid #0E7151",
                 }}
               >
-                <div
-                  className={styles.vacancyIcon}
-                  style={{ backgroundImage: `url(${vacancy.iconImage})` }}
-                ></div>
-              </div>
-              <div className={styles.vacancyContent}>
-                <div className={styles.vacancyTitle}>{vacancy.title}</div>
-                <BrFromater
-                  className={styles.vacancyDescription}
-                  text={vacancy.description}
-                />
-              </div>
-              <div className={styles.buttonsWrapper}>
-                <button
-                  className={styles.button}
-                  onClick={() =>
-                    handleToggleActive(vacancy._id, vacancy.isActive)
-                  }
+                {rankList.map((item) => (
+                  <option key={item.value} value={item.value}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                value={filterType || ""}
+                onChange={(e) => setFilterType(e.target.value || null)}
+                style={{
+                  border: filterType !== null && "2px solid #0E7151",
+                }}
+              >
+                {typeList.map((item) => (
+                  <option key={item.value} value={item.value}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+
+              <select
+                value={filterActive || ""}
+                onChange={(e) => setFilterActive(e.target.value || null)}
+                style={{
+                  border: filterActive !== null && "2px solid #0E7151",
+                }}
+              >
+                {activeList.map((item) => (
+                  <option key={item.value} value={item.value}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <ul className={styles.vacanciesContainer}>
+              {filteredVacancies.map((vacancy) => (
+                <li
+                  className={styles.vacancyWrapper}
+                  key={vacancy._id}
                   style={{
-                    backgroundColor: "#1B946E",
+                    backgroundColor: vacancy.isActive ? "white" : "#ededed",
+                    color: vacancy.isActive ? "black" : "gray",
                   }}
                 >
-                  {vacancy.isActive ? "Деактивувати" : "Активувати"}
-                </button>
+                  <div
+                    className={styles.vacancyImage}
+                    style={{
+                      backgroundImage: `url(${vacancy.smallImage})`,
+                      filter: vacancy.isActive ? "blur(0)" : "blur(3px)",
+                    }}
+                  >
+                    <div
+                      className={styles.vacancyIcon}
+                      style={{ backgroundImage: `url(${vacancy.iconImage})` }}
+                    ></div>
+                  </div>
+                  <div className={styles.vacancyContent}>
+                    <div className={styles.vacancyTitle}>{vacancy.title}</div>
+                    <BrFromater
+                      className={styles.vacancyDescription}
+                      text={vacancy.description}
+                    />
+                  </div>
+                  <div className={styles.buttonsWrapper}>
+                    <button
+                      className={styles.button}
+                      onClick={() =>
+                        handleToggleActive(vacancy._id, vacancy.isActive)
+                      }
+                      style={{
+                        backgroundColor: "#1B946E",
+                      }}
+                    >
+                      {vacancy.isActive ? "Деактивувати" : "Активувати"}
+                    </button>
 
-                <Link
-                  href={`dashboard/edit/${vacancy._id}`}
-                  className={styles.button}
-                  style={{
-                    backgroundColor: "gray",
-                  }}
-                >
-                  Редагувати
-                </Link>
+                    <Link
+                      href={`dashboard/edit/${vacancy._id}`}
+                      className={styles.button}
+                      style={{
+                        backgroundColor: "gray",
+                      }}
+                    >
+                      Редагувати
+                    </Link>
 
-                <button
-                  className={styles.button}
-                  style={{ backgroundColor: "#f49292" }}
-                  onClick={() => handleDelete(vacancy._id)}
-                >
-                  Видалити
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+                    <button
+                      className={styles.button}
+                      style={{ backgroundColor: "#f49292" }}
+                      onClick={() => handleDelete(vacancy._id)}
+                    >
+                      Видалити
+                    </button>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
+      </>
     </Container>
   );
 }

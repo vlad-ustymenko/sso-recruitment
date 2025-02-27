@@ -1,11 +1,22 @@
 .container {
-  position: relative;
+  margin: 40px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mainButtonsWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.active {
+  border-bottom: 4px solid #1b946e !important;
 }
 
 .createButton {
-  position: absolute;
-  top: 0;
-  right: 40px;
   font-family: "UAFSemiBold", sans-serif;
   color: white;
   padding: 10px 20px;
@@ -18,9 +29,6 @@
 }
 
 .logoutButton {
-  position: absolute;
-  top: 0;
-  left: 40px;
   font-family: "UAFSemiBold", sans-serif;
   color: white;
   padding: 10px 20px;
@@ -32,11 +40,14 @@
   text-align: center;
 }
 
-.title {
-  text-align: center;
-  font-family: "UAFBold", sans-serif;
+.mainButton {
+  -webkit-tap-highlight-color: transparent;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-family: "UAFSemiBold", sans-serif;
   font-size: 30px;
-  margin: 40px 0;
+  background-color: transparent;
 }
 
 .vacanciesContainer li:nth-child(even) {
@@ -64,7 +75,6 @@
   font-family: "UAFSemiBold", sans-serif;
   font-size: 26px;
   margin-bottom: 20px;
-  line-height: 1;
 }
 
 .vacancyDescription {
