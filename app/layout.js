@@ -3,6 +3,7 @@ import "./globals.css";
 import localFont from "next/font/local";
 import { MenuProvider } from "../context/MenuContext";
 import { VacanciesProvider } from "@/context/VacanciesContext";
+import { TabsProvider } from "@/context/TabsContext";
 import { ModalProvider } from "@/context/ModalContext";
 import Script from "next/script";
 
@@ -70,26 +71,28 @@ export default function RootLayout({ children }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <MenuProvider>
-        <ModalProvider>
-          <VacanciesProvider>
-            <body
-              className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
-              style={{ position: "relative" }}
-            >
-              <noscript>
-                <iframe
-                  src="https://www.googletagmanager.com/ns.html?id=GTM-M3KHTFHB"
-                  height="0"
-                  width="0"
-                  style={{ display: "none", visibility: "hidden" }}
-                />
-              </noscript>
-              {children}
-            </body>
-          </VacanciesProvider>
-        </ModalProvider>
-      </MenuProvider>
+      <TabsProvider>
+        <MenuProvider>
+          <ModalProvider>
+            <VacanciesProvider>
+              <body
+                className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
+                style={{ position: "relative" }}
+              >
+                <noscript>
+                  <iframe
+                    src="https://www.googletagmanager.com/ns.html?id=GTM-M3KHTFHB"
+                    height="0"
+                    width="0"
+                    style={{ display: "none", visibility: "hidden" }}
+                  />
+                </noscript>
+                {children}
+              </body>
+            </VacanciesProvider>
+          </ModalProvider>
+        </MenuProvider>
+      </TabsProvider>
     </html>
   );
 }
