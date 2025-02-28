@@ -168,6 +168,10 @@ const Advantages = () => {
     <Container>
       <div className={styles.advantages}>
         <div className={styles.image}></div>
+        {/* <video className={styles.video} autoPlay loop muted playsInline>
+          <source src="/videos/test.webm" type="video/webm" />
+          Ваш браузер не підтримує відео.
+        </video> */}
         <h2 className={styles.title}>Переваги служби в ССО</h2>
         <div className={styles.container} ref={sectionRef}>
           <div
