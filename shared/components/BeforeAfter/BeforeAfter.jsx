@@ -95,46 +95,42 @@ const BeforeAfter = ({
           <br /> Рекрутинг
         </h1>
         <div className={styles.imageWrapper}>
-          <div className={styles.afterImage}>
-            <picture>
-              <source srcSet={afterMobile} media="(max-width: 768px)" />
-              <source srcSet={afterImage} media="(min-width: 769px)" />
-              <Image
-                src={afterImage}
-                alt="After"
-                fill
-                quality={100}
-                priority={false}
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center top",
-                }}
-              />
-            </picture>
-          </div>
+          <picture className={styles.afterImage}>
+            <source srcSet={afterMobile} media="(max-width: 768px)" />
+            <source srcSet={afterImage} media="(min-width: 769px)" />
+            <Image
+              src={afterImage}
+              alt="After"
+              fill
+              quality={100}
+              priority={true}
+              style={{
+                objectFit: "cover",
+                objectPosition: "center top",
+              }}
+            />
+          </picture>
 
-          <div
+          <picture
             className={styles.beforeImage}
             style={{
               clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
             }}
           >
-            <picture>
-              <source srcSet={beforeMobile} media="(max-width: 768px)" />
-              <source srcSet={beforeImage} media="(min-width: 769px)" />
-              <Image
-                src={beforeImage}
-                alt="Before"
-                fill
-                quality={100}
-                priority={false}
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center top",
-                }}
-              />
-            </picture>
-          </div>
+            <source srcSet={beforeMobile} media="(max-width: 768px)" />
+            <source srcSet={beforeImage} media="(min-width: 769px)" />
+            <Image
+              src={beforeImage}
+              alt="Before"
+              fill
+              quality={100}
+              priority={true}
+              style={{
+                objectFit: "cover",
+                objectPosition: "center top",
+              }}
+            />
+          </picture>
 
           <div
             className={styles.divider}
