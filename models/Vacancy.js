@@ -11,6 +11,8 @@ const VacancySchema = new mongoose.Schema(
     responsibilities: { type: String, required: true },
     guarantees: { type: String, required: true },
     militaryUnit: { type: String, required: true },
+    metaTitle: { type: String, required: true },
+    metaDescription: { type: String, required: true },
     bigImage: { type: String, required: true },
     smallImage: { type: String, required: true },
     iconImage: { type: String, required: true },
@@ -19,7 +21,6 @@ const VacancySchema = new mongoose.Schema(
   { collection: "vacancies" }
 );
 
-// Перевіряємо, чи вже є модель, щоб не створювати її повторно
 const Vacancy =
   mongoose.models.Vacancy || mongoose.model("Vacancy", VacancySchema);
 

@@ -30,6 +30,8 @@ export default function EditVacancy() {
     responsibilities: "",
     guarantees: "",
     militaryUnit: "",
+    metaTitle: "",
+    metaDescription: "",
     image1: null,
     image2: null,
     image3: null,
@@ -235,6 +237,8 @@ export default function EditVacancy() {
           },
           { name: "guarantees", label: "Гарантії", textarea: true },
           { name: "militaryUnit", label: "Військова частина" },
+          { name: "metaTitle", label: "Meta Title" },
+          { name: "metaDescription", label: "Meta Description" },
         ].map(({ name, label, textarea }) => (
           <div key={name} className={styles.inputGroup}>
             <label htmlFor={name} className={styles.label}>
@@ -279,7 +283,7 @@ export default function EditVacancy() {
                 id={name}
                 type="text"
                 name={name}
-                value={formData[name]}
+                value={formData[name] || ""}
                 onChange={handleChange}
                 required
                 className={styles.input}

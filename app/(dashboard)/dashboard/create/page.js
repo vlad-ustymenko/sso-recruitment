@@ -27,6 +27,8 @@ export default function Create() {
     responsibilities: "",
     guarantees: "",
     militaryUnit: "",
+    metaTitle: "",
+    metaDescription: "",
     image1: null,
     image2: null,
     image3: null,
@@ -141,6 +143,8 @@ export default function Create() {
         responsibilities: "",
         guarantees: "",
         militaryUnit: "",
+        metaTitle: "",
+        metaDescription: "",
         image1: null,
         image2: null,
         image3: null,
@@ -181,6 +185,8 @@ export default function Create() {
           },
           { name: "guarantees", label: "Гарантії", textarea: true },
           { name: "militaryUnit", label: "Військова частина" },
+          { name: "metaTitle", label: "Meta Title" },
+          { name: "metaDescription", label: "Meta Description" },
         ].map(({ name, label, textarea }) => (
           <div key={name} className={styles.inputGroup}>
             <label htmlFor={name} className={styles.label}>

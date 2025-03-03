@@ -1,6 +1,5 @@
 import React from "react";
 import { redirect } from "next/navigation";
-import styles from "./page.module.css";
 import Container from "@/shared/components/Container/Container";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
 import Menu from "@/shared/components/Menu/Menu";
@@ -8,6 +7,43 @@ import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import Modal from "@/shared/components/Modal/Modal";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
 import { Button } from "@/shared/components/Button/Button";
+import styles from "./page.module.css";
+
+export async function generateMetadata({ params }) {
+  const { _id } = await params;
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_SITE_URL}/api/vacancies/${_id}`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  if (!res.ok) {
+    return {
+      title: "Вакансії не знайдено",
+      description: "Вакансія, яку ви шукаєте, не знайдена.",
+    };
+  }
+
+  const vacancy = await res.json();
+
+  if (!vacancy) {
+    return {
+      title: "Вакансії не знайдено",
+      description: "Вакансія, яку ви шукаєте, не знайдена.",
+    };
+  }
+
+  const pageTitle = vacancy.metaTitle || vacancy.title || "Вакансія";
+  const pageDescription =
+    vacancy.metaDescription || vacancy.description || "Опис вакансії";
+
+  return {
+    title: pageTitle,
+    description: pageDescription,
+  };
+}
 
 const VacancyPage = async ({ params }) => {
   const { _id } = await params;
@@ -33,6 +69,8 @@ const VacancyPage = async ({ params }) => {
     vacancy.responsibilities?.split("*").filter((item) => item) || [];
   const guarantees =
     vacancy.guarantees?.split("*").filter((item) => item) || [];
+
+  console.log(vacancy.metaTitle);
 
   return (
     <main>

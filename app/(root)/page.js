@@ -22,7 +22,6 @@ export default function Home() {
         />
         <VacanciesPrewiev title="Кого ми шукаємо?" filter />
         <Advantages />
-        <Calculator />
         <TabsSection />
         <ParallaxSection />
         <News />
