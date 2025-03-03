@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import styles from "./Advantages.module.css";
 import Container from "@/shared/components/Container/Container";
 import AdvantagesCard from "@/shared/components/AdvantagesCard/AdvantagesCard";
+import Calculator from "../Calculator/Calculator";
 
 const Advantages = () => {
   const cards = [
@@ -58,9 +59,8 @@ const Advantages = () => {
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.intersectionRatio === 1) {
+        if (entry.isIntersecting) {
           document.documentElement.style.overflow = "hidden";
-
           window.scrollTo({
             top: window.scrollY,
             behavior: "instant",
@@ -70,16 +70,16 @@ const Advantages = () => {
             e.preventDefault();
             const delta = e.deltaY;
 
-            setScrollCount((prevscrollCount) => {
-              let newscrollCount = prevscrollCount + delta;
+            setScrollCount((prevScrollCount) => {
+              let newScrollCount = prevScrollCount + delta;
 
               if (containerRef.current) {
                 if (
-                  newscrollCount >=
+                  newScrollCount >=
                   containerRef.current.scrollWidth -
                     containerRef.current.offsetWidth
                 ) {
-                  newscrollCount =
+                  newScrollCount =
                     containerRef.current.scrollWidth -
                     containerRef.current.offsetWidth;
 
@@ -87,14 +87,14 @@ const Advantages = () => {
                   window.removeEventListener("wheel", handleScroll);
                 }
 
-                if (newscrollCount < 0) {
+                if (newScrollCount < 0) {
                   document.documentElement.style.overflow = "";
                   window.removeEventListener("wheel", handleScroll);
                   return 0;
                 }
               }
 
-              return newscrollCount;
+              return newScrollCount;
             });
           };
 
@@ -104,41 +104,35 @@ const Advantages = () => {
 
           const handleTouchMove = (e) => {
             const touchMoveX = touchStartX.current - e.touches[0].clientY;
-            if (touchMoveX < 0) {
-              const delta = -30;
-              setScrollCount((prevscrollCount) => {
-                let newscrollCount = prevscrollCount + delta;
-                if (newscrollCount <= 0) {
-                  document.documentElement.style.overflow = "";
-                  window.removeEventListener("touchmove", handleTouchMove);
-                  return 0;
-                }
-                return newscrollCount;
-              });
-            }
-            if (touchMoveX > 0) {
-              const delta = 30;
-              setScrollCount((prevscrollCount) => {
-                let newscrollCount = prevscrollCount + delta;
-                if (
-                  newscrollCount >=
-                  containerRef.current.scrollWidth -
-                    containerRef.current.offsetWidth
-                ) {
-                  newscrollCount =
-                    containerRef.current.scrollWidth -
-                    containerRef.current.offsetWidth;
+            const delta = touchMoveX > 0 ? 30 : -30;
 
-                  document.documentElement.style.overflow = "";
-                  window.removeEventListener("touchmove", handleTouchMove);
-                }
-                return newscrollCount;
-              });
-            }
+            setScrollCount((prevScrollCount) => {
+              let newScrollCount = prevScrollCount + delta;
+
+              if (newScrollCount <= 0) {
+                document.documentElement.style.overflow = "";
+                window.removeEventListener("touchmove", handleTouchMove);
+                return 0;
+              }
+
+              if (
+                newScrollCount >=
+                containerRef.current.scrollWidth -
+                  containerRef.current.offsetWidth
+              ) {
+                newScrollCount =
+                  containerRef.current.scrollWidth -
+                  containerRef.current.offsetWidth;
+
+                document.documentElement.style.overflow = "";
+                window.removeEventListener("touchmove", handleTouchMove);
+              }
+
+              return newScrollCount;
+            });
           };
 
           window.addEventListener("wheel", handleScroll, { passive: false });
-
           window.addEventListener("touchmove", handleTouchMove, {
             passive: false,
           });
@@ -153,7 +147,9 @@ const Advantages = () => {
         }
       },
       {
-        threshold: 1,
+        root: null,
+        rootMargin: "-50% 0px -50% 0px",
+        threshold: 0,
       }
     );
 
@@ -167,11 +163,13 @@ const Advantages = () => {
   return (
     <Container>
       <div className={styles.advantages}>
-        <div className={styles.image}></div>
-        {/* <video className={styles.video} autoPlay loop muted playsInline>
-          <source src="/videos/test.webm" type="video/webm" />
+        {/* <div className={styles.image}></div> */}
+
+        <video className={styles.video} autoPlay loop muted playsInline>
+          <source src="/videos/logoAnimation.webm" type="video/webm" />
           Ваш браузер не підтримує відео.
-        </video> */}
+        </video>
+
         <h2 className={styles.title}>Переваги служби в ССО</h2>
         <div className={styles.container} ref={sectionRef}>
           <div
@@ -184,6 +182,7 @@ const Advantages = () => {
             ))}
           </div>
         </div>
+        <Calculator></Calculator>
       </div>
     </Container>
   );

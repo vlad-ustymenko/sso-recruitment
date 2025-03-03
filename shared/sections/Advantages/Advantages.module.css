@@ -1,6 +1,13 @@
 .container {
   width: 100%;
   transition: transform 0.1s ease;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  background-color: rgba(243, 243, 233, 0.7);
+}
+
+.advantages {
+  margin-bottom: 136px;
 }
 
 .title {
@@ -14,7 +21,6 @@
   display: grid;
   grid-auto-columns: calc(100% / 3);
   grid-auto-flow: column;
-  margin-bottom: 136px;
 }
 
 .image {
@@ -28,6 +34,14 @@
   background-repeat: no-repeat;
 }
 
+.video {
+  position: sticky;
+  top: calc(50% - 200px);
+  width: 100%;
+  height: 400px;
+  margin-bottom: 100px;
+}
+
 @media (min-width: 768px) and (max-width: 1279px) {
   .wrapper {
     grid-auto-columns: calc(100% / 2);
@@ -37,6 +51,8 @@
 @media (max-width: 767px) {
   .wrapper {
     grid-auto-columns: 100%;
+  }
+  .advantages {
     margin-bottom: 100px;
   }
 }

@@ -355,7 +355,7 @@ const Calculator = () => {
   ];
 
   return (
-    <Container>
+    <>
       <div className={styles.container}>
         <div className={styles.mainWrapper}>
           <div className={styles.titleWrapper}>
@@ -408,7 +408,7 @@ const Calculator = () => {
           )} грн`}</div>
         </div>
       </div>
-    </Container>
+    </>
   );
 };
 
