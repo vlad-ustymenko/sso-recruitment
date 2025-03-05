@@ -1,10 +1,8 @@
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
-import { MenuProvider } from "../context/MenuContext";
-import { VacanciesProvider } from "@/context/VacanciesContext";
-import { TabsProvider } from "@/context/TabsContext";
-import { ModalProvider } from "@/context/ModalContext";
+
+import Providers from "@/shared/components/Providers/Providers";
 import Script from "next/script";
 
 const UAFBold = localFont({
@@ -71,28 +69,21 @@ export default function RootLayout({ children }) {
         />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <TabsProvider>
-        <MenuProvider>
-          <ModalProvider>
-            <VacanciesProvider>
-              <body
-                className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
-                style={{ position: "relative" }}
-              >
-                <noscript>
-                  <iframe
-                    src="https://www.googletagmanager.com/ns.html?id=GTM-M3KHTFHB"
-                    height="0"
-                    width="0"
-                    style={{ display: "none", visibility: "hidden" }}
-                  />
-                </noscript>
-                {children}
-              </body>
-            </VacanciesProvider>
-          </ModalProvider>
-        </MenuProvider>
-      </TabsProvider>
+
+      <body
+        className={`${UAFBold.className} ${UAFSemiBold.className} ${UAFRegular.className}`}
+        style={{ position: "relative" }}
+      >
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-M3KHTFHB"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
