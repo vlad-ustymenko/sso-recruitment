@@ -13,7 +13,7 @@ export default function Vacancies() {
   const { activeFormModal, setActiveFormModal } = useModalContext();
 
   return (
-    <main>
+    <main className={styles.main}>
       <div className={styles.mainScreen}>
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleWrapper_title}> Кого ми шукаємо?</h1>
