@@ -85,7 +85,7 @@ const AdmissionProcess = () => {
       <div className={styles.titleWrapper}>
         <h2 className={styles.title}>Процес вступу до ССО</h2>
         <h3 className={styles.description}>
-          Дізнайтесь все саме актуальне про те як підготуватись до служби в ССО
+          Дізнайтесь все саме актуальне про те, як підготуватись до служби в ССО
         </h3>
       </div>
       <div className={styles.progressContainer}>

@@ -364,7 +364,7 @@ const Calculator = () => {
               <br /> зарплати
             </h2>
             <p className={styles.description}>
-              Дізнайтесь скільки ви можете заробляти, приєднавшись до ССО
+              Дізнайтесь, скільки ви можете заробляти, приєднавшись до ССО
             </p>
           </div>
           <div className={styles.dropDownsWrapper}>

@@ -31,7 +31,7 @@ const Contacts = () => {
           <div className={styles.time}>з 9:00 до 18:00</div>
         </li>
       </ul>
-      <div className={styles.title}>Телефонуй якщо є питання</div>
+      <div className={styles.title}>Телефонуй, якщо є питання</div>
       <div className={styles.telephoneWrapper}>
         <a href="tel:0800 357 174" type="tel" className={styles.telephone}>
           0800 357 174
