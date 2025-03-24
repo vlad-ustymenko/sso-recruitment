@@ -63,7 +63,9 @@ export default function Tabs({ tabs, title, admin, deleteTab }) {
                   }
                 }}
               >
-                <div className={styles.tabNumber}>0{index + 1}</div>
+                <div className={styles.tabNumber}>
+                  {index < 9 ? `0${index + 1}` : `${index + 1}`}
+                </div>
                 <div className={styles.tabTitle} ref={contentContainerRef}>
                   {tab.title}
                 </div>
