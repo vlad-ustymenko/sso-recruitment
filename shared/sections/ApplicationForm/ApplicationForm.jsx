@@ -1,10 +1,12 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useForm, Controller } from "react-hook-form";
 import Checkbox from "../../../src/assets/checkbox.svg";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import { useModalContext } from "../../../context/ModalContext";
+import IMask from "imask";
 import styles from "./ApplicationForm.module.css";
+
 const ApplicationForm = ({ title, vacancy }) => {
   const [sending, setSending] = useState(false);
   const [activeCheckbox, setActiveCheckbox] = useState(false);
@@ -12,6 +14,7 @@ const ApplicationForm = ({ title, vacancy }) => {
     useModalContext();
 
   const formRef = useRef(null);
+  const phoneInputRef = useRef(null);
 
   const {
     handleSubmit,
@@ -19,6 +22,15 @@ const ApplicationForm = ({ title, vacancy }) => {
     formState: { errors },
     reset,
   } = useForm();
+
+  useEffect(() => {
+    if (phoneInputRef.current) {
+      IMask(phoneInputRef.current, {
+        mask: "+38 (000) 000-00-00",
+        placeholder: "_",
+      });
+    }
+  }, []);
 
   const onSubmit = async (data) => {
     if (!activeCheckbox) {
@@ -149,22 +161,22 @@ const ApplicationForm = ({ title, vacancy }) => {
             rules={{
               required: "Це поле обов’язкове",
               pattern: {
-                value: /^[0-9]{10}$/,
-                message: "Номер телефону повинен містити 10 цифр",
+                value: /^\+38 \(\d{3}\) \d{3}-\d{2}-\d{2}$/,
+                message:
+                  "Номер телефону повинен відповідати формату +38 (XXX) XXX-XX-XX",
               },
             }}
             render={({ field }) => (
               <input
                 {...field}
+                ref={phoneInputRef}
                 className={styles.input}
                 id="phone"
                 autoComplete="phone"
                 type="tel"
-                placeholder="Ваш номер телефону"
-                maxLength={10}
+                placeholder="телефон"
                 onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, "").slice(0, 10);
-                  field.onChange(value);
+                  field.onChange(e.target.value);
                 }}
               />
             )}
