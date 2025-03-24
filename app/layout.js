@@ -30,7 +30,7 @@ export const metadata = {
   metadataBase: new URL("https://sofua.army"),
   title: "Рекрутинг Сил спеціальних операцій.",
   description: "Звичайні люди. Надзвичайні задачі.",
-  icons: "/favicon.png",
+  icons: "/favicon.ico",
   openGraph: {
     title: "Рекрутинг Сил спеціальних операцій.",
     description: "Звичайні люди. Надзвичайні задачі.",
