@@ -6,8 +6,10 @@ export async function GET(req, context) {
   const { params } = context;
   const { id } = await params;
 
+  console.log(id);
+
   try {
-    const vacancy = await Vacancy.findById(id);
+    const vacancy = await Vacancy.findOne({ slug: id });
     if (!vacancy)
       return Response.json(
         { message: "Вакансія не знайдена" },
@@ -29,7 +31,7 @@ export async function PUT(req, { params }) {
   const data = await req.json();
 
   try {
-    const updatedVacancy = await Vacancy.findByIdAndUpdate(id, data, {
+    const updatedVacancy = await Vacancy.findOneAndUpdate({ slug: id }, data, {
       new: true,
     });
     return Response.json(updatedVacancy, { status: 200 });

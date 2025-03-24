@@ -38,10 +38,22 @@ export async function generateMetadata({ params }) {
   const pageTitle = vacancy.metaTitle || vacancy.title || "Вакансія";
   const pageDescription =
     vacancy.metaDescription || vacancy.description || "Опис вакансії";
-
+  const pageImage = vacancy.bigImage || "/og-image.jpg";
   return {
     title: pageTitle,
     description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      images: [
+        {
+          url: pageImage,
+          width: 1280,
+          height: 690,
+          alt: pageTitle,
+        },
+      ],
+    },
   };
 }
 

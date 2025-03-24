@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const VacancySchema = new mongoose.Schema(
   {
     title: { type: String, required: true },
+    slug: { type: String, required: true },
     subTitle: { type: String, required: true },
     description: { type: String, required: true },
     credo: { type: String, required: true },

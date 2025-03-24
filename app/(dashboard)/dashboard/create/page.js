@@ -19,6 +19,7 @@ export default function Create() {
 
   const [formData, setFormData] = useState({
     title: "",
+    slug: "",
     subTitle: "",
     description: "",
     credo: "",
@@ -60,9 +61,66 @@ export default function Create() {
     }
   }, [isSending]);
 
+  const transliterate = (text) => {
+    const map = {
+      а: "a",
+      б: "b",
+      в: "v",
+      г: "h",
+      ґ: "g",
+      д: "d",
+      е: "e",
+      є: "ye",
+      ж: "zh",
+      з: "z",
+      и: "y",
+      і: "i",
+      ї: "yi",
+      й: "y",
+      к: "k",
+      л: "l",
+      м: "m",
+      н: "n",
+      о: "o",
+      п: "p",
+      р: "r",
+      с: "s",
+      т: "t",
+      у: "u",
+      ф: "f",
+      х: "kh",
+      ц: "ts",
+      ч: "ch",
+      ш: "sh",
+      щ: "shch",
+      ь: "",
+      ю: "yu",
+      я: "ya",
+      "'": "",
+      "’": "",
+    };
+
+    return text
+      .toLowerCase()
+      .split("")
+      .map((char) => map[char] || char)
+      .join("")
+      .replace(/[^a-z0-9-]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
+
+    setFormData((prevData) => {
+      const updatedData = { ...prevData, [name]: value };
+
+      if (name === "title") {
+        updatedData.slug = transliterate(value);
+      }
+
+      return updatedData;
+    });
   };
 
   const handleImageChange = (e) => {
@@ -135,6 +193,7 @@ export default function Create() {
       });
       setFormData({
         title: "",
+        slug: "",
         subTitle: "",
         description: "",
         credo: "",
@@ -175,6 +234,7 @@ export default function Create() {
       <form onSubmit={handleSubmit} className={styles.form}>
         {[
           { name: "title", label: "Назва вакансії" },
+          { name: "slug", label: "Slug" },
           { name: "subTitle", label: "Підзаголовок", textarea: true },
           { name: "description", label: "Опис вакансії", textarea: true },
           { name: "credo", label: "Кредо", textarea: true },

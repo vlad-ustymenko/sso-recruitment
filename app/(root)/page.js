@@ -29,7 +29,7 @@ export default function Home() {
         <div className={styles.yellowContainer}>
           <VerticalCarousel></VerticalCarousel>
           <ApplicationForm
-            title="Перший шлях в ССО,& це заповнити заявку"
+            title="Перший шлях в ССО - & це заповнити заявку"
             vacancy="main"
           />
           <Contacts />

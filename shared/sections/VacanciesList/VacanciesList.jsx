@@ -103,7 +103,7 @@ const VacanciesList = () => {
                 </p>
                 <Button
                   title="Детальніше"
-                  pageID={vacancy._id}
+                  pageID={vacancy.slug}
                   vacancyButton
                 ></Button>
               </div>

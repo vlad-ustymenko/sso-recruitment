@@ -24,7 +24,7 @@ const Card = React.forwardRef(({ vacancie }, ref) => {
         className={styles.button}
         title="Детальніше"
         onClick={() => {
-          router.push(`/vacancy/${vacancie._id}`);
+          router.push(`/vacancy/${vacancie.slug}`);
         }}
       >
         ДЕТАЛЬНІШЕ

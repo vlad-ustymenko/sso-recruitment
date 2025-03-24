@@ -229,7 +229,7 @@ export default function Dashboard() {
                     </button>
 
                     <Link
-                      href={`dashboard/edit/${vacancy._id}`}
+                      href={`dashboard/edit/${vacancy.slug}`}
                       className={styles.button}
                       style={{
                         backgroundColor: "gray",
