@@ -10,6 +10,10 @@ const items = [
   "/images/03.webp",
   "/images/04.webp",
   "/images/05.webp",
+  "/images/06.webp",
+  "/images/07.webp",
+  "/images/08.webp",
+  "/images/09.webp",
 ];
 
 export default function HorizontalCarousel() {
@@ -27,25 +31,37 @@ export default function HorizontalCarousel() {
   const positions = useMemo(() => {
     const configs = {
       mobile: [
-        { scale: 0.6, x: -100, opacity: 0.3, zIndex: 1 },
-        { scale: 0.8, x: -50, opacity: 0.6, zIndex: 2 },
-        { scale: 1, x: 0, opacity: 1, zIndex: 3 },
-        { scale: 0.8, x: 50, opacity: 0.6, zIndex: 2 },
-        { scale: 0.6, x: 100, opacity: 0.3, zIndex: 1 },
+        { scale: 0.2, x: -160, opacity: 0.1, zIndex: 1 },
+        { scale: 0.4, x: -120, opacity: 0.2, zIndex: 2 },
+        { scale: 0.6, x: -80, opacity: 0.3, zIndex: 3 },
+        { scale: 0.8, x: -40, opacity: 0.6, zIndex: 4 },
+        { scale: 1, x: 0, opacity: 1, zIndex: 5 },
+        { scale: 0.8, x: 40, opacity: 0.6, zIndex: 4 },
+        { scale: 0.6, x: 80, opacity: 0.3, zIndex: 3 },
+        { scale: 0.4, x: 120, opacity: 0.2, zIndex: 2 },
+        { scale: 0.2, x: 160, opacity: 0.1, zIndex: 1 },
       ],
       desktop: [
-        { scale: 0.6, x: -500, opacity: 0.3, zIndex: 1 },
-        { scale: 0.8, x: -250, opacity: 0.6, zIndex: 2 },
-        { scale: 1, x: 0, opacity: 1, zIndex: 3 },
-        { scale: 0.8, x: 250, opacity: 0.6, zIndex: 2 },
-        { scale: 0.6, x: 500, opacity: 0.3, zIndex: 1 },
+        { scale: 0.2, x: -1000, opacity: 0.1, zIndex: 1 },
+        { scale: 0.4, x: -750, opacity: 0.2, zIndex: 2 },
+        { scale: 0.6, x: -500, opacity: 0.3, zIndex: 3 },
+        { scale: 0.8, x: -250, opacity: 0.6, zIndex: 4 },
+        { scale: 1, x: 0, opacity: 1, zIndex: 5 },
+        { scale: 0.8, x: 250, opacity: 0.6, zIndex: 4 },
+        { scale: 0.6, x: 500, opacity: 0.3, zIndex: 3 },
+        { scale: 0.4, x: 750, opacity: 0.2, zIndex: 2 },
+        { scale: 0.2, x: 1000, opacity: 0.1, zIndex: 1 },
       ],
       tablet: [
-        { scale: 0.6, x: -300, opacity: 0.3, zIndex: 1 },
-        { scale: 0.8, x: -200, opacity: 0.6, zIndex: 2 },
-        { scale: 1, x: 0, opacity: 1, zIndex: 3 },
-        { scale: 0.8, x: 200, opacity: 0.6, zIndex: 2 },
-        { scale: 0.6, x: 300, opacity: 0.3, zIndex: 1 },
+        { scale: 0.2, x: -500, opacity: 0.1, zIndex: 1 },
+        { scale: 0.4, x: -400, opacity: 0.2, zIndex: 2 },
+        { scale: 0.6, x: -300, opacity: 0.3, zIndex: 3 },
+        { scale: 0.8, x: -200, opacity: 0.6, zIndex: 4 },
+        { scale: 1, x: 0, opacity: 1, zIndex: 5 },
+        { scale: 0.8, x: 200, opacity: 0.6, zIndex: 4 },
+        { scale: 0.6, x: 300, opacity: 0.3, zIndex: 3 },
+        { scale: 0.4, x: 400, opacity: 0.2, zIndex: 2 },
+        { scale: 0.2, x: 500, opacity: 0.1, zIndex: 1 },
       ],
     };
     return viewWidth < 768
