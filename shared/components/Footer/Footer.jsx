@@ -124,7 +124,9 @@ const Footer = () => {
           <p className={styles.copyright}>
             Copyright 2024. All Rights Reserved
           </p>
-          <DesignetBy />
+          <a href="https://vintage.com.ua/" target="_blank">
+            <DesignetBy />
+          </a>
         </div>
       </Container>
     </footer>
