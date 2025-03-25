@@ -1,3 +1,5 @@
+export const revalidation = 3600;
+
 export default async function sitemap() {
   const baseUrl = "https://sofua.army";
 
