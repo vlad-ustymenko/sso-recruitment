@@ -6,8 +6,6 @@ export async function GET(req, context) {
   const { params } = context;
   const { id } = await params;
 
-  console.log(id);
-
   try {
     const vacancy = await Vacancy.findOne({ slug: id });
     if (!vacancy)
