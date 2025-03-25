@@ -91,6 +91,7 @@ const VacancyPage = async ({ params }) => {
           alt="mainScreen"
           width={1280}
           height={690}
+          priority
           className={styles.mainScreenImage}
         ></Image>
         <Button

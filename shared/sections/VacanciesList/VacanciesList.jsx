@@ -87,7 +87,8 @@ const VacanciesList = () => {
                 <Image
                   src={vacancy.smallImage}
                   alt={vacancy.title}
-                  fill
+                  width={420}
+                  height={240}
                   className={styles.image}
                 />
                 <Image

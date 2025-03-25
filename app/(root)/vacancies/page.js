@@ -21,6 +21,7 @@ export default function Vacancies() {
           alt="mainScreen"
           width={1280}
           height={690}
+					priority
           className={styles.mainScreenImage}
         ></Image>
         <div className={styles.titleWrapper}>
