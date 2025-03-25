@@ -5,6 +5,8 @@ import { useState } from "react";
 
 import styles from "./VacanciesList.module.css";
 import BrFromater from "@/shared/components/BrFormater/BrFromater";
+import Image from "next/image";
+import { ImageDownIcon } from "lucide-react";
 
 const VacanciesList = () => {
   const [rank, setRank] = useState("all");
@@ -81,20 +83,20 @@ const VacanciesList = () => {
         ) : (
           filteredVacancies.map((vacancy) => (
             <li key={vacancy._id} className={styles.vacancyWrapper}>
-              <div
-                className={styles.image}
-                style={{
-                  backgroundImage: `url(${vacancy.smallImage})`,
-                  width: "100%",
-                  height: "300px",
-                }}
-              >
-                <div
+              <div className={styles.imageWrapper}>
+                <Image
+                  src={vacancy.smallImage}
+                  alt={vacancy.title}
+                  fill
+                  className={styles.image}
+                />
+                <Image
                   className={styles.icon}
-                  style={{
-                    backgroundImage: `url(${vacancy.iconImage})`,
-                  }}
-                ></div>
+                  width={30}
+                  height={30}
+                  src={vacancy.iconImage}
+                  alt="Military unit sign"
+                ></Image>
               </div>
               <div className={styles.vacancyContent}>
                 <h2 className={styles.vacancyTitle}>{vacancy.title}</h2>

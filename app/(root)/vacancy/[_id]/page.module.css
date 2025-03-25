@@ -2,8 +2,15 @@
   position: relative;
   width: 100%;
   height: 100svh;
-  background-size: cover;
-  background-position: center;
+}
+
+.mainScreenImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .mainScreen::before {
   content: "";
@@ -14,6 +21,7 @@
   height: 100%;
   background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
   pointer-events: none;
+  z-index: 1;
 }
 
 .titleWrapper {
@@ -22,6 +30,7 @@
   left: 180px;
   transform: translateY(-50%);
   color: white;
+  z-index: 2;
 }
 
 .titleWrapper_title {
@@ -120,7 +129,6 @@
     padding-top: 30px;
     grid-template-columns: 1fr;
     border-bottom: none;
-
     gap: 0;
   }
 }

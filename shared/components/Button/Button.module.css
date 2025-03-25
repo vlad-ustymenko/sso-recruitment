@@ -27,6 +27,7 @@
   padding: 10px 0;
   cursor: pointer;
   text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
+  z-index: 2;
 }
 .backButton:hover {
   transform: scale(1.1);

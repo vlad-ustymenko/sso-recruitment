@@ -8,6 +8,7 @@ import Modal from "@/shared/components/Modal/Modal";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
 import { Button } from "@/shared/components/Button/Button";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 export async function generateMetadata({ params }) {
   const { _id } = await params;
@@ -82,14 +83,16 @@ const VacancyPage = async ({ params }) => {
   const guarantees =
     vacancy.guarantees?.split("*").filter((item) => item) || [];
 
-  console.log(vacancy.metaTitle);
-
   return (
     <main>
-      <div
-        className={styles.mainScreen}
-        style={{ backgroundImage: `url(${vacancy.bigImage})` }}
-      >
+      <div className={styles.mainScreen}>
+        <Image
+          src={vacancy.bigImage}
+          alt="mainScreen"
+          width={1280}
+          height={690}
+          className={styles.mainScreenImage}
+        ></Image>
         <Button
           className={styles.backButton}
           type="button"

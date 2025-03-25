@@ -8,6 +8,7 @@ import Modal from "@/shared/components/Modal/Modal";
 import { Button } from "@/shared/components/Button/Button";
 import { useModalContext } from "../../../context/ModalContext";
 import styles from "./page.module.css";
+import Image from "next/image";
 
 export default function Vacancies() {
   const { activeFormModal, setActiveFormModal } = useModalContext();
@@ -15,6 +16,13 @@ export default function Vacancies() {
   return (
     <main className={styles.main}>
       <div className={styles.mainScreen}>
+        <Image
+          src="/images/vacanciesMainScreen.webp"
+          alt="mainScreen"
+          width={1280}
+          height={690}
+          className={styles.mainScreenImage}
+        ></Image>
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleWrapper_title}> Кого ми шукаємо?</h1>
           <p className={styles.titleWrapper_content}>
