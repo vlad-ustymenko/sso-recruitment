@@ -30,9 +30,11 @@
 .addressTitle {
   font-family: "UAFSemiBold", sans-serif;
   font-size: 28px;
+  font-style: normal;
   line-height: 1;
   letter-spacing: -1px;
   flex: 1;
+  cursor: pointer;
 }
 
 .telephoneWrapper {

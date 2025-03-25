@@ -7,27 +7,33 @@ const Contacts = () => {
       <div className={styles.title}>Завітай до нас в гості</div>
       <ul className={styles.adressesWrapper}>
         <li className={styles.address}>
-          <div className={styles.addressTitle}>
-            м. Київ,
-            <br /> вул. Оболонська
-            <br /> набережна, 7
-          </div>
+          <address className={styles.addressTitle}>
+            <a href="https://maps.app.goo.gl/nYPfqDWa6f6MawCW7" target="_blank">
+              м. Київ,
+              <br /> вул. Оболонська
+              <br /> набережна, 7
+            </a>
+          </address>
           <div className={styles.time}>з 9:00 до 18:00</div>
         </li>
         <li className={styles.address}>
-          <div className={styles.addressTitle}>
-            м. Дніпро,
-            <br /> проспект Олександра
-            <br /> Поля, 2
-          </div>
+          <address className={styles.addressTitle}>
+            <a href="https://maps.app.goo.gl/x46G8qhNtxgG7bzD8" target="_blank">
+              м. Дніпро,
+              <br /> проспект Олександра
+              <br /> Поля, 2
+            </a>
+          </address>
           <div className={styles.time}>з 9:00 до 18:00</div>
         </li>
         <li className={styles.address}>
-          <div className={styles.addressTitle}>
-            м. Хмельницький,
-            <br />
-            вул. Соборна, 16. ЦНАП
-          </div>
+          <address className={styles.addressTitle}>
+            <a href="https://maps.app.goo.gl/r3iLaiNuTXGxES9U6" target="_blank">
+              м. Хмельницький,
+              <br />
+              вул. Соборна, 16. ЦНАП
+            </a>
+          </address>
           <div className={styles.time}>з 9:00 до 18:00</div>
         </li>
       </ul>
