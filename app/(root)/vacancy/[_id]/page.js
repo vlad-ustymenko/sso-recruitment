@@ -7,27 +7,16 @@ import BrFromater from "@/shared/components/BrFormater/BrFromater";
 import Modal from "@/shared/components/Modal/Modal";
 import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPreview";
 import { Button } from "@/shared/components/Button/Button";
-import styles from "./page.module.css";
+import { connectDB } from "@/lib/mongodb";
 import Image from "next/image";
+import styles from "./page.module.css";
 
 export async function generateMetadata({ params }) {
   const { _id } = await params;
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/vacancies/${_id}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const db = await connectDB();
 
-  if (!res.ok) {
-    return {
-      title: "Вакансії не знайдено",
-      description: "Вакансія, яку ви шукаєте, не знайдена.",
-    };
-  }
-
-  const vacancy = await res.json();
+  const vacancy = await db.collection("vacancies").findOne({ slug: _id });
 
   if (!vacancy) {
     return {
@@ -58,21 +47,24 @@ export async function generateMetadata({ params }) {
   };
 }
 
+export async function generateStaticParams() {
+  try {
+    const db = await connectDB();
+    const vacancies = await db.collection("vacancies").find().toArray();
+
+    return vacancies.map((vacancy) => ({ _id: vacancy.slug }));
+  } catch (error) {
+    console.error("Помилка при отриманні вакансій:", error);
+    return [];
+  }
+}
+
 const VacancyPage = async ({ params }) => {
   const { _id } = await params;
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_SITE_URL}/api/vacancies/${_id}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const db = await connectDB();
 
-  if (!res.ok) {
-    redirect("/vacancies");
-  }
-
-  const vacancy = await res.json();
+  const vacancy = await db.collection("vacancies").findOne({ slug: _id });
 
   if (!vacancy) {
     return <div>Вакансію не знайдено</div>;
