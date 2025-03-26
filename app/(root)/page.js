@@ -17,8 +17,8 @@ export default function Home() {
         <BeforeAfter
           beforeImage="/before.webp"
           afterImage="/after.webp"
-          beforeMobile={"/beforeMobile.webp"}
-          afterMobile={"/afterMobile.webp"}
+          beforeMobile="/beforeMobile.jpg"
+          afterMobile="/afterMobile.jpg"
         />
         <VacanciesPrewiev title="Кого ми шукаємо?" filter />
         <Advantages />

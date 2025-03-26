@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Container from "@/shared/components/Container/Container";
 import styles from "./News.module.css";
 import Link from "next/link";
@@ -36,7 +37,16 @@ const News = () => {
             href={"https://t.me/recruiting_sofua"}
             aria-label="Посилання на телеграм"
             className={styles.imageWrapper}
-          ></Link>
+          >
+            {" "}
+            <Image
+              className={styles.image}
+              src="/images/news.webp"
+              fill
+              sizes="100%"
+              alt="Telegram"
+            ></Image>
+          </Link>
         </div>
       </Container>
     </div>

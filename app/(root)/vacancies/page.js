@@ -19,11 +19,11 @@ export default function Vacancies() {
         <Image
           src="/images/vacanciesMainScreen.webp"
           alt="mainScreen"
-          width={1280}
-          height={690}
-					priority
+          fill
+          sizes="100%"
+          priority
           className={styles.mainScreenImage}
-        ></Image>
+        />
         <div className={styles.titleWrapper}>
           <h1 className={styles.titleWrapper_title}> Кого ми шукаємо?</h1>
           <p className={styles.titleWrapper_content}>

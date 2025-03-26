@@ -52,8 +52,9 @@
   .containerWrapper {
     padding: 0;
   }
-  .mainScreen {
-    background-position: 67%;
+
+  .mainScreenImage {
+    object-position: 36%;
   }
   .titleWrapper {
     top: 70%;
@@ -62,8 +63,8 @@
   }
 }
 @media (max-width: 767px) {
-  .mainScreen {
-    background-position: 36% bottom;
+  .mainScreenImage {
+    object-position: 36% bottom;
   }
 
   .containerWrapper {

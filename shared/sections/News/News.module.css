@@ -30,11 +30,13 @@
 }
 
 .imageWrapper {
-  background-image: url("/images/news.webp");
-  background-position: top;
-  background-size: cover;
-  background-repeat: no-repeat;
+  position: relative;
   height: 500px;
+}
+
+.image {
+  object-fit: cover;
+  object-position: top;
 }
 
 .button {

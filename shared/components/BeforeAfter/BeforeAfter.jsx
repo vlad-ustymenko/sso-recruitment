@@ -18,6 +18,11 @@ const BeforeAfter = ({
   const isDraggingRef = useRef(false);
   const containerRef = useRef(null);
   const { activeFormModal, setActiveFormModal } = useModalContext();
+  const [viewportWidth, setViewportWidth] = useState(1280);
+
+  useEffect(() => {
+    setViewportWidth(window.innerWidth);
+  }, []);
 
   useEffect(() => {
     const animation = setInterval(() => {
@@ -95,42 +100,37 @@ const BeforeAfter = ({
           <br /> Рекрутинг
         </h1>
         <div className={styles.imageWrapper}>
-          <picture className={styles.afterImage}>
-            <source srcSet={afterMobile} media="(max-width: 768px)" />
-            <source srcSet={afterImage} media="(min-width: 769px)" />
+          <div className={styles.afterImage}>
             <Image
-              src={afterImage}
+              src={viewportWidth < 768 ? afterMobile : afterImage}
               alt="After"
               fill
+              sizes="100vw"
               quality={100}
-              priority={true}
               style={{
                 objectFit: "cover",
                 objectPosition: "center top",
               }}
             />
-          </picture>
-
-          <picture
+          </div>
+          <div
             className={styles.beforeImage}
             style={{
               clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
             }}
           >
-            <source srcSet={beforeMobile} media="(max-width: 768px)" />
-            <source srcSet={beforeImage} media="(min-width: 769px)" />
             <Image
-              src={beforeImage}
+              src={viewportWidth < 768 ? beforeMobile : beforeImage}
               alt="Before"
               fill
+              sizes="100vw"
               quality={100}
-              priority={true}
               style={{
                 objectFit: "cover",
                 objectPosition: "center top",
               }}
             />
-          </picture>
+          </div>
 
           <div
             className={styles.divider}

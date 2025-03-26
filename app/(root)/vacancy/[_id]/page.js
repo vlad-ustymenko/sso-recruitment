@@ -89,8 +89,8 @@ const VacancyPage = async ({ params }) => {
         <Image
           src={vacancy.bigImage}
           alt="mainScreen"
-          width={1280}
-          height={690}
+          fill
+          sizes="100%"
           priority
           className={styles.mainScreenImage}
         ></Image>
