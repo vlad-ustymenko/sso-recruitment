@@ -106,7 +106,7 @@ const BeforeAfter = ({
               alt="After"
               fill
               sizes="100vw"
-              quality={100}
+              priority
               style={{
                 objectFit: "cover",
                 objectPosition: "center top",
@@ -124,7 +124,7 @@ const BeforeAfter = ({
               alt="Before"
               fill
               sizes="100vw"
-              quality={100}
+              priority
               style={{
                 objectFit: "cover",
                 objectPosition: "center top",
