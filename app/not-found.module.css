@@ -1,0 +1,46 @@
+.main {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin-bottom: 2vw;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0e7151;
+  color: white;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  padding: 15px 40px;
+  border: none;
+  cursor: pointer;
+  margin-top: 2vw;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (min-width: 768px) and (max-width: 1279px) {
+  .title {
+    margin-bottom: 10vw;
+  }
+  .link {
+    margin-top: 10vw;
+  }
+}
+
+@media (max-width: 767px) {
+  .title {
+    margin-bottom: 10vw;
+  }
+  .link {
+    margin-top: 10vw;
+  }
+}
