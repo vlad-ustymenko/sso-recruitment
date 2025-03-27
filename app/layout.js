@@ -1,7 +1,6 @@
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
-
 import Providers from "@/shared/components/Providers/Providers";
 import Script from "next/script";
 

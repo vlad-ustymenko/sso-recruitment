@@ -9,6 +9,7 @@ import VacanciesPrewiev from "@/shared/sections/VacanciesPreview/VacanciesPrevie
 import { Button } from "@/shared/components/Button/Button";
 import { connectDB } from "@/lib/mongodb";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import styles from "./page.module.css";
 
 export async function generateMetadata({ params }) {
@@ -67,7 +68,7 @@ const VacancyPage = async ({ params }) => {
   const vacancy = await db.collection("vacancies").findOne({ slug: _id });
 
   if (!vacancy) {
-    return <div>Вакансію не знайдено</div>;
+    notFound();
   }
 
   const responsibilities =

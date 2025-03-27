@@ -8,6 +8,18 @@
   position: relative;
 }
 
+.mainScreen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+  pointer-events: none;
+  z-index: 1;
+}
+
 .mainScreenImage {
   position: absolute;
   top: 0;
@@ -25,6 +37,7 @@
   transform: translateY(-50%);
   color: white;
   width: 463px;
+  z-index: 2;
 }
 
 .titleWrapper_title {
@@ -32,13 +45,11 @@
   font-size: 48px;
   letter-spacing: -1px;
   margin-bottom: 40px;
-  text-shadow: 4px 4px 10px rgba(0, 0, 0, 1);
 }
 
 .titleWrapper_content {
   font-family: "UAFRegular", sans-serif;
   font-size: 14px;
-  text-shadow: 0 0 3px rgba(0, 0, 0, 1);
 }
 
 .formWrapper {
