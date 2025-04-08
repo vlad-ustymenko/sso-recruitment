@@ -86,6 +86,8 @@
   border: 2px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
+  color: black;
+  background-color: white;
   transition: all 0.3s ease;
 }
 

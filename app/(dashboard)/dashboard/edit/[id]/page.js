@@ -179,7 +179,7 @@ export default function EditVacancy() {
       bigImageData.append("newImage", formData.image1);
 
       try {
-        const response = await fetch("/api/updateImage", {
+        const response = await fetch("/api/updateLocalImage", {
           method: "PUT",
           body: bigImageData,
         });
@@ -201,7 +201,7 @@ export default function EditVacancy() {
       smallImageData.append("newImage", formData.image2);
 
       try {
-        const response = await fetch("/api/updateImage", {
+        const response = await fetch("/api/updateLocalImage", {
           method: "PUT",
           body: smallImageData,
         });
@@ -223,7 +223,7 @@ export default function EditVacancy() {
       iconImageData.append("newImage", formData.image3);
 
       try {
-        const response = await fetch("/api/updateImage", {
+        const response = await fetch("/api/updateLocalImage", {
           method: "PUT",
           body: iconImageData,
         });

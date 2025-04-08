@@ -150,7 +150,7 @@ export default function Create() {
     formUploadData.append("file3", image3);
 
     try {
-      const imageResponse = await fetch("/api/uploadImage", {
+      const imageResponse = await fetch("/api/uploadLocalImage", {
         method: "POST",
         body: formUploadData,
       });

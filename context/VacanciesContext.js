@@ -62,7 +62,7 @@ export const VacanciesProvider = ({ children }) => {
 
   const deleteVacancy = useCallback(async (id) => {
     try {
-      const response = await fetch("/api/vacancies/delete", {
+      const response = await fetch("/api/vacancies/deleteLocal", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id }),

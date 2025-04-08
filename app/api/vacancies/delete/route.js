@@ -49,4 +49,3 @@ export async function DELETE(req) {
     return NextResponse.json({ error: "Помилка сервера" }, { status: 500 });
   }
 }
-``;

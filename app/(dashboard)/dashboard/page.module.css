@@ -48,6 +48,7 @@
   font-family: "UAFSemiBold", sans-serif;
   font-size: 30px;
   background-color: transparent;
+  color: black;
 }
 
 .vacanciesContainer li:nth-child(even) {
