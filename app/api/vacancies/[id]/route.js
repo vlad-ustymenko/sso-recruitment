@@ -1,5 +1,6 @@
 import { connectDB } from "@/lib/mongodb";
 import Vacancy from "@/models/Vacancy";
+import { revalidatePath } from "next/cache";
 
 export async function GET(req, context) {
   await connectDB();
@@ -32,6 +33,9 @@ export async function PUT(req, { params }) {
     const updatedVacancy = await Vacancy.findOneAndUpdate({ slug: id }, data, {
       new: true,
     });
+
+    revalidatePath(`/vacancies/${updatedVacancy.slug}`);
+
     return Response.json(updatedVacancy, { status: 200 });
   } catch (error) {
     return Response.json(

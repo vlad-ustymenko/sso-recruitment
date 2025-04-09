@@ -3,6 +3,7 @@ import { connectDB } from "@/lib/mongodb";
 import Vacancy from "@/models/Vacancy";
 import fs from "fs";
 import path from "path";
+import { revalidatePath } from "next/cache";
 
 export async function DELETE(req) {
   try {
@@ -56,6 +57,9 @@ export async function DELETE(req) {
 
     // Видалення вакансії з бази даних
     await Vacancy.findByIdAndDelete(id);
+
+    revalidatePath(`/vacancies/${vacancy.slug}`);
+    revalidatePath("/vacancies");
 
     return NextResponse.json({ message: "Вакансію видалено" }, { status: 200 });
   } catch (error) {

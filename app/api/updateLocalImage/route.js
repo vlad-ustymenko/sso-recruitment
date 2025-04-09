@@ -44,7 +44,6 @@ export async function PUT(req) {
       fs.unlinkSync(oldImagePath);
     }
 
-    // Збереження нового зображення
     const buffer = Buffer.from(await newImage.arrayBuffer());
     const newFilename = `${uuidv4()}.webp`; // Генеруємо новий унікальний файл за допомогою uuidv4
     const newImagePath = path.join(
