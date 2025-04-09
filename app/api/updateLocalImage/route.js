@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { NextResponse } from "next/server";
-import { v4 as uuidv4 } from "uuid"; // Імпортуємо uuidv4 з бібліотеки uuid
+import { v4 as uuidv4 } from "uuid";
 
 export async function PUT(req) {
   try {
@@ -15,7 +15,6 @@ export async function PUT(req) {
       });
     }
 
-    // Визначаємо тип зображення зі шляху
     let folderName;
     if (oldImageUrl.includes("/bigImages/")) {
       folderName = "bigImages";
@@ -30,11 +29,11 @@ export async function PUT(req) {
       );
     }
 
-    // Видалення старого зображення
+    // Видалення старого зображення з новим шляхом (в uploads)
     const oldFilename = oldImageUrl.split("/").pop();
     const oldImagePath = path.join(
       process.cwd(),
-      "public",
+      "uploads",
       "images",
       "vacancies",
       folderName,
@@ -50,7 +49,7 @@ export async function PUT(req) {
     const newFilename = `${uuidv4()}.webp`; // Генеруємо новий унікальний файл за допомогою uuidv4
     const newImagePath = path.join(
       process.cwd(),
-      "public",
+      "uploads",
       "images",
       "vacancies",
       folderName,
@@ -59,7 +58,7 @@ export async function PUT(req) {
 
     fs.writeFileSync(newImagePath, buffer);
 
-    const newImageUrl = `/images/vacancies/${folderName}/${newFilename}`;
+    const newImageUrl = `/api/uploads/images/vacancies/${folderName}/${newFilename}`;
 
     return new NextResponse(
       JSON.stringify({

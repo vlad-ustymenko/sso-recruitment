@@ -27,7 +27,7 @@ export async function DELETE(req) {
       const fileName = imageUrl.split("/").pop();
       const filePath = path.join(
         process.cwd(),
-        "public",
+        "uploads", // Тепер працюємо з папкою uploads
         "images",
         "vacancies",
         folder,

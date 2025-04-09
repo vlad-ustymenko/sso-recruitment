@@ -1,14 +1,15 @@
-import { writeFile } from "fs/promises";
+import { writeFile, mkdir } from "fs/promises";
 import path from "path";
 import { v4 as uuidv4 } from "uuid";
+import { existsSync } from "fs";
 
 export async function POST(req) {
   try {
     const formData = await req.formData();
 
-    const image1 = formData.get("file1"); // -> bigImages
-    const image2 = formData.get("file2"); // -> smallImages
-    const image3 = formData.get("file3"); // -> icons
+    const image1 = formData.get("file1"); // bigImages
+    const image2 = formData.get("file2"); // smallImages
+    const image3 = formData.get("file3"); // iconImages
 
     const saveImage = async (file, subfolder) => {
       if (!file || typeof file === "string") return null;
@@ -18,20 +19,25 @@ export async function POST(req) {
       const ext = file.type.split("/")[1];
       const fileName = `${uuidv4()}.${ext}`;
 
-      // Папка: /public/images/vacancies/[subfolder]
+      // Нова папка: /uploads/images/vacancies/[subfolder]
       const uploadDir = path.join(
         process.cwd(),
-        "public",
+        "uploads",
         "images",
         "vacancies",
         subfolder
       );
-      const filePath = path.join(uploadDir, fileName);
 
+      // Створюємо папку, якщо її не існує
+      if (!existsSync(uploadDir)) {
+        await mkdir(uploadDir, { recursive: true });
+      }
+
+      const filePath = path.join(uploadDir, fileName);
       await writeFile(filePath, buffer);
 
-      // Шлях для next/image або <img src=...>
-      return `/images/vacancies/${subfolder}/${fileName}`;
+      // Повертаємо внутрішній шлях до файлу
+      return `/api/uploads/images/vacancies/${subfolder}/${fileName}`;
     };
 
     const [image1_url, image2_url, image3_url] = await Promise.all([

@@ -6,7 +6,6 @@ import AdmissionProcess from "@/shared/sections/AdmissionProcess/AdmissionProces
 import ParallaxSection from "@/shared/sections/ParallaxSection/ParallaxSection";
 import Contacts from "@/shared/sections/Contacts/Contacts";
 import ApplicationForm from "@/shared/sections/ApplicationForm/ApplicationForm";
-import Calculator from "@/shared/sections/Calculator/Calculator";
 import News from "@/shared/sections/News/News";
 import styles from "./page.module.css";
 import VerticalCarousel from "@/shared/components/VerticalCarousel/VerticalCarousel";
