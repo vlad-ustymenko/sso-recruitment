@@ -10,7 +10,6 @@ const nextConfig = {
         pathname: "/dffb9mawi/image/upload/**",
       },
     ],
-    domains: ["localhost"],
   },
   async headers() {
     return [

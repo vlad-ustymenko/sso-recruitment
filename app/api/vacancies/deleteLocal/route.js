@@ -3,7 +3,7 @@ import { connectDB } from "@/lib/mongodb";
 import Vacancy from "@/models/Vacancy";
 import fs from "fs";
 import path from "path";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
 export async function DELETE(req) {
   try {
@@ -28,7 +28,7 @@ export async function DELETE(req) {
       const fileName = imageUrl.split("/").pop();
       const filePath = path.join(
         process.cwd(),
-        "uploads", // Тепер працюємо з папкою uploads
+        "uploads",
         "images",
         "vacancies",
         folder,
@@ -36,7 +36,6 @@ export async function DELETE(req) {
       );
 
       try {
-        // Видалення файлу з локальної папки
         if (fs.existsSync(filePath)) {
           fs.unlinkSync(filePath);
           console.log(`Файл ${filePath} успішно видалено`);
@@ -48,18 +47,16 @@ export async function DELETE(req) {
       }
     };
 
-    // Видаляємо зображення з локальних папок
     await Promise.all([
       deleteImageFromLocal(vacancy.bigImage, "bigImages"),
       deleteImageFromLocal(vacancy.smallImage, "smallImages"),
       deleteImageFromLocal(vacancy.iconImage, "iconImages"),
     ]);
 
-    // Видалення вакансії з бази даних
     await Vacancy.findByIdAndDelete(id);
 
-    revalidatePath(`/vacancies/${vacancy.slug}`);
-    revalidatePath("/vacancies");
+    // revalidatePath(`/vacancies/${vacancy.slug}`);
+    // revalidatePath("/vacancies");
 
     return NextResponse.json({ message: "Вакансію видалено" }, { status: 200 });
   } catch (error) {

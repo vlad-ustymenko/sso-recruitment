@@ -7,9 +7,9 @@ export async function POST(req) {
   try {
     const formData = await req.formData();
 
-    const image1 = formData.get("file1"); // bigImages
-    const image2 = formData.get("file2"); // smallImages
-    const image3 = formData.get("file3"); // iconImages
+    const image1 = formData.get("file1");
+    const image2 = formData.get("file2");
+    const image3 = formData.get("file3");
 
     const saveImage = async (file, subfolder) => {
       if (!file || typeof file === "string") return null;
@@ -19,7 +19,6 @@ export async function POST(req) {
       const ext = file.type.split("/")[1];
       const fileName = `${uuidv4()}.${ext}`;
 
-      // Нова папка: /uploads/images/vacancies/[subfolder]
       const uploadDir = path.join(
         process.cwd(),
         "uploads",
@@ -28,15 +27,12 @@ export async function POST(req) {
         subfolder
       );
 
-      // Створюємо папку, якщо її не існує
       if (!existsSync(uploadDir)) {
         await mkdir(uploadDir, { recursive: true });
       }
 
       const filePath = path.join(uploadDir, fileName);
       await writeFile(filePath, buffer);
-
-      // Повертаємо внутрішній шлях до файлу
       return `/api/uploads/images/vacancies/${subfolder}/${fileName}`;
     };
 

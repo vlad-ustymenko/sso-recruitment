@@ -48,17 +48,17 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export async function generateStaticParams() {
-  try {
-    const db = await connectDB();
-    const vacancies = await db.collection("vacancies").find().toArray();
+// export async function generateStaticParams() {
+//   try {
+//     const db = await connectDB();
+//     const vacancies = await db.collection("vacancies").find().toArray();
 
-    return vacancies.map((vacancy) => ({ _id: vacancy.slug }));
-  } catch (error) {
-    console.error("Помилка при отриманні вакансій:", error);
-    return [];
-  }
-}
+//     return vacancies.map((vacancy) => ({ _id: vacancy.slug }));
+//   } catch (error) {
+//     console.error("Помилка при отриманні вакансій:", error);
+//     return [];
+//   }
+// }
 
 const VacancyPage = async ({ params }) => {
   const { _id } = await params;
@@ -83,10 +83,10 @@ const VacancyPage = async ({ params }) => {
           src={vacancy.bigImage}
           alt="mainScreen"
           fill
-          sizes="100%"
+          sizes="100vw"
           priority
           className={styles.mainScreenImage}
-        ></Image>
+        />
         <Button
           className={styles.backButton}
           type="button"

@@ -38,12 +38,11 @@ const News = () => {
             aria-label="Посилання на телеграм"
             className={styles.imageWrapper}
           >
-            {" "}
             <Image
               className={styles.image}
               src="/images/news.webp"
               fill
-              sizes="100%"
+              sizes="(max-width: 768px) 95vw, 45vw"
               alt="Telegram"
             ></Image>
           </Link>

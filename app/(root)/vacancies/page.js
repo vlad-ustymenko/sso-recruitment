@@ -20,7 +20,7 @@ export default function Vacancies() {
           src="/images/vacanciesMainScreen.webp"
           alt="mainScreen"
           fill
-          sizes="100%"
+          sizes="100vw"
           priority
           className={styles.mainScreenImage}
         />

@@ -1,6 +1,6 @@
 import { connectDB } from "@/lib/mongodb";
 import Vacancy from "@/models/Vacancy";
-import { revalidatePath } from "next/cache";
+// import { revalidatePath } from "next/cache";
 
 export async function GET(req, context) {
   await connectDB();
@@ -34,7 +34,7 @@ export async function PUT(req, { params }) {
       new: true,
     });
 
-    revalidatePath(`/vacancies/${updatedVacancy.slug}`);
+    // revalidatePath(`/vacancies/${updatedVacancy.slug}`);
 
     return Response.json(updatedVacancy, { status: 200 });
   } catch (error) {

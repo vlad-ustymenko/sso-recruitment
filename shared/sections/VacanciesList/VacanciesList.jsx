@@ -88,16 +88,17 @@ const VacanciesList = () => {
                   src={vacancy.smallImage}
                   alt={vacancy.title}
                   fill
-                  sizes="100%"
+                  sizes="(max-width: 768px) 90vw, (min-width: 768px) and (max-width: 1023px) 50vw, 30vw"
                   className={styles.image}
                 />
                 <Image
                   className={styles.icon}
                   width={30}
                   height={30}
+                  sizes="30px"
                   src={vacancy.iconImage}
                   alt="Military unit sign"
-                ></Image>
+                />
               </div>
               <div className={styles.vacancyContent}>
                 <h2 className={styles.vacancyTitle}>{vacancy.title}</h2>

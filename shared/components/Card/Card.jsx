@@ -12,8 +12,8 @@ const Card = React.forwardRef(({ vacancie }, ref) => {
         <Image
           className={styles.image}
           src={vacancie.smallImage}
-          width={420}
-          height={240}
+          sizes="(max-width: 768px) 90vw, (min-width: 768px) and (max-width: 1023px) 50vw, 30vw"
+          fill
           alt={vacancie.title}
         ></Image>
         <Image
@@ -21,6 +21,7 @@ const Card = React.forwardRef(({ vacancie }, ref) => {
           src={vacancie.iconImage}
           width={30}
           height={30}
+          sizes="30px"
           alt="Millitary unit icon"
         ></Image>
       </div>

@@ -29,7 +29,6 @@ export async function PUT(req) {
       );
     }
 
-    // Видалення старого зображення з новим шляхом (в uploads)
     const oldFilename = oldImageUrl.split("/").pop();
     const oldImagePath = path.join(
       process.cwd(),
@@ -45,7 +44,7 @@ export async function PUT(req) {
     }
 
     const buffer = Buffer.from(await newImage.arrayBuffer());
-    const newFilename = `${uuidv4()}.webp`; // Генеруємо новий унікальний файл за допомогою uuidv4
+    const newFilename = `${uuidv4()}.webp`;
     const newImagePath = path.join(
       process.cwd(),
       "uploads",
